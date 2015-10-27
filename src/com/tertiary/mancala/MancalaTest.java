@@ -17,27 +17,27 @@ import javax.swing.*;
  */
 public class MancalaTest
 {
- /**
-  Constructor method for the MancalaTest class.
-  */
- public MancalaTest()
- {
-  // TODO: Entry point for Mancala Application
- }
-
- /**
-  The main method of execution for the JVM.
-  @param args user-defined arguments.
-  */
- public static void main(String[] args)
- {
-  SwingUtilities.invokeLater(new Runnable()
-  {
-   @Override
-   public void run()
+   /**
+    Constructor method for the MancalaTest class.
+    */
+   public MancalaTest()
    {
-    new MancalaTest();
+      // TODO: Entry point for Mancala Application
    }
-  });
- }
+
+   /**
+    The main method of execution for the JVM.
+    @param args user-defined arguments.
+    */
+   public static void main(String[] args)
+   {
+      SwingUtilities.invokeLater(new Runnable()
+      {
+         @Override
+         public void run()
+         {
+            new MancalaTest();
+         }
+      });
+   }
 }

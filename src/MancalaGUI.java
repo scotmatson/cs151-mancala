@@ -1,28 +1,38 @@
 import javax.swing.*;
+import java.awt.*;
 
 /**
- Created by scot on 11/14/15.
+
+ COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
+
+ The outer frame for a Mancala game. Bootstraps all necessary
+ graphical components.
+
+ Solves CS151 Project - Mancala Game
+
+ @author Scot Matson
+
+ @version 1.01 2015/10/26
+
  */
 public class MancalaGUI extends JFrame
 {
    private final String FRAME_TITLE = "This is Mancala, bitches.";
-   private final int FRAME_WIDTH = 200;
-   private final int FRAME_HEIGHT = 200;
 
    public MancalaGUI()
    {
+      // Define properties of the JFrame.
       setTitle(FRAME_TITLE);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setDefaultLookAndFeelDecorated(true);
-
       setJMenuBar(new MancalaMenuBar());
-      /**
-       The game has only one view I guess? Trying to read up on MVC patterns a bit more to
-       understand this. It sounds like multiple-views, multiple-controllers, and usually
-       one model is the way to do it.
 
-       In our case I guess only one view exists (but alternate skins).
-       */
+      // Define the content of the JFrame.
+      Container contentPane = getContentPane();
+      contentPane.setLayout(new BorderLayout());
+      //TODO: Display game information in NORTHERN pane (i.e., turn, won stones, etc...)
+      contentPane.add(new MancalaBoard(), BorderLayout.CENTER);
+
 
       pack();
       setVisible(true);

@@ -1,12 +1,62 @@
+import javax.swing.*;
+import java.awt.Color;
 /**
- Created by scot on 11/14/15.
+
+ COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
+
+ A generic game board class.
+
+ Solves CS151 Project - Mancala Game
+
+ @author Scot Matson
+
+ @version 1.01 2015/11/14
+
  */
-public abstract class GameBoard
+public abstract class GameBoard extends JPanel
 {
-   public GameBoard()
+   private final int BOARD_WIDTH;
+   private final int BOARD_HEIGHT;
+   private Color surface;
+   private int numberOfPlayers;
+
+   // TODO: Other definable properties of a generic board?
+
+   public GameBoard(int width, int height, Color c, int playerCount)
    {
-      // A board is a GUI rectangle of fixed proportions. The corners should be
-      // rounded. This is simply a blank template to build a more detailed
-      // graphical UI upon.
+      BOARD_WIDTH = width;
+      BOARD_HEIGHT = height;
+      surface = c;
+      numberOfPlayers = playerCount;
+   }
+
+   public int getBoardWidth()
+   {
+      return BOARD_WIDTH;
+   }
+
+   public int getBoardHeight()
+   {
+      return BOARD_HEIGHT;
+   }
+
+   public Color getColor()
+   {
+      return surface;
+   }
+
+   public void setColor(Color c)
+   {
+      surface = c;
+   }
+
+   public int getNumberOfPlayers()
+   {
+      return numberOfPlayers;
+   }
+
+   public void setNumberOfPlayers(int playerCount)
+   {
+      numberOfPlayers = playerCount;
    }
 }

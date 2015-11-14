@@ -3,17 +3,19 @@ import javax.swing.*;
 /**
  Created by scot on 11/14/15.
  */
-public class MancalaGUI
+public class MancalaGUI extends JFrame
 {
-   // Needs a frame with stats
-   // A board
-   // the board should have pits
+   private final String FRAME_TITLE = "This is Mancala, bitches.";
+   private final int FRAME_WIDTH = 200;
+   private final int FRAME_HEIGHT = 200;
 
    public MancalaGUI()
    {
-      JFrame frame = new JFrame("This is Mancala Bitches.");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      
+      setTitle(FRAME_TITLE);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setDefaultLookAndFeelDecorated(true);
+
+      setJMenuBar(new MancalaMenuBar());
       /**
        The game has only one view I guess? Trying to read up on MVC patterns a bit more to
        understand this. It sounds like multiple-views, multiple-controllers, and usually
@@ -22,7 +24,7 @@ public class MancalaGUI
        In our case I guess only one view exists (but alternate skins).
        */
 
-      frame.pack();
-      frame.setVisible(true);
+      pack();
+      setVisible(true);
    }
 }

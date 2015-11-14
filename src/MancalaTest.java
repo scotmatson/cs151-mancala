@@ -20,7 +20,7 @@ public class MancalaTest
     */
    public MancalaTest()
    {
-      // TODO: Entry point for Mancala Application
+      MancalaGUI game = new MancalaGUI();
    }
 
    /**

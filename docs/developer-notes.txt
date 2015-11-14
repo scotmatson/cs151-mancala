@@ -1,0 +1,10 @@
+;  Date and initial any changes to this file.
+;  This is simply a location to note any specific changes and comments
+;     in addition to what you've included in your git commit.
+
+2015-11-14-SM: Not happy about instructor guidelines about package setup.
+               It is going to make this project more difficult to maintain
+               and just is bad practice all around.
+
+               I'm going to be spending the next two days working on this.
+               Will outline the overall work here.

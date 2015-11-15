@@ -71,6 +71,8 @@ public class MancalaGUI extends JFrame
     */
    public void addComponentsToPane(Container pane)
    {
-      pane.add(new MancalaBoard(), BorderLayout.CENTER);
+
+      pane.add(new StatusPane(1000, 150), BorderLayout.PAGE_START);
+      pane.add(new GamePane(1000, 400), BorderLayout.PAGE_END);
    }
 }

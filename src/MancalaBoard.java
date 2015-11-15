@@ -15,8 +15,9 @@ import java.awt.*;
  */
 public class MancalaBoard extends GameBoard
 {
-   public MancalaBoard()
+   private final int NUMBER_OF_PITS = 12;
+   public MancalaBoard(int x, int y, int width, int height, Color c)
    {
-      super(800, 400, Color.LIGHT_GRAY, 2);
+      super(x, y, width, height, c);
    }
 }

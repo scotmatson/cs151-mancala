@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -15,65 +14,37 @@ import java.awt.geom.RoundRectangle2D;
  @version 1.01 2015/11/14
 
  */
-public abstract class GameBoard extends JPanel
+public abstract class GameBoard
 {
-   private final double BOARD_WIDTH;
-   private final double BOARD_HEIGHT;
-   private Color surface;
-   private int numberOfPlayers;
+   private Color boardColor;
+   RoundRectangle2D board;
 
-   // TODO: Other definable properties of a generic board?
-
-   public GameBoard(double width, double height, Color c, int playerCount)
+   /**
+    Constructor method for the GameBoard class.
+    @param x the x-position of the game board.
+    @param y the y-position of the game board.
+    @param width the width of the game board.
+    @param height the height of the game board.
+    @param c the color of the game board.
+    */
+   public GameBoard(int x, int y, int width, int height, Color c)
    {
-      BOARD_WIDTH = width;
-      BOARD_HEIGHT = height;
-      surface = c;
-      numberOfPlayers = playerCount;
+      boardColor = c;
+      board = new RoundRectangle2D.Double(x, y, width, height, 50, 50);
    }
 
-   public Dimension getPreferredSize()
+   public RoundRectangle2D getBoard()
    {
-      return new Dimension((int)BOARD_WIDTH, (int)BOARD_HEIGHT);
+      return board;
    }
 
-   public void paintComponent(Graphics g)
+   public Color getBoardColor()
    {
-      super.paintComponent(g);
-      Graphics2D g2 = (Graphics2D) g;
-
-      RoundRectangle2D board = new RoundRectangle2D.Double(0, 0, BOARD_WIDTH, BOARD_HEIGHT, 50, 50);
-      g2.draw(board);
-
+      return boardColor;
    }
 
-   public double getBoardWidth()
+   public void setBoardColor(Color c)
    {
-      return BOARD_WIDTH;
-   }
-
-   public double getBoardHeight()
-   {
-      return BOARD_HEIGHT;
-   }
-
-   public Color getColor()
-   {
-      return surface;
-   }
-
-   public void setColor(Color c)
-   {
-      surface = c;
-   }
-
-   public int getNumberOfPlayers()
-   {
-      return numberOfPlayers;
-   }
-
-   public void setNumberOfPlayers(int playerCount)
-   {
-      numberOfPlayers = playerCount;
+      boardColor = c;
    }
 }

@@ -2,6 +2,18 @@
 ;  This is simply a location to note any specific changes and comments
 ;     in addition to what you've included in your git commit.
 
+2015-11-14-SM: Coming along slowly. I'm trying to figure out how to set up the
+               relationship for the panes and components. I meant for the
+               GameBoard to be a graphic class and it has become a pane. I
+               think a BoardPane to hold the graphics would be more suitable
+               for this abstraction.
+
+               I'm thinking GameBoard will remain an abstract graphics class,
+               MancalaBoard will be the implementation of that and the pits
+               will be layered on top of the board and will provide the
+               event handling. There is a layeredpane class that might help
+               with this but I'm not sure if that is necessary.
+
 2015-11-14-SM: Not happy about instructor guidelines about package setup.
                It is going to make this project more difficult to maintain
                and just is bad practice all around.

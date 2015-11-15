@@ -17,6 +17,6 @@ public class MancalaBoard extends GameBoard
 {
    public MancalaBoard()
    {
-      super(200, 200, Color.LIGHT_GRAY, 2);
+      super(800, 400, Color.LIGHT_GRAY, 2);
    }
 }

@@ -1,5 +1,7 @@
 import javax.swing.*;
-import java.awt.Color;
+import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
+
 /**
 
  COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
@@ -15,14 +17,14 @@ import java.awt.Color;
  */
 public abstract class GameBoard extends JPanel
 {
-   private final int BOARD_WIDTH;
-   private final int BOARD_HEIGHT;
+   private final double BOARD_WIDTH;
+   private final double BOARD_HEIGHT;
    private Color surface;
    private int numberOfPlayers;
 
    // TODO: Other definable properties of a generic board?
 
-   public GameBoard(int width, int height, Color c, int playerCount)
+   public GameBoard(double width, double height, Color c, int playerCount)
    {
       BOARD_WIDTH = width;
       BOARD_HEIGHT = height;
@@ -30,12 +32,27 @@ public abstract class GameBoard extends JPanel
       numberOfPlayers = playerCount;
    }
 
-   public int getBoardWidth()
+   public Dimension getPreferredSize()
+   {
+      return new Dimension((int)BOARD_WIDTH, (int)BOARD_HEIGHT);
+   }
+
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D) g;
+
+      RoundRectangle2D board = new RoundRectangle2D.Double(0, 0, BOARD_WIDTH, BOARD_HEIGHT, 50, 50);
+      g2.draw(board);
+
+   }
+
+   public double getBoardWidth()
    {
       return BOARD_WIDTH;
    }
 
-   public int getBoardHeight()
+   public double getBoardHeight()
    {
       return BOARD_HEIGHT;
    }

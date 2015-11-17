@@ -20,7 +20,7 @@ public class MancalaTest
     */
    public MancalaTest()
    {
-      MancalaGUI game = new MancalaGUI();
+      new MancalaGUI();
    }
 
    /**

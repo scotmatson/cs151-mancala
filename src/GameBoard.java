@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -14,7 +15,7 @@ import java.awt.geom.RoundRectangle2D;
  @version 1.01 2015/11/14
 
  */
-public abstract class GameBoard
+public abstract class GameBoard extends JComponent
 {
    private Color boardColor;
    RoundRectangle2D board;
@@ -33,10 +34,10 @@ public abstract class GameBoard
       board = new RoundRectangle2D.Double(x, y, width, height, 50, 50);
    }
 
-   public RoundRectangle2D getBoard()
-   {
-      return board;
-   }
+   //public RoundRectangle2D getBoard()
+   //{
+   //   return board;
+   //}
 
    public Color getBoardColor()
    {
@@ -46,5 +47,16 @@ public abstract class GameBoard
    public void setBoardColor(Color c)
    {
       boardColor = c;
+   }
+
+   @Override
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D) g;
+
+      g2.setColor(boardColor);
+      g2.fill(board);
+      g2.dispose();
    }
 }

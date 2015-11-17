@@ -20,4 +20,10 @@ public class MancalaBoard extends GameBoard
    {
       super(x, y, width, height, c);
    }
+
+   @Override
+   public void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+   }
 }

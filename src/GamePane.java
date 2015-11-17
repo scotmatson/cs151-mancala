@@ -11,26 +11,21 @@ public class GamePane extends JPanel
 
    public GamePane(int width, int height)
    {
+      setLayout(new BorderLayout());
+
       PANEL_WIDTH = width;
       PANEL_HEIGHT = height;
+      int boardWidth = 800;
+      int boardHeight = 400;
+      int boardX = (PANEL_WIDTH - boardWidth) / 2;
+      int boardY = 0;
+      MancalaBoard mancalaBoard = new MancalaBoard(boardX, boardY, boardWidth, boardHeight, Color.lightGray);
+
+      add(mancalaBoard, BorderLayout.CENTER);
    }
 
    public Dimension getPreferredSize()
    {
       return new Dimension(PANEL_WIDTH, PANEL_HEIGHT);
-   }
-
-   public void paintComponent(Graphics g)
-   {
-      super.paintComponent(g);
-      Graphics2D g2 = (Graphics2D) g;
-
-      int boardWidth = 800;
-      int boardHeight = 400;
-      int boardX = (PANEL_WIDTH - boardWidth) / 2;
-      int boardY = 0;
-      MancalaBoard board = new MancalaBoard(boardX, boardY, boardWidth, boardHeight, Color.lightGray);
-      g2.setColor(board.getBoardColor());
-      g2.fill(board.getBoard());
    }
 }

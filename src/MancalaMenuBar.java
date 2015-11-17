@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.lang.Override;
+import java.lang.System;
 
 /**
 
@@ -60,11 +62,23 @@ public class MancalaMenuBar extends JMenuBar
       menuItem = new JMenuItem("Light Theme", KeyEvent.VK_L);
       menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
       menuItem.getAccessibleContext().setAccessibleDescription("Changes the game appearance to a light theme.");
+      menuItem.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+
+          }
+      });
       settingsMenu.add(menuItem);
 
       menuItem = new JMenuItem("Dark Theme", KeyEvent.VK_D);
       menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
       menuItem.getAccessibleContext().setAccessibleDescription("Changes the game apperance to a dark theme.");
+      menuItem.addActionListener(new ActionListener() {
+          @Override
+          public void actionPerformed(ActionEvent e) {
+              
+          }
+      });
       settingsMenu.add(menuItem);
 
       add(fileMenu);

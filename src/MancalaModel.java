@@ -22,14 +22,22 @@ public class MancalaModel extends Observable
     to and updates of this data. In enterprise software, a model often
     serves as a software approximation of a real-world process.
 
-    TODO: turns, stones (live, captured, position), previous turn
+    TODO: turns, pits (live, captured, position), previous turn
     */
 
    private boolean playerOneTurn;
    private boolean playerTwoTurn;
+   private ArrayList<Cup> cups;
 
    public MancalaModel()
    {
+      playerOneTurn = true;
+      playerTwoTurn = false;
+      for (int i = 0; i < 12; i++) {
+         cups.add(new Cup());
+         for (int j = 0; j < 4; j++) cups.get(i).incrementPit()
+      }
+
       // TODO: Stores game logic.
    }
 }

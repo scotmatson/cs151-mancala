@@ -1,7 +1,7 @@
 /**
  Created by scot on 11/14/15.
  */
-public class Mancala extends Pit
+public class Mancala extends GameObject
 {
 
 
@@ -10,6 +10,7 @@ public class Mancala extends Pit
     */
    public Mancala()
    {
+
       /**
        A mancala is the name of the pits on the side of the game board (and oddly
        also the name of the game). So essentially

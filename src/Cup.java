@@ -1,4 +1,3 @@
-package com.tertiary;
 import java.util.ArrayList;
 
 public class Cup extends GameObject {

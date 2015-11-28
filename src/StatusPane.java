@@ -1,4 +1,3 @@
-package com.tertiary;
 import javax.swing.*;
 import java.awt.*;
 

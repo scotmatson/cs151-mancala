@@ -1,4 +1,3 @@
-package com.tertiary;
 import java.lang.Object;
 import java.lang.Override;
 import java.util.Observable;

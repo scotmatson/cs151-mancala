@@ -1,4 +1,9 @@
+package com.tertiary;
+
+
 import java.util.Observable;
+import java.util.ArrayList;
+
 
 /**
 
@@ -35,7 +40,9 @@ public class MancalaModel extends Observable
       playerTwoTurn = false;
       for (int i = 0; i < 12; i++) {
          cups.add(new Cup());
-         for (int j = 0; j < 4; j++) cups.get(i).incrementPit()
+         for (int j = 0; j < 4; j++) {
+             cups.get(i).incrementPit();
+         }
       }
 
       // TODO: Stores game logic.

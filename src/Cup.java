@@ -1,4 +1,5 @@
-
+package com.tertiary;
+import java.util.ArrayList;
 
 public class Cup extends GameObject {
     private ArrayList<Pit> pitContainer;
@@ -13,11 +14,22 @@ public class Cup extends GameObject {
         for (int i = 0; i < newPit.size(); i++) pitContainer.add(newPit.get(i));
     }
 
+    /**
+     * Increments the pit location
+     * (was implemented because a call was made to a
+     * method that didnt exist. Will fill in once understood)
+     */
+    public void incrementPit() {
+
+    }
+
     public void incrementCup(Pit addPit) {
-        pitContainer.add(Pit addPit);
+        pitContainer.add(addPit);
     }
 
     public ArrayList<Pit> unpopulateCup() {
         return pitContainer;
     }
+
+
 }

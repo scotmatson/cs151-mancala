@@ -1,9 +1,7 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.lang.Override;
-import java.lang.System;
 
 /**
 
@@ -20,68 +18,78 @@ import java.lang.System;
  */
 public class MancalaMenuBar extends JMenuBar
 {
+   private JMenuItem newGame;
+   private JMenuItem undoMove;
+   private JMenuItem quitGame;
+   private JMenuItem lightTheme;
+   private JMenuItem darkTheme;
+
    public MancalaMenuBar()
    {
       JMenu fileMenu;
       JMenu settingsMenu;
-      JMenuItem menuItem;
 
       // File Menu
       fileMenu = new JMenu("File");
       fileMenu.setMnemonic(KeyEvent.VK_F);
       fileMenu.getAccessibleContext().setAccessibleDescription("File menu.");
 
-      menuItem = new JMenuItem("New Game", KeyEvent.VK_N);
-      menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-      menuItem.getAccessibleContext().setAccessibleDescription("Starts a new game of Mancala.");
-      fileMenu.add(menuItem);
+      newGame = new JMenuItem("New Game", KeyEvent.VK_N);
+      newGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK));
+      newGame.getAccessibleContext().setAccessibleDescription("Starts a new game of Mancala.");
+      fileMenu.add(newGame);
 
-      menuItem = new JMenuItem("Undo Move", KeyEvent.VK_U);
-      menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, ActionEvent.CTRL_MASK));
-      menuItem.getAccessibleContext().setAccessibleDescription("Quit the application.");
-      fileMenu.add(menuItem);
+      undoMove = new JMenuItem("Undo Move", KeyEvent.VK_U);
+      undoMove.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_U, InputEvent.CTRL_MASK));
+      undoMove.getAccessibleContext().setAccessibleDescription("Quit the application.");
+      fileMenu.add(undoMove);
 
-      menuItem = new JMenuItem("Quit Game", KeyEvent.VK_Q);
-      menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
-      menuItem.getAccessibleContext().setAccessibleDescription("Quit the application.");
-      menuItem.addActionListener(new ActionListener()
-      {
-         @Override
-         public void actionPerformed(ActionEvent e)
-         {
-            System.exit(0);
-         }
-      });
-      fileMenu.add(menuItem);
+      quitGame = new JMenuItem("Quit Game", KeyEvent.VK_Q);
+      quitGame.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, InputEvent.CTRL_MASK));
+      quitGame.getAccessibleContext().setAccessibleDescription("Quit the application.");
+      fileMenu.add(quitGame);
 
       // Settings Menu
       settingsMenu = new JMenu("Settings");
       settingsMenu.setMnemonic(KeyEvent.VK_T);
       fileMenu.getAccessibleContext().setAccessibleDescription("Settings menu.");
 
-      menuItem = new JMenuItem("Light Theme", KeyEvent.VK_L);
-      menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
-      menuItem.getAccessibleContext().setAccessibleDescription("Changes the game appearance to a light theme.");
-      menuItem.addActionListener(new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
+      lightTheme = new JMenuItem("Light Theme", KeyEvent.VK_L);
+      lightTheme.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, InputEvent.CTRL_MASK));
+      lightTheme.getAccessibleContext().setAccessibleDescription("Changes the game appearance to a light theme.");
+      settingsMenu.add(lightTheme);
 
-          }
-      });
-      settingsMenu.add(menuItem);
-
-      menuItem = new JMenuItem("Dark Theme", KeyEvent.VK_D);
-      menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
-      menuItem.getAccessibleContext().setAccessibleDescription("Changes the game apperance to a dark theme.");
-      menuItem.addActionListener(new ActionListener() {
-          @Override
-          public void actionPerformed(ActionEvent e) {
-
-          }
-      });
-      settingsMenu.add(menuItem);
+      darkTheme = new JMenuItem("Dark Theme", KeyEvent.VK_D);
+      darkTheme.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, InputEvent.CTRL_MASK));
+      darkTheme.getAccessibleContext().setAccessibleDescription("Changes the game apperance to a dark theme.");
+      settingsMenu.add(darkTheme);
 
       add(fileMenu);
       add(settingsMenu);
+   }
+
+   public void newGameActionListener(ActionListener listenForMenu)
+   {
+      newGame.addActionListener(listenForMenu);
+   }
+
+   public void undoMoveActionListener(ActionListener listenForMenu)
+   {
+      undoMove.addActionListener(listenForMenu);
+   }
+
+   public void quitGameActionListener(ActionListener listenForMenu)
+   {
+      quitGame.addActionListener(listenForMenu);
+   }
+
+   public void lightThemeActionListener(ActionListener listenForMenu)
+   {
+      lightTheme.addActionListener(listenForMenu);
+   }
+
+   public void darkThemeActionListener(ActionListener listenForMenu)
+   {
+      darkTheme.addActionListener(listenForMenu);
    }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Mancala extends GameObject
 {
    private int mancalaID;
-   private ArrayList<Pit> pitContainer;
+   private ArrayList<Stone> stoneContainer;
 
    /**
     Constructor method for the Mancala class.
@@ -14,7 +14,7 @@ public class Mancala extends GameObject
    public Mancala()
    {
       mancalaID = super.getCount();
-      pitContainer = new ArrayList<Pit>();
+      stoneContainer = new ArrayList<Stone>();
 
       /**
        A mancala is the name of the pits on the side of the game board (and oddly
@@ -26,9 +26,9 @@ public class Mancala extends GameObject
        */
    }
 
-   public void addPit(Pit newPit) { pitContainer.add(newPit); }
+   public void addPit(Stone newStone) { stoneContainer.add(newStone); }
 
-   public int size() { return pitContainer.size(); }
+   public int size() { return stoneContainer.size(); }
 
    public int getMancalaID() { return mancalaID; }
 }

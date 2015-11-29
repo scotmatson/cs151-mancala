@@ -43,22 +43,22 @@ public class MancalaModel extends Observable
       pits = new ArrayList<>();
       stones = new ArrayList<>();
 
-      mancala1 = new Mancala();
-      mancala2 = new Mancala();
+      //mancala1 = new Mancala();
+      //mancala2 = new Mancala();
 
       playerOneTurn = true;
       playerTwoTurn = false;
 
-      for (int i = 0; i < 12; i++)
-      {
-         pits.add(new Pit());
-         for (int j = 0; j < 4; j++)
-         {
-            Stone tempStone = new Stone();
-            pits.get(i).incrementCup(tempStone);
-            stones.add(tempStone);
-         }
-      }
+      //for (int i = 0; i < 12; i++)
+      //{
+      //   pits.add(new Pit());
+      //   for (int j = 0; j < 4; j++)
+      //   {
+      //      Stone tempStone = new Stone();
+      //      pits.get(i).incrementCup(tempStone);
+      //      stones.add(tempStone);
+      //   }
+      //}
       // TODO: Stores game logic.
    }
 

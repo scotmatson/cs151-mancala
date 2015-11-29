@@ -35,8 +35,7 @@ public class GamePane extends JPanel implements Observer
       int boardHeight = 400;
       int boardX = (PANEL_WIDTH - boardWidth) / 2;
       int boardY = 0;
-      mancalaBoard = new MancalaBoard(boardX, boardY, boardWidth, boardHeight, Color.lightGray);
-
+      mancalaBoard = new MancalaBoard(boardX, boardY, boardWidth, boardHeight, Color.lightGray, model);
       add(mancalaBoard, BorderLayout.CENTER);
    }
 
@@ -57,10 +56,10 @@ public class GamePane extends JPanel implements Observer
    @Override
    public void update(Observable o, Object arg)
    {
-      System.out.println("test, inside update.");
       Color newColor = model.getBoardColor();
       mancalaBoard.setBoardColor(newColor);
 
+      validate();
       repaint();
    }
 }

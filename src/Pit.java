@@ -1,23 +1,36 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Pit extends GameObject
+public class Pit extends JPanel implements Observer
 {
-   private int cupID;
+   private final int X_COORD;
+   private final int Y_COORD;
+   private final int PIT_WIDTH;
+   private final int PIT_HEIGHT;
+
+   private int pitID;
    private ArrayList<Stone> stoneContainer;
    private Color color;
 
-    public Pit()
+    public Pit(int x, int y, int width, int height, Color c)
     {
-        cupID = super.getCount();
-        stoneContainer = new ArrayList<>();
+       X_COORD = x;
+       Y_COORD = y;
+       PIT_WIDTH = width;
+       PIT_HEIGHT = height;
+       color = c;
+       //pitID = super.getCount();
+       stoneContainer = new ArrayList<>();
     }
 
    /**
 
     @param newStone
     */
-    public void populateCup(ArrayList<Stone> newStone)
+    public void populatePit(ArrayList<Stone> newStone)
     {
         for (int i = 0; i < newStone.size(); i++)
         {
@@ -55,10 +68,25 @@ public class Pit extends GameObject
 
    /**
 
-    @return
-    */
-   public int getSize()
+   // @return
+   // */
+   //public int getSize()
+   //{
+   //   return stoneContainer.size();
+   //}
+
+   @Override
+   protected void paintComponent(Graphics g)
    {
-      return stoneContainer.size();
+      super.paintComponent(g);
+      Graphics2D g2 = (Graphics2D) g;
+
+
+   }
+
+   @Override
+   public void update(Observable o, Object arg)
+   {
+      // Updates the stone color
    }
 }

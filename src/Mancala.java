@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -13,10 +14,11 @@ public class Mancala extends Pit implements Observer
    /**
     Constructor method for the Mancala class.
     */
-   public Mancala()
+   public Mancala(int x, int y, int width, int height, Color c)
    {
-      mancalaID = super.getCount();
-      stoneContainer = new ArrayList<Stone>();
+      super(x, y, width, height, c);
+      //mancalaID = super.getCount();
+      //stoneContainer = new ArrayList<Stone>();
 
       /**
        A mancala is the name of the pits on the side of the game board (and oddly
@@ -28,11 +30,11 @@ public class Mancala extends Pit implements Observer
        */
    }
 
-   public void addPit(Stone newStone) { stoneContainer.add(newStone); }
+   //public void addPit(Stone newStone) { stoneContainer.add(newStone); }
 
-   public int size() { return stoneContainer.size(); }
+   //public int size() { return stoneContainer.size(); }
 
-   public int getMancalaID() { return mancalaID; }
+   //public int getMancalaID() { return mancalaID; }
 
    @Override
    public void update(Observable o, Object arg)

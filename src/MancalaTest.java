@@ -18,6 +18,7 @@ public class MancalaTest extends JFrame
 {
 
    private final String FRAME_TITLE = "This is Mancala, bitches.";
+   private final int FRAME_WIDTH = 1000;
 
    /**
     Constructor method for the MancalaTest class.
@@ -33,16 +34,20 @@ public class MancalaTest extends JFrame
       // The model
       MancalaModel model = new MancalaModel();
 
-      // Controllers
-      MancalaMenuBarController menuBarController = new MancalaMenuBarController(menuBar, model);
+      // Outer views
+      StatusPane statusPane = new StatusPane(FRAME_WIDTH, 150, model);
+      GamePane gamePane = new GamePane(FRAME_WIDTH, 400, model);
 
-      // Add JPanes to the JFrame
+      // Menu Controller
+      new MancalaMenuBarController(menuBar, model);
+
+      // Add content to JFrame
       Container pane = getContentPane();
-      pane.add(new StatusPane(1000, 150), BorderLayout.PAGE_START);
-      pane.add(new GamePane(1000, 400), BorderLayout.PAGE_END);
+      setJMenuBar(menuBar);
+      pane.add(statusPane, BorderLayout.PAGE_START);
+      pane.add(gamePane, BorderLayout.PAGE_END);
 
       // Display the window.
-      setJMenuBar(menuBar);
       pack();
       setVisible(true);
    }

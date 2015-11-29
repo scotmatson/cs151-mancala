@@ -1,9 +1,11 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Pit extends GameObject
 {
    private int cupID;
    private ArrayList<Stone> stoneContainer;
+   private Color color;
 
     public Pit()
     {
@@ -59,5 +61,4 @@ public class Pit extends GameObject
    {
       return stoneContainer.size();
    }
-
 }

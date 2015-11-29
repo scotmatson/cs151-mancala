@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -33,10 +34,18 @@ public class MancalaModel extends Observable
    private Mancala mancala1; // Mancala for player one
    private Mancala mancala2; // Mancala for player two
 
+
+   // THEME VARIABLES, PERHAPS MOVE INTO A LIST LATER
+   // private Color backgroundColor
+   private Color boardColor;
+   private Color pitColor;
+   private Color stoneColor;
+   // private Color textColor
+
    public MancalaModel()
    {
-      pits = new ArrayList<Pit>();
-      stones = new ArrayList<Stone>();
+      pits = new ArrayList<>();
+      stones = new ArrayList<>();
 
       mancala1 = new Mancala();
       mancala2 = new Mancala();

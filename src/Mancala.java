@@ -1,9 +1,11 @@
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  Created by scot on 11/14/15.
  */
-public class Mancala extends GameObject
+public class Mancala extends Pit implements Observer
 {
    private int mancalaID;
    private ArrayList<Stone> stoneContainer;
@@ -31,4 +33,10 @@ public class Mancala extends GameObject
    public int size() { return stoneContainer.size(); }
 
    public int getMancalaID() { return mancalaID; }
+
+   @Override
+   public void update(Observable o, Object arg)
+   {
+      // Updates the number of stones in this mancala
+   }
 }

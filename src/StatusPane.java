@@ -6,11 +6,15 @@ import java.awt.*;
  */
 public class StatusPane extends JPanel
 {
+   private MancalaModel model;
+
    private final int PANEL_WIDTH;
    private final int PANEL_HEIGHT;
 
-   public StatusPane(int width, int height)
+   public StatusPane(int width, int height, MancalaModel m)
    {
+      model = m;
+
       PANEL_WIDTH = width;
       PANEL_HEIGHT = height;
    }

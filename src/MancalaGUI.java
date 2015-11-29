@@ -47,6 +47,7 @@ import java.awt.*;
  */
 public class MancalaGUI extends JFrame
 {
+   // TODO: Remove this before it's turned in... lol.
    private final String FRAME_TITLE = "This is Mancala, bitches.";
 
    public MancalaGUI()
@@ -71,7 +72,6 @@ public class MancalaGUI extends JFrame
     */
    public void addComponentsToPane(Container pane)
    {
-
       pane.add(new StatusPane(1000, 150), BorderLayout.PAGE_START);
       pane.add(new GamePane(1000, 400), BorderLayout.PAGE_END);
    }

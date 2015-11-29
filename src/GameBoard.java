@@ -34,16 +34,19 @@ public abstract class GameBoard extends JComponent
       board = new RoundRectangle2D.Double(x, y, width, height, 50, 50);
    }
 
-   //public RoundRectangle2D getBoard()
-   //{
-   //   return board;
-   //}
-
+   /**
+    Gets the color of the board
+    @return the color of the board
+    */
    public Color getBoardColor()
    {
       return boardColor;
    }
 
+   /**
+    Sets the color of the board
+    @param c a Color object
+    */
    public void setBoardColor(Color c)
    {
       boardColor = c;

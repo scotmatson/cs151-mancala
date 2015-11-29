@@ -43,7 +43,7 @@ public class Pit extends GameObject
     }
 
    /**
-    
+
     @return
     */
     public ArrayList<Stone> unpopulateCup()

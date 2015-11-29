@@ -32,7 +32,7 @@ public class MancalaTest
       MancalaModel testModel = new MancalaModel();
       testModel.printCurrentState();
 
-      SwingUtilities.invokeLater(new Runnable() // Isn't this for using threads? I thought we weren't going to do that...
+      SwingUtilities.invokeLater(new Runnable()
       {
          @Override
          public void run()

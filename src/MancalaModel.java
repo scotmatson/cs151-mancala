@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
 
 /**
 
@@ -15,7 +14,7 @@ import java.util.Observer;
  @version 1.01 2015/11/14
 
  */
-public class MancalaModel implements Observer
+public class MancalaModel extends Observable
 {
    /**
     Just a reminder:
@@ -45,9 +44,11 @@ public class MancalaModel implements Observer
       playerOneTurn = true;
       playerTwoTurn = false;
 
-      for (int i = 0; i < 12; i++) {
+      for (int i = 0; i < 12; i++)
+      {
          pits.add(new Pit());
-         for (int j = 0; j < 4; j++) {
+         for (int j = 0; j < 4; j++)
+         {
             Stone tempStone = new Stone();
             pits.get(i).incrementCup(tempStone);
             stones.add(tempStone);
@@ -56,37 +57,57 @@ public class MancalaModel implements Observer
       // TODO: Stores game logic.
    }
 
-   public Stone getPit(int i) { return stones.get(i); }
-   public Pit getCup(int i) { return pits.get(i); }
+   /**
+
+    @param i
+    @return
+    */
+   public Stone getStones(int i)
+   {
+      return stones.get(i);
+   }
 
    /**
-    * This function is meant to perform the logic representing which cup a player
+
+    @param i
+    @return
+    */
+   public Pit getPit(int i)
+   {
+      return pits.get(i);
+   }
+
+   /**
+    * This function is meant to perform the logic representing which pit a player
     * will select. If he selects the other player's pits or a mancala then error handeling
     * should be performed
     * @return integer representing the cup number selected;
      */
-   public int selectCup() {
-      int cupSelected = 0;
+   public int selectPit() {
+      int pitSelected = 0;
 
       if (playerOneTurn) {}
       else {}
 
-      return cupSelected;
+      return pitSelected;
    }
 
    // TODO: remove method as it's only useful for testing game logic
-   public void printCurrentState() {
+   public void printCurrentState()
+   {
       String actualGame = "    ";
-      for (int i = 0; i < 6; i++) actualGame += pits.get(i).getSize() + " ";
+      for (int i = 0; i < 6; i++)
+      {
+         actualGame += pits.get(i).getSize() + " ";
+      }
+
       actualGame += "\n" + mancala1.size() + "                    " + mancala2.size() + "\n    ";
-      for (int i = 0; i < 6; i++) actualGame += pits.get(i + 6).getSize() + " ";
+      for (int i = 0; i < 6; i++)
+      {
+         actualGame += pits.get(i + 6).getSize() + " ";
+      }
 
       System.out.println(actualGame);
       System.out.println("It is player one's turn? " + playerOneTurn);
-   }
-
-   @Override
-   public void update(Observable observable, Object o) {
-
    }
 }

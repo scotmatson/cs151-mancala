@@ -16,8 +16,7 @@ import java.awt.*;
  */
 public class MancalaTest extends JFrame
 {
-
-   private final String FRAME_TITLE = "This is Mancala, bitches.";
+   private final String FRAME_TITLE = "Mancala by Tertiary";
    private final int FRAME_WIDTH = 1000;
 
    /**
@@ -34,9 +33,11 @@ public class MancalaTest extends JFrame
       // The model
       MancalaModel model = new MancalaModel();
 
-      // Outer views
+      // View containers
       StatusPane statusPane = new StatusPane(FRAME_WIDTH, 150, model);
       GamePane gamePane = new GamePane(FRAME_WIDTH, 400, model);
+      model.addObserver(statusPane);
+      model.addObserver(gamePane);
 
       // Menu Controller
       new MancalaMenuBarController(menuBar, model);

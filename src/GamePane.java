@@ -18,9 +18,10 @@ import java.util.Observer;
  */
 public class GamePane extends JPanel implements Observer
 {
-   MancalaModel model;
    private final int PANEL_WIDTH;
    private final int PANEL_HEIGHT;
+   MancalaModel model;
+   MancalaBoard mancalaBoard;
 
    public GamePane(int width, int height, MancalaModel m)
    {
@@ -34,19 +35,32 @@ public class GamePane extends JPanel implements Observer
       int boardHeight = 400;
       int boardX = (PANEL_WIDTH - boardWidth) / 2;
       int boardY = 0;
-      MancalaBoard mancalaBoard = new MancalaBoard(boardX, boardY, boardWidth, boardHeight, Color.lightGray);
+      mancalaBoard = new MancalaBoard(boardX, boardY, boardWidth, boardHeight, Color.lightGray);
 
       add(mancalaBoard, BorderLayout.CENTER);
    }
 
+   /**
+    Sets the size of the GamePane panel
+    @return a Dimension object
+    */
    public Dimension getPreferredSize()
    {
       return new Dimension(PANEL_WIDTH, PANEL_HEIGHT);
    }
 
+   /**
+    Updates the view with the current model
+    @param o an Observable object
+    @param arg an argument passed to notify the notifyObservers method
+    */
    @Override
    public void update(Observable o, Object arg)
    {
+      System.out.println("test, inside update.");
+      Color newColor = model.getBoardColor();
+      mancalaBoard.setBoardColor(newColor);
 
+      repaint();
    }
 }

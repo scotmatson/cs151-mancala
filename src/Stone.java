@@ -17,8 +17,11 @@ import java.util.Observer;
  */
 public class Stone extends GameObject implements Observer
 {
-
-   private int stoneID;
+   private final int STONE_ID;
+   private final int STONE_WIDTH = 10;
+   private final int STONE_HEIGHT = 10;
+   private int xPos;
+   private int yPos;
    private boolean inUse; // Can only be added to a cup when false
    private Color color;
 
@@ -26,7 +29,7 @@ public class Stone extends GameObject implements Observer
     Constructor method for the Stone class
     */
    public Stone() {
-       stoneID = super.getCount();
+       STONE_ID = super.getCount();
        inUse = false;
    }
 
@@ -35,16 +38,7 @@ public class Stone extends GameObject implements Observer
     */
    public int getStone()
     {
-        return stoneID;
-    }
-
-   /**
-    * Sets the
-    * @param stoneID a stone ID
-    */
-   public void setStone(int stoneID)
-    {
-       this.stoneID = stoneID;
+        return STONE_ID;
     }
 
    /**
@@ -60,9 +54,9 @@ public class Stone extends GameObject implements Observer
     Sets the color of the stones
     @param color a Color object
     */
-   public void setColor(Color color)
+   public void setColor(Color c)
    {
-       this.color = color;
+       color = c;
    }
 
    @Override

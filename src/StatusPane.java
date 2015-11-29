@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  Created by scot on 11/14/15.
  */
-public class StatusPane extends JPanel
+public class StatusPane extends JPanel implements Observer
 {
    private MancalaModel model;
 
@@ -25,6 +27,17 @@ public class StatusPane extends JPanel
    }
 
    public void paintComponent()
+   {
+
+   }
+
+   /**
+    Updates the view with the current model
+    @param o an Observable object
+    @param arg an argument passed to notify the notifyObservers method
+    */
+   @Override
+   public void update(Observable o, Object arg)
    {
 
    }

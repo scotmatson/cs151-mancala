@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
 
@@ -15,7 +13,7 @@ import java.util.Observer;
  @version 1.01 2015/11/14
 
  */
-public class MancalaBoard extends GameBoard implements Observer
+public class MancalaBoard extends GameBoard
 {
    private final int NUMBER_OF_PITS = 12;
    public MancalaBoard(int x, int y, int width, int height, Color c)
@@ -27,11 +25,5 @@ public class MancalaBoard extends GameBoard implements Observer
    public void paintComponent(Graphics g)
    {
       super.paintComponent(g);
-   }
-
-   @Override
-   public void update(Observable o, Object arg)
-   {
-      super.update(o, arg);
    }
 }

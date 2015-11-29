@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 /**
 
@@ -18,11 +19,6 @@ import java.util.Observable;
 public class MancalaModel extends Observable
 {
    /**
-    Just a reminder:
-
-    Model - The model represents data and the rules that govern access
-    to and updates of this data. In enterprise software, a model often
-    serves as a software approximation of a real-world process.
 
     TODO: turns, stones (live, captured, position), previous turn
     */
@@ -31,8 +27,8 @@ public class MancalaModel extends Observable
    private boolean playerTwoTurn;
    private ArrayList<Pit> pits;
    private ArrayList<Stone> stones;
-   private Mancala mancala1; // Mancala for player one
-   private Mancala mancala2; // Mancala for player two
+   private Mancala mancala1;
+   private Mancala mancala2;
 
 
    // THEME VARIABLES, PERHAPS MOVE INTO A LIST LATER
@@ -67,6 +63,44 @@ public class MancalaModel extends Observable
    }
 
    /**
+    Gets the color of the board
+    @return a Color object
+    */
+   public Color getBoardColor()
+   {
+      return boardColor;
+   }
+
+   /**
+    Set the color of the board
+    @param boardColor a Color object
+    */
+   public void setBoardColor(Color boardColor)
+   {
+      this.boardColor = boardColor;
+      setChanged();
+   }
+
+   /**
+    Get the color of the stones
+    @return a Color object
+    */
+   public Color getStoneColor()
+   {
+      return stoneColor;
+   }
+
+   /**
+    Set the color of the stones
+    @param stoneColor a Color object
+    */
+   public void setStoneColor(Color stoneColor)
+   {
+      this.stoneColor = stoneColor;
+      setChanged();
+   }
+
+   /**
 
     @param i
     @return
@@ -74,6 +108,25 @@ public class MancalaModel extends Observable
    public Stone getStones(int i)
    {
       return stones.get(i);
+   }
+
+   /**
+    Get the color of the pits
+    @return a Color object
+    */
+   public Color getPitColor()
+   {
+      return pitColor;
+   }
+
+   /**
+    Set the color of the pits
+    @param pitColor a Color object
+    */
+   public void setPitColor(Color pitColor)
+   {
+      this.pitColor = pitColor;
+      setChanged();
    }
 
    /**
@@ -101,13 +154,6 @@ public class MancalaModel extends Observable
       return pitSelected;
    }
 
-
-
-
-
-
-
-
    // TODO: remove method as it's only useful for testing game logic
    public void printCurrentState()
    {
@@ -125,5 +171,20 @@ public class MancalaModel extends Observable
 
       System.out.println(actualGame);
       System.out.println("It is player one's turn? " + playerOneTurn);
+   }
+
+   @Override
+   public synchronized void addObserver(Observer o)
+   {
+      super.addObserver(o);
+   }
+
+   /**
+    Notifies observers of changes to the model
+    */
+   @Override
+   public void notifyObservers()
+   {
+      super.notifyObservers();
    }
 }

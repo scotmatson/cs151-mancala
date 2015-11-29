@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
 
@@ -17,7 +15,7 @@ import java.util.Observer;
  @version 1.01 2015/11/14
 
  */
-public abstract class GameBoard extends JComponent implements Observer
+public abstract class GameBoard extends JComponent
 {
    private Color boardColor;
    RoundRectangle2D board;
@@ -34,15 +32,6 @@ public abstract class GameBoard extends JComponent implements Observer
    {
       boardColor = c;
       board = new RoundRectangle2D.Double(x, y, width, height, 50, 50);
-   }
-
-   /**
-    Gets the color of the board
-    @return the color of the board
-    */
-   public Color getBoardColor()
-   {
-      return boardColor;
    }
 
    /**
@@ -63,11 +52,5 @@ public abstract class GameBoard extends JComponent implements Observer
       g2.setColor(boardColor);
       g2.fill(board);
       g2.dispose();
-   }
-
-   @Override
-   public void update(Observable o, Object arg)
-   {
-
    }
 }

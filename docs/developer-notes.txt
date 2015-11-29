@@ -2,6 +2,8 @@
 ;  This is simply a location to note any specific changes and comments
 ;     in addition to what you've included in your git commit.
 
+2015-11-29-SM: Fixing naming conventions, indentations, documentation, controllers.
+
 2015-11-14-SM: Coming along slowly. I'm trying to figure out how to set up the
                relationship for the panes and components. I meant for the
                GameBoard to be a graphic class and it has become a pane. I

@@ -4,7 +4,7 @@ public class Cup extends GameObject {
     private ArrayList<Pit> pitContainer;
     private int cupID;
 
-    public Cup () {
+    public Cup() {
         cupID = super.getCount();
         pitContainer = new ArrayList<Pit>();
     }
@@ -30,5 +30,6 @@ public class Cup extends GameObject {
         return pitContainer;
     }
 
+    public int getSize() { return pitContainer.size(); }
 
 }

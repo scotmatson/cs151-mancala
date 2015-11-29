@@ -15,58 +15,59 @@ import java.util.Observer;
  @version 1.01 2015/10/26
 
  */
-public class Stone extends GameObject implements Observer {
+public class Stone extends GameObject implements Observer
+{
 
-    private int stoneID;
-    private boolean inUse; // Can only be added to a cup when false
-    private Color color;
+   private int stoneID;
+   private boolean inUse; // Can only be added to a cup when false
+   private Color color;
 
    /**
     Constructor method for the Stone class
     */
-    public Stone() {
-        stoneID = super.getCount();
-        inUse = false;
-    }
+   public Stone() {
+       stoneID = super.getCount();
+       inUse = false;
+   }
 
-    /**
-     * Returns the Stone Id when called
-     */
-    public int getStone()
+   /**
+    * Returns the Stone Id when called
+    */
+   public int getStone()
     {
         return stoneID;
     }
 
-    /**
-     * Sets the
-     * @param stoneID a stone ID
-     */
-    public void setStone(int stoneID)
+   /**
+    * Sets the
+    * @param stoneID a stone ID
+    */
+   public void setStone(int stoneID)
     {
        this.stoneID = stoneID;
     }
 
-    @Override
-    public void update(Observable o, Object arg)
-    {
+   /**
+    Get the color of the stones
+    @return a Color object
+    */
+   public Color getColor()
+   {
+       return color;
+   }
 
-    }
+   /**
+    Sets the color of the stones
+    @param color a Color object
+    */
+   public void setColor(Color color)
+   {
+       this.color = color;
+   }
 
-    /**
-     Get the color of the stones
-     @return a Color object
-     */
-    public Color getColor()
-    {
-        return color;
-    }
+   @Override
+   public void update(Observable o, Object arg)
+   {
 
-    /**
-     Sets the color of the stones
-     @param color a Color object
-     */
-    public void setColor(Color color)
-    {
-        this.color = color;
-    }
+   }
 }

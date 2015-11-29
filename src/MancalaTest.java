@@ -58,9 +58,6 @@ public class MancalaTest extends JFrame
     */
    public static void main(String[] args)
    {
-      MancalaModel testModel = new MancalaModel();
-      testModel.printCurrentState();
-
       SwingUtilities.invokeLater(MancalaTest::new);
    }
 }

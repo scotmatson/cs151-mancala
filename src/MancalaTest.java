@@ -20,6 +20,11 @@ public class MancalaTest
     */
    public MancalaTest()
    {
+      MancalaModel model = new MancalaModel();
+
+
+
+
       new MancalaGUI();
    }
 

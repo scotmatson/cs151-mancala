@@ -1,40 +1,72 @@
-
+import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Created by scot on 11/14/15.
+
+ COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
+
+ TODO: Class description
+
+ Solves CS151 Project - Mancala Game
+
+ @author Kenneth Cross, Scot Matson, Alex Preston
+
+ @version 1.01 2015/10/26
+
  */
 public class Stone extends GameObject implements Observer {
-    String textLabel;
-    private int pitID;
-    private boolean inUse; // Can only be added to a cup when false
 
-    //Constructor for the pit
+    private int stoneID;
+    private boolean inUse; // Can only be added to a cup when false
+    private Color color;
+
+   /**
+    Constructor method for the Stone class
+    */
     public Stone() {
-        pitID = super.getCount();
+        stoneID = super.getCount();
         inUse = false;
     }
 
     /**
      * Returns the Stone Id when called
      */
-    public int getPit() {
-        return pitID;
+    public int getStone()
+    {
+        return stoneID;
     }
 
-
-
     /**
-     * Sets the PitId
-     * @param pitID
+     * Sets the
+     * @param stoneID a stone ID
      */
-    public void setPit(int pitID) {
-       this.pitID = pitID;
+    public void setStone(int stoneID)
+    {
+       this.stoneID = stoneID;
     }
 
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg)
+    {
 
+    }
+
+    /**
+     Get the color of the stones
+     @return a Color object
+     */
+    public Color getColor()
+    {
+        return color;
+    }
+
+    /**
+     Sets the color of the stones
+     @param color a Color object
+     */
+    public void setColor(Color color)
+    {
+        this.color = color;
     }
 }

@@ -39,6 +39,7 @@ public class MancalaBoard extends GameBoard implements Observer
    public void paintComponent(Graphics g)
    {
       super.paintComponent(g);
+      Pit p1 = new Pit(0, 0, 5, 5, model.getPitColor());
 
    }
 

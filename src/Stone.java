@@ -65,7 +65,7 @@ public class Stone extends GameObject implements Observer {
     /**
      * Sets the color of the stones
      *
-     * @param color a Color object
+     * @param c a Color object
      */
     public void setColor(Color c) {
         color = c;

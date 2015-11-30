@@ -11,21 +11,25 @@ public class MancalaMenuBarController
    {
       model = m;
 
-      view.newGameActionListener(e -> {
+      view.newGameActionListener(e ->
+      {
          System.out.println("New game.");
          // TODO: Set default game conditions
       });
 
-      view.undoMoveActionListener(e -> {
+      view.undoMoveActionListener(e ->
+      {
          System.out.println("Undo move.");
          // TODO: Revert state
       });
 
-      view.quitGameActionListener(e -> {
+      view.quitGameActionListener(e ->
+      {
          System.exit(0);
       });
 
-      view.lightThemeActionListener(e -> {
+      view.lightThemeActionListener(e ->
+      {
          System.out.println("Set light theme.");
          model.setBoardColor(new Color(173, 136, 100));
          model.setPitColor(new Color(125, 69, 36));
@@ -33,7 +37,8 @@ public class MancalaMenuBarController
          model.notifyObservers();
       });
 
-      view.darkThemeActionListener(e -> {
+      view.darkThemeActionListener(e ->
+      {
          System.out.println("Set dark theme.");
          model.setBoardColor(new Color(95, 50, 26));
          model.setPitColor(new Color(44, 22, 17));

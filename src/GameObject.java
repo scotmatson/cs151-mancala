@@ -5,13 +5,15 @@
 //
 
 
-import java.util.Observable;
-import java.util.Observer;
-
 // I'm not sure what the purpose of this class is, the things being tracked here
 // should be tracked in the model.
 
-public class GameObject implements Observer
+// This might be better off being an abstract class if we continue to use it,
+// since the class name is ambiguous, similar to the use of the GameBoard class.
+
+// I think we should leverage these for our decorator pattern if possible.
+
+public class GameObject
 {
     // The correct number of total objects should be the total
     // number of pits + cups + mancala + board = 48 + 12 + 2 + 1 = 63
@@ -30,10 +32,5 @@ public class GameObject implements Observer
      */
     public int getCount() {
         return objectCount;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-        //Had to Create, we didnt override the abstract method of observer called update
     }
 }

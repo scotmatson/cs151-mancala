@@ -16,7 +16,7 @@ import java.util.Observer;
  @version 1.01 2015/11/14
 
  */
-public class MancalaModel extends Observable
+public class MancalaModel extends Observable // Shouldn't this be an observer updating other observable objects?
 {
    /**
 
@@ -43,8 +43,8 @@ public class MancalaModel extends Observable
       pits = new ArrayList<>();
       stones = new ArrayList<>();
 
-      //mancala1 = new Mancala();
-      //mancala2 = new Mancala();
+      mancala1 = new Mancala(50, 100, 50, 100, pitColor);
+      mancala2 = new Mancala(50, 100, 50, 100, pitColor);
 
       playerOneTurn = true;
       playerTwoTurn = false;

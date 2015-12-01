@@ -39,6 +39,6 @@ public class StatusPane extends JPanel implements Observer
    @Override
    public void update(Observable o, Object arg)
    {
-
+      // get new model data and apply it to text field
    }
 }

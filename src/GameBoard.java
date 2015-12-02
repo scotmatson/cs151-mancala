@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -15,10 +14,14 @@ import java.awt.geom.RoundRectangle2D;
  @version 1.01 2015/11/14
 
  */
-public abstract class GameBoard extends JComponent
+public abstract class GameBoard implements Drawable
 {
-   private Color boardColor;
+   private Color color;
    RoundRectangle2D board;
+   private int xPos;
+   private int yPos;
+   private int width;
+   private int height;
 
    /**
     Constructor method for the GameBoard class.
@@ -30,7 +33,11 @@ public abstract class GameBoard extends JComponent
     */
    public GameBoard(int x, int y, int width, int height, Color c)
    {
-      boardColor = c;
+      this.xPos = x;
+      this.yPos = y;
+      this.width = width;
+      this.height = height;
+      this.color = c;
       board = new RoundRectangle2D.Double(x, y, width, height, 50, 50);
    }
 
@@ -38,18 +45,20 @@ public abstract class GameBoard extends JComponent
     Sets the color of the board
     @param c a Color object
     */
-   public void setBoardColor(Color c)
+   public void setColor(Color c)
    {
-      boardColor = c;
+      this.color = c;
    }
 
-   @Override
-   public void paintComponent(Graphics g)
+   public Color getColor()
    {
-      super.paintComponent(g);
-      Graphics2D g2 = (Graphics2D) g;
+      return color;
+   }
 
-      g2.setColor(boardColor);
+   public void draw(Graphics g)
+   {
+      Graphics2D g2 = (Graphics2D) g;
+      g2.setColor(color);
       g2.fill(board);
       g2.dispose();
    }

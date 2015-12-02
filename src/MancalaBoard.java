@@ -1,6 +1,4 @@
 import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
 
@@ -15,10 +13,23 @@ import java.util.Observer;
  @version 1.01 2015/11/14
 
  */
-public class MancalaBoard extends GameBoard implements Observer
+public class MancalaBoard extends GameBoard
 {
-   private final int NUMBER_OF_PITS = 12;
    private MancalaModel model;
+   Mancala mancala1;
+   Mancala mancala2;
+   Pit pit1;
+   Pit pit2;
+   Pit pit3;
+   Pit pit4;
+   Pit pit5;
+   Pit pit6;
+   Pit pit7;
+   Pit pit8;
+   Pit pit9;
+   Pit pit10;
+   Pit pit11;
+   Pit pit12;
 
    /**
     Constructor method for the MancalaBoard class.
@@ -36,20 +47,23 @@ public class MancalaBoard extends GameBoard implements Observer
    }
 
    @Override
-   public void paintComponent(Graphics g)
+   public void draw(Graphics g)
    {
-      super.paintComponent(g);
-      Pit p1 = new Pit(0, 0, 5, 5, model.getPitColor());
-
-   }
-
-   @Override
-   public void update(Observable o, Object arg)
-   {
-      Color newColor = model.getPitColor();
-      // Set the pit colors
-
-      validate();
-      repaint();
+      super.draw(g);
+      Graphics2D g2 = (Graphics2D) g;
+      //g2.setColor();
+      //g2.fill(pit1);
+      //g2.fill(pit2);
+      //g2.fill(pit3);
+      //g2.fill(pit4);
+      //g2.fill(pit5);
+      //g2.fill(pit6);
+      //g2.fill(pit7);
+      //g2.fill(pit8);
+      //g2.fill(pit9);
+      //g2.fill(pit10);
+      //g2.fill(pit11);
+      //g2.fill(pit12);
+      g2.dispose();
    }
 }

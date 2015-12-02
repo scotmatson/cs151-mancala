@@ -40,7 +40,6 @@ public class StatusPane extends JPanel implements Observer {
         container.setBackground(boardColor);
 
 
-
         PANEL_WIDTH = width;
         PANEL_HEIGHT = height;
 
@@ -49,15 +48,104 @@ public class StatusPane extends JPanel implements Observer {
         add(container, BorderLayout.CENTER);
     }
 
+    /**
+     * Creates all of the Pane
+     */
     public void createPane() {
+//        CapPlayer1Text();
+//        CapPlayer2Text();
+//        CapPlayer1Score();
+//        CapPlayer2Score();
+//        CurrentPlayer();
+//        PlayerTxtArea();
+//        PlayerNumber();
+
+    }
+
+    /**
+     * Creates the TextArea for player one "Captured"
+     */
+    public void CapPlayer1Text() {
         capturedPlayer1 = new JTextArea("Captured ");
         capturedPlayer1.setEditable(false);
-
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 100;
+        constraints.gridx = 0;
         constraints.gridy = 100;
         container.add(capturedPlayer1, constraints);
+    }
 
+    /**
+     * Text for player Two "Captured"
+     */
+    public void CapPlayer2Text() {
+        capturedPlayer2 = new JTextArea("Captured ");
+        capturedPlayer2.setEditable(false);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 150;
+        constraints.gridy = 150;
+
+        container.add(capturedPlayer2, constraints);
+    }
+
+    /**
+     * Shows the score for Player 1
+     * Will change everyTime it is called to
+     */
+    public void CapPlayer1Score() {
+        capturedScore1 = new JTextArea("0");
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 200; //All these nums are arbitrary will change later
+        constraints.gridy = 300;
+
+        container.add(capturedScore1, constraints);
+
+    }
+
+    /**
+     * Shows the score for Player 2
+     * Will change everytime it is called to
+     */
+    public void CapPlayer2Score() {
+        capturedScore2 = new JTextArea("0");
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 250;
+        constraints.gridy = 150;
+
+        container.add(capturedScore2, constraints);
+
+    }
+
+    /**
+     * Shows the Current player
+     *
+     */
+    public void CurrentPlayer() {
+        currentPlayer = new JTextArea("Current Player");
+        currentPlayer.setEditable(false);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 100;
+        constraints.gridy = 150;
+        container.add(currentPlayer, constraints);
+    }
+
+    /**
+     * Either will be a 1 or a 2
+     * Will have observer attached to it.
+     */
+    public void PlayerTxtArea() {
+        player = new JTextArea("Player");
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 75;
+        constraints.gridy = 50;
+        container.add(player, constraints);
+    }
+
+    public void PlayerNumber() {
+        numberOfPlayer = new JTextArea("1");
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 300;
+        constraints.gridy = 450;
+        container.add(numberOfPlayer, constraints);
     }
 
 

@@ -92,7 +92,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
       mancalas.add(0);
       mancalas.add(0);
 
-      for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
+      for (int i = 0; i < numberOfPits; i++) pits.add(i/*numberOfStonesPerPit*/);
       // TODO: Stores game logic.
    }
 
@@ -101,14 +101,45 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     * selects. If he selects the other player's pits or a mancala then error handeling
     * should be performed
     * @return integer representing the cup number selected;
-     */
-   public boolean distributeStones(int pitNumber){
+    */
+   private boolean distributeStones(int pitNumber){
       int currentPit = pitNumber;
+      int end = pits.size() - 1;
       int pastValue;
       boolean lastGemInMancala = false;
 
       while(pits.get(pitNumber) > 0){
          // More logic here
+         switch (currentPit) {
+            case 0:
+               currentPit = -1;
+               mancalas.set(0, mancalas.get(0) + 1);
+               pits.set(pitNumber, pits.get(pitNumber) - 1);
+               pits.set(currentPit, pits.get(currentPit) + 1);
+               break;
+            case 11:
+               currentPit = -2;
+               mancalas.set(0, mancalas.get(0) + 1);
+               pits.set(pitNumber, pits.get(pitNumber) - 1);
+               pits.set(currentPit, pits.get(currentPit) + 1);
+               break;
+            case -1:
+               currentPit = 6;
+               pits.set(pitNumber, pits.get(pitNumber) - 1);
+               pits.set(currentPit, pits.get(currentPit) + 1);
+               break;
+            case -2:
+               currentPit = 5;
+               pits.set(pitNumber, pits.get(pitNumber) - 1);
+               pits.set(currentPit, pits.get(currentPit) + 1);
+               break;
+            default:
+               if (currentPit <= 5) currentPit--;
+               else if(currentPit > 6) currentPit++;
+               pits.set(pitNumber, pits.get(pitNumber) - 1);
+               pits.set(currentPit, pits.get(currentPit) + 1);
+               break;
+         }
       }
 
       return true; // returns a value that stating successful completion

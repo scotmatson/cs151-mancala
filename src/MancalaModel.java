@@ -92,21 +92,17 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
       mancalas.add(0);
       mancalas.add(0);
 
-      for (int i = 0; i < numberOfPits; i++) pits.add(i/*numberOfStonesPerPit*/);
+      for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
       // TODO: Stores game logic.
    }
 
    /**
     * This function is meant to perform the logic representing which pit a player
-    * selects. If he selects the other player's pits or a mancala then error handeling
-    * should be performed
-    * @return integer representing the cup number selected;
+    * selects and distributes stones accordingly.
+    * @return boolean value returns when finished
     */
    private boolean distributeStones(int pitNumber){
       int currentPit = pitNumber;
-      int end = pits.size() - 1;
-      int pastValue;
-      boolean lastGemInMancala = false;
 
       while(pits.get(pitNumber) > 0){
          // More logic here
@@ -115,13 +111,11 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
                currentPit = -1;
                mancalas.set(0, mancalas.get(0) + 1);
                pits.set(pitNumber, pits.get(pitNumber) - 1);
-               pits.set(currentPit, pits.get(currentPit) + 1);
                break;
             case 11:
                currentPit = -2;
-               mancalas.set(0, mancalas.get(0) + 1);
+               mancalas.set(1, mancalas.get(1) + 1);
                pits.set(pitNumber, pits.get(pitNumber) - 1);
-               pits.set(currentPit, pits.get(currentPit) + 1);
                break;
             case -1:
                currentPit = 6;
@@ -134,11 +128,29 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
                pits.set(currentPit, pits.get(currentPit) + 1);
                break;
             default:
-               if (currentPit <= 5) currentPit--;
-               else if(currentPit > 6) currentPit++;
+               if (currentPit <= 5) --currentPit;
+               else if(currentPit >= 6) ++currentPit;
                pits.set(pitNumber, pits.get(pitNumber) - 1);
                pits.set(currentPit, pits.get(currentPit) + 1);
                break;
+         }
+      }
+
+      if (currentPit == -1 && playerOneTurn == false) playerOneTurn = true;
+      else if (currentPit == -2 && playerTwoTurn == false) playerTwoTurn = true;
+      else if (currentPit > -1 && pits.get(currentPit) == 1)
+      {
+         if (currentPit > 5 && playerTwoTurn == false){
+            int temp = mancalas.get(1);
+            mancalas.set(1, temp + pits.get(currentPit - 6) + 1);
+            pits.set(currentPit, 0);
+            pits.set(currentPit - 6, 0);
+         }
+         else if (currentPit < 6 && playerOneTurn == false){
+            int temp = mancalas.get(0);
+            mancalas.set(0, temp + pits.get(currentPit + 6) + 1);
+            pits.set(currentPit, 0);
+            pits.set(currentPit + 6, 0);
          }
       }
 

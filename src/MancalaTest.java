@@ -32,7 +32,15 @@ public class MancalaTest extends JFrame
 
       // The model
       MancalaModel model = new MancalaModel();
+      // Todo: remove tests begin
       model.printCurrentState();
+      model.pitSelector(2);
+      model.printCurrentState();
+      model.pitSelector(2);
+      model.printCurrentState();
+      model.pitSelector(11);
+      model.printCurrentState();
+      // Todo: remove tests end
 
       // View containers
       StatusPane statusPane = new StatusPane(FRAME_WIDTH, 150, model);

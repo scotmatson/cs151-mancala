@@ -16,6 +16,13 @@ public class Pit extends JPanel implements Observer
    private ArrayList<Stone> stoneContainer;
    private Color color;
 
+   public Pit() // TODO: Remove after tests complete please
+   {
+      X_COORD = Y_COORD = PIT_WIDTH = PIT_HEIGHT = 0;
+      stoneContainer = new ArrayList<>();
+      color = Color.white;
+   }
+
    public Pit(int x, int y, int width, int height, Color c)
    {
        X_COORD = x;
@@ -47,16 +54,6 @@ public class Pit extends JPanel implements Observer
    }
 
    /**
-    * Increments the pit location
-    * (was implemented because a call was made to a
-    * method that didnt exist. Will fill in once understood)
-    */
-   public void incrementPit()
-   {
-
-   }
-
-   /**
     * @param addStone
     */
    public void incrementPit(Stone addStone)
@@ -72,14 +69,6 @@ public class Pit extends JPanel implements Observer
        return stoneContainer;
    }
 
-   /**
-    * // @return
-    * //
-    */
-   //public int getSize()
-   //{
-   //   return stoneContainer.size();
-   //}
    @Override
    protected void paintComponent(Graphics g)
    {

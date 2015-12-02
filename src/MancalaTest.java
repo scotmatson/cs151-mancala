@@ -32,6 +32,7 @@ public class MancalaTest extends JFrame
 
       // The model
       MancalaModel model = new MancalaModel();
+      model.printCurrentState();
 
       // View containers
       StatusPane statusPane = new StatusPane(FRAME_WIDTH, 150, model);

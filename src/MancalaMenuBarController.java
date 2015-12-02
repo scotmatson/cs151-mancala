@@ -5,11 +5,11 @@ import java.awt.*;
  */
 public class MancalaMenuBarController
 {
-   MancalaModel model;
-
    MancalaMenuBarController(MancalaMenuBar view, MancalaModel m)
    {
-      model = m;
+      MancalaModel model = m;
+
+      //model = m;
 
       view.newGameActionListener(e ->
       {

@@ -16,20 +16,29 @@ import java.util.Observer;
  @version 1.01 2015/11/14
 
  */
-public class MancalaModel extends Observable
+public class MancalaModel extends Observable // Shouldn't this be an observer updating other observable objects?
 {
    /**
 
     TODO: turns, stones (live, captured, position), previous turn
     */
 
+   // Logic Variables
    private boolean playerOneTurn;
    private boolean playerTwoTurn;
-   private ArrayList<Pit> pits;
-   private ArrayList<Stone> stones;
-   private Mancala mancala1;
-   private Mancala mancala2;
-
+   private int numberOfPits;
+   private int numberOfStonesPerPit;
+   /*
+    * The first half of the pits array are for player one
+    * The second half are for player two
+    * pits(i + numberOfPits/2 is the pit parallel to player two)
+    * pits(i - numberOfPits/2 is the pit parallel to player one)
+    *
+    * mancalas(0) is player one's mancala
+    * mancalas(1) is player two's mancala
+    */
+   private ArrayList<Integer> pits;
+   private ArrayList<Integer> mancalas;
 
    // THEME VARIABLES, PERHAPS MOVE INTO A LIST LATER
    // private Color backgroundColor
@@ -38,33 +47,92 @@ public class MancalaModel extends Observable
    private Color stoneColor;
    // private Color textColor
 
-   public MancalaModel()
+   public MancalaModel(int numOfPits, int numOfStonePP, Color bColor,
+                       Color pColor, Color sColor)
    {
-      pits = new ArrayList<>();
-      stones = new ArrayList<>();
+      // Theme Variable Settings
+      pitColor = pColor;
+      boardColor = bColor;
+      stoneColor = sColor;
 
-      //mancala1 = new Mancala();
-      //mancala2 = new Mancala();
-
+      // Game Variables
       playerOneTurn = true;
       playerTwoTurn = false;
 
-      //for (int i = 0; i < 12; i++)
-      //{
-      //   pits.add(new Pit());
-      //   for (int j = 0; j < 4; j++)
-      //   {
-      //      Stone tempStone = new Stone();
-      //      pits.get(i).incrementCup(tempStone);
-      //      stones.add(tempStone);
-      //   }
-      //}
+      numberOfPits = numOfPits;
+      numberOfStonesPerPit = numOfStonePP;
+
+      pits = new ArrayList<>();
+
+      mancalas = new ArrayList<>();
+      mancalas.add(0);
+      mancalas.add(0);
+
+      for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
+   }
+
+   // Set to Defaults
+   public MancalaModel()
+   {
+      // Theme Variable Settings
+      pitColor = Color.white;
+      boardColor = Color.orange;
+      stoneColor = Color.black;
+
+      // Game Variables
+      playerOneTurn = true;
+      playerTwoTurn = false;
+
+      numberOfPits = 12;
+      numberOfStonesPerPit = 4;
+
+      pits = new ArrayList();
+
+      mancalas = new ArrayList();
+      mancalas.add(0);
+      mancalas.add(0);
+
+      for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
       // TODO: Stores game logic.
    }
 
    /**
-    Gets the color of the board
-    @return a Color object
+    * This function is meant to perform the logic representing which pit a player
+    * selects. If he selects the other player's pits or a mancala then error handeling
+    * should be performed
+    * @return integer representing the cup number selected;
+     */
+   public boolean distributeStones(int pitNumber){
+      int currentPit = pitNumber;
+      int pastValue;
+      boolean lastGemInMancala = false;
+
+      while(pits.get(pitNumber) > 0){
+         // More logic here
+      }
+
+      return true; // returns a value that stating successful completion
+   }
+
+   public boolean pitSelector(int pitSelected)
+   {
+      if (playerOneTurn && pitSelected >= 0 && pitSelected < 6) {
+         playerOneTurn = false;
+         playerTwoTurn = true;
+         return distributeStones(pitSelected);
+      }
+      else if (playerTwoTurn && pitSelected > 5 && pitSelected < 12) {
+         playerOneTurn = true;
+         playerTwoTurn = false;
+         return distributeStones(pitSelected);
+      }
+
+      return false; // Returns a negative value when the pit wanted cannot be selected
+   }
+
+   /**
+    * Returns color of board
+    * @return Color
     */
    public Color getBoardColor()
    {
@@ -101,16 +169,6 @@ public class MancalaModel extends Observable
    }
 
    /**
-
-    @param i
-    @return
-    */
-   public Stone getStones(int i)
-   {
-      return stones.get(i);
-   }
-
-   /**
     Get the color of the pits
     @return a Color object
     */
@@ -129,30 +187,6 @@ public class MancalaModel extends Observable
       setChanged();
    }
 
-   /**
-
-    @param i
-    @return
-    */
-   public Pit getPit(int i)
-   {
-      return pits.get(i);
-   }
-
-   /**
-    * This function is meant to perform the logic representing which pit a player
-    * will select. If he selects the other player's pits or a mancala then error handeling
-    * should be performed
-    * @return integer representing the cup number selected;
-     */
-   public int selectPit() {
-      int pitSelected = 0;
-
-      if (playerOneTurn) {}
-      else {}
-
-      return pitSelected;
-   }
 
    // TODO: remove method as it's only useful for testing game logic
    public void printCurrentState()
@@ -160,13 +194,13 @@ public class MancalaModel extends Observable
       String actualGame = "    ";
       for (int i = 0; i < 6; i++)
       {
-         actualGame += pits.get(i).getSize() + " ";
+         actualGame += pits.get(i) + " ";
       }
 
-      actualGame += "\n" + mancala1.size() + "                    " + mancala2.size() + "\n    ";
+      actualGame += "\n" + mancalas.get(0) + "                    " + mancalas.get(1) + "\n    ";
       for (int i = 0; i < 6; i++)
       {
-         actualGame += pits.get(i + 6).getSize() + " ";
+         actualGame += pits.get(i + 6) + " ";
       }
 
       System.out.println(actualGame);

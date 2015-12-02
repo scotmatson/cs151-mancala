@@ -11,7 +11,7 @@ import java.awt.geom.RoundRectangle2D;
 
  @author Scot Matson
 
- @version 1.01 2015/11/14
+ @version 1.02 2015/12/01
 
  */
 public abstract class GameBoard implements Drawable
@@ -50,6 +50,10 @@ public abstract class GameBoard implements Drawable
       this.color = c;
    }
 
+   /**
+    Gets the color of the board
+    @return a Color object
+    */
    public Color getColor()
    {
       return color;

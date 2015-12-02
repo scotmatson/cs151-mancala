@@ -1,11 +1,8 @@
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
 
 
-public class Pit extends JPanel implements Observer
+public class Pit implements Drawable
 {
 
    private final int X_COORD;
@@ -70,14 +67,20 @@ public class Pit extends JPanel implements Observer
    }
 
    @Override
-   protected void paintComponent(Graphics g)
+   public void draw(Graphics g)
    {
-       super.paintComponent(g);
+
    }
 
    @Override
-   public void update(Observable o, Object arg)
+   public Color getColor()
    {
-       // Updates the stone color
+      return null;
+   }
+
+   @Override
+   public void setColor(Color c)
+   {
+
    }
 }

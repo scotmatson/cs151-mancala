@@ -1,7 +1,17 @@
 import java.awt.*;
 
 /**
- Created by scot on 12/1/15.
+
+ COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
+
+ // TODO: Add description
+
+ Solves CS151 Project - Mancala Game
+
+ @author Scot Matson
+
+ @version 1.01 2015/12/01
+
  */
 public class LabeledMancalaBoard extends BoardDecorator implements Drawable
 {
@@ -13,7 +23,7 @@ public class LabeledMancalaBoard extends BoardDecorator implements Drawable
    @Override
    public void draw(Graphics g)
    {
-
+      decoratedDrawable.draw(g);
       setAllBorders();
    }
 

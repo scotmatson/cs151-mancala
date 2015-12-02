@@ -18,10 +18,7 @@ import java.util.Observer;
  */
 public class MancalaModel extends Observable // Shouldn't this be an observer updating other observable objects?
 {
-   /**
-
-    TODO: turns, stones (live, captured, position), previous turn
-    */
+   // TODO: turns, stones (live, captured, position), previous turn
 
    // Logic Variables
    private boolean playerOneTurn;
@@ -138,7 +135,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
 
       if (currentPit == -1 && playerOneTurn == false) playerOneTurn = true;
       else if (currentPit == -2 && playerTwoTurn == false) playerTwoTurn = true;
-      else if (currentPit > -1 && pits.get(currentPit) == 1)
+      else if (currentPit > -1 && pits.get(currentPit) == 1) // Almost but not quite done
       {
          if (currentPit > 5 && playerTwoTurn == false){
             int temp = mancalas.get(1);
@@ -200,6 +197,20 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
    {
       return stoneColor;
    }
+
+   /**
+    *
+    * @param pitNumber
+    * @return number of stones in the pit
+    */
+   public int getStonesInPit(int pitNumber) { return pits.get(pitNumber); }
+
+   /**
+    *
+    * @param pitNumber
+    * @return number of stones in mancala
+    */
+   public int getStonesInMancala(int mancalaNumber) { return mancalas.get(mancalaNumber); }
 
    /**
     Set the color of the stones

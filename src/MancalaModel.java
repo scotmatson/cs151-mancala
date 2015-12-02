@@ -37,8 +37,8 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     * mancalas(0) is player one's mancala
     * mancalas(1) is player two's mancala
     */
-   private ArrayList pits;
-   private ArrayList mancalas;
+   private ArrayList<Integer> pits;
+   private ArrayList<Integer> mancalas;
 
    // THEME VARIABLES, PERHAPS MOVE INTO A LIST LATER
    // private Color backgroundColor
@@ -62,9 +62,9 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
       numberOfPits = numOfPits;
       numberOfStonesPerPit = numOfStonePP;
 
-      pits = new ArrayList();
+      pits = new ArrayList<>();
 
-      mancalas = new ArrayList();
+      mancalas = new ArrayList<>();
       mancalas.add(0);
       mancalas.add(0);
 
@@ -97,21 +97,43 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
    }
 
    /**
-    Gets the color of the board
-    @return a Color object
-    */
-   public int pitSelector(int pitSelected)
-   {
-      if (playerOneTurn && pitSelected >= 0 && pitSelected < 6) {
+    * This function is meant to perform the logic representing which pit a player
+    * selects. If he selects the other player's pits or a mancala then error handeling
+    * should be performed
+    * @return integer representing the cup number selected;
+     */
+   public boolean distributeStones(int pitNumber){
+      int currentPit = pitNumber;
+      int pastValue;
+      boolean lastGemInMancala = false;
 
+      while(pits.get(pitNumber) > 0){
+         // More logic here
       }
-      else if (playerTwoTurn && pitSelected > 5 && pitSelected < 12) {
 
-      }
-
-      return -1; // Returns a negative value when the pit wanted cannot be selected
+      return true; // returns a value that stating successful completion
    }
 
+   public boolean pitSelector(int pitSelected)
+   {
+      if (playerOneTurn && pitSelected >= 0 && pitSelected < 6) {
+         playerOneTurn = false;
+         playerTwoTurn = true;
+         return distributeStones(pitSelected);
+      }
+      else if (playerTwoTurn && pitSelected > 5 && pitSelected < 12) {
+         playerOneTurn = true;
+         playerTwoTurn = false;
+         return distributeStones(pitSelected);
+      }
+
+      return false; // Returns a negative value when the pit wanted cannot be selected
+   }
+
+   /**
+    * Returns color of board
+    * @return Color
+    */
    public Color getBoardColor()
    {
       return boardColor;
@@ -165,39 +187,25 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
       setChanged();
    }
 
-   /**
-    * This function is meant to perform the logic representing which pit a player
-    * will select. If he selects the other player's pits or a mancala then error handeling
-    * should be performed
-    * @return integer representing the cup number selected;
-     */
-   public int selectPit() {
-      int pitSelected = 0;
-
-      if (playerOneTurn) {}
-      else {}
-
-      return pitSelected;
-   }
 
    // TODO: remove method as it's only useful for testing game logic
-//   public void printCurrentState()
-//   {
-//      String actualGame = "    ";
-//      for (int i = 0; i < 6; i++)
-//      {
-//         actualGame += pits.get(i).getSize() + " ";
-//      }
-//
-//      actualGame += "\n" + mancala1.size() + "                    " + mancala2.size() + "\n    ";
-//      for (int i = 0; i < 6; i++)
-//      {
-//         actualGame += pits.get(i + 6).getSize() + " ";
-//      }
-//
-//      System.out.println(actualGame);
-//      System.out.println("It is player one's turn? " + playerOneTurn);
-//   }
+   public void printCurrentState()
+   {
+      String actualGame = "    ";
+      for (int i = 0; i < 6; i++)
+      {
+         actualGame += pits.get(i) + " ";
+      }
+
+      actualGame += "\n" + mancalas.get(0) + "                    " + mancalas.get(1) + "\n    ";
+      for (int i = 0; i < 6; i++)
+      {
+         actualGame += pits.get(i + 6) + " ";
+      }
+
+      System.out.println(actualGame);
+      System.out.println("It is player one's turn? " + playerOneTurn);
+   }
 
    @Override
    public synchronized void addObserver(Observer o)

@@ -52,13 +52,13 @@ public class StatusPane extends JPanel implements Observer {
      * Creates all of the Pane
      */
     public void createPane() {
-        CapPlayer1Text();
-        CapPlayer2Text();
-        CapPlayer1Score();
-        CapPlayer2Score();
-        CurrentPlayer();
-        PlayerTxtArea();
-        PlayerNumber();
+//        CapPlayer1Text();
+//        CapPlayer2Text();
+//        CapPlayer1Score();
+//        CapPlayer2Score();
+//        CurrentPlayer();
+//        PlayerTxtArea();
+//        PlayerNumber();
 
     }
 

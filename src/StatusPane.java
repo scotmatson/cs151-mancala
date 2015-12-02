@@ -53,6 +53,11 @@ public class StatusPane extends JPanel implements Observer {
         capturedPlayer1 = new JTextArea("Captured ");
         capturedPlayer1.setEditable(false);
 
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 100;
+        constraints.gridy = 100;
+        container.add(capturedPlayer1, constraints);
+
     }
 
 

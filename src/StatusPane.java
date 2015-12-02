@@ -52,11 +52,13 @@ public class StatusPane extends JPanel implements Observer {
      * Creates all of the Pane
      */
     public void createPane() {
-//        CapPlayer1Text();
-//        CapPlayer2Text();
-//        CapPlayer1Score();
-//        CapPlayer2Score();
-//        CurrentPlayer();
+        CapPlayer1Text();
+        CapPlayer2Text();
+        CapPlayer1Score();
+        CapPlayer2Score();
+        CurrentPlayer();
+        PlayerTxtArea();
+        
     }
 
     /**
@@ -123,6 +125,18 @@ public class StatusPane extends JPanel implements Observer {
         constraints.gridx = 100;
         constraints.gridy = 150;
         container.add(currentPlayer, constraints);
+    }
+
+    /**
+     * Either will be a 1 or a 2
+     * Will have observer attached to it.
+     */
+    public void PlayerTxtArea() {
+        player = new JTextArea("1");
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 75;
+        constraints.gridy = 50;
+        container.add(player, constraints);
     }
 
 

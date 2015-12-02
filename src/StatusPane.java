@@ -1,4 +1,7 @@
 import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import java.awt.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,6 +12,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -22,6 +27,8 @@ public class StatusPane extends JPanel implements Observer {
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
     private Color boardColor;
+    private JTextArea capturedPlayer1, capturedPlayer2, capturedScore1, capturedScore2, currentPlayer, player, numberOfPlayer;
+
 
     public StatusPane(int width, int height, MancalaModel m) {
         model = m;
@@ -30,15 +37,28 @@ public class StatusPane extends JPanel implements Observer {
         constraints = new GridBagConstraints(); //I went with grid bag for ease of use
         container.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT); //Right to left on the screen
         container.setLayout(new GridBagLayout());
+        container.setBackground(boardColor);
+
 
 
         PANEL_WIDTH = width;
         PANEL_HEIGHT = height;
 
-        add(container, BorderLayout.CENTER);
+        //createPane();
+
+        //add(Container, BorderLayout.CENTER);
     }
 
-    public void createPane(int x, int y, int width, int height, MancalaModel m) {
+    public void createPane() {
+//        capturedPlayer1 = new JTextArea("Captured ");
+//        capturedPlayer1.setEditable(false);
+//
+//       // container.setBounds();
+//
+//        constraints.fill = GridBagConstraints.HORIZONTAL;
+//        constraints.gridx = 25;
+//        constraints.gridy = 25;
+//        container.add(capturedPlayer1, constraints);
 
 
     }
@@ -46,6 +66,7 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Sets the Prefered Size
+     *
      * @return
      */
     public Dimension getPreferredSize() {
@@ -54,6 +75,7 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Sets the StatusPanel Color
+     *
      * @param c
      */
     public void setStatusPaneColor(Color c) {
@@ -79,7 +101,7 @@ public class StatusPane extends JPanel implements Observer {
     public void update(Observable o, Object arg) {
 
         Color newColor = model.getBoardColor();
-
+        setStatusPaneColor(newColor);
         validate();
         repaint();
 

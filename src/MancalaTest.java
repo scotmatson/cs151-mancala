@@ -51,6 +51,7 @@ public class MancalaTest extends JFrame
 
       // Display the window.
       pack();
+      setResizable(false);
       setVisible(true);
    }
 

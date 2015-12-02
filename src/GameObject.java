@@ -13,10 +13,10 @@
 
 // I think we should leverage these for our decorator pattern if possible.
 
-public class GameObject
+public abstract class GameObject
 {
     // The correct number of total objects should be the total
-    // number of pits + cups + mancala + board = 48 + 12 + 2 + 1 = 63
+    // number of pits + stones + mancala + board = 48 + 12 + 2 + 1 = 63
     static int objectCount;
 
     /**

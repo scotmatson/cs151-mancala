@@ -44,22 +44,21 @@ public class StatusPane extends JPanel implements Observer {
         PANEL_WIDTH = width;
         PANEL_HEIGHT = height;
 
-        //createPane();
+        createPane();
 
-        //add(Container, BorderLayout.CENTER);
+        add(container, BorderLayout.CENTER);
     }
 
     public void createPane() {
-//        capturedPlayer1 = new JTextArea("Captured ");
-//        capturedPlayer1.setEditable(false);
-//
-//       // container.setBounds();
-//
-//        constraints.fill = GridBagConstraints.HORIZONTAL;
-//        constraints.gridx = 25;
-//        constraints.gridy = 25;
-//        container.add(capturedPlayer1, constraints);
+        capturedPlayer1 = new JTextArea("Captured ");
+        capturedPlayer1.setEditable(false);
 
+       // container.setBounds();
+
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 25;
+        constraints.gridy = 25;
+        container.add(capturedPlayer1, constraints);
 
     }
 

@@ -213,6 +213,12 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
       super.addObserver(o);
    }
 
+   @Override
+   public synchronized void deleteObserver(Observer o)
+   {
+      super.deleteObserver(o);
+   }
+
    /**
     Notifies observers of changes to the model
     */

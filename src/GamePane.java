@@ -56,7 +56,7 @@ public class GamePane extends JPanel implements Observer
    @Override
    public void update(Observable o, Object arg)
    {
-      Color newColor = model.getBoardColor();
+       Color newColor = model.getBoardColor();
       mancalaBoard.setBoardColor(newColor);
 
       validate();

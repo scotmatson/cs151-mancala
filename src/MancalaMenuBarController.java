@@ -8,6 +8,7 @@ public class MancalaMenuBarController
    MancalaMenuBarController(MancalaMenuBar view, MancalaModel m)
    {
       MancalaModel model = m;
+
       //model = m;
 
       view.newGameActionListener(e ->

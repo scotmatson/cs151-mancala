@@ -58,7 +58,8 @@ public class StatusPane extends JPanel implements Observer {
         CapPlayer2Score();
         CurrentPlayer();
         PlayerTxtArea();
-        
+        PlayerNumber();
+
     }
 
     /**
@@ -132,11 +133,19 @@ public class StatusPane extends JPanel implements Observer {
      * Will have observer attached to it.
      */
     public void PlayerTxtArea() {
-        player = new JTextArea("1");
+        player = new JTextArea("Player");
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 75;
         constraints.gridy = 50;
         container.add(player, constraints);
+    }
+
+    public void PlayerNumber() {
+        numberOfPlayer = new JTextArea("1");
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 300;
+        constraints.gridy = 450;
+        container.add(numberOfPlayer, constraints);
     }
 
 

@@ -20,4 +20,16 @@ public interface Drawable
     @param g a Graphics object
     */
    public void draw(Graphics g);
+
+   /**
+    Gets the color
+    @return a Color object
+    */
+   public Color getColor();
+
+   /**
+    Sets the color
+    @param c a Color object
+    */
+   public void setColor(Color c);
 }

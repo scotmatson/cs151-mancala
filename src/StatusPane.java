@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.*;
@@ -27,7 +28,7 @@ public class StatusPane extends JPanel implements Observer {
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
     private Color boardColor;
-    private JTextArea capturedPlayer1, capturedPlayer2, capturedScore1, capturedScore2, currentPlayer, player, numberOfPlayer;
+    private JLabel capturedPlayer1, capturedPlayer2, currentPlayer, capturedScore1, capturedScore2, player, numberOfPlayer;
 
 
     public StatusPane(int width, int height, MancalaModel m) {
@@ -35,7 +36,7 @@ public class StatusPane extends JPanel implements Observer {
 
         container = new Container();
         constraints = new GridBagConstraints(); //I went with grid bag for ease of use
-        container.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT); //Right to left on the screen
+        container.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT); //Right to left on the screen
         container.setLayout(new GridBagLayout());
         container.setBackground(boardColor);
 
@@ -45,7 +46,7 @@ public class StatusPane extends JPanel implements Observer {
 
         createPane();
 
-        add(container, BorderLayout.CENTER);
+        add(container, BorderLayout.WEST);
     }
 
     /**
@@ -66,11 +67,11 @@ public class StatusPane extends JPanel implements Observer {
      * Creates the TextArea for player one "Captured"
      */
     public void CapPlayer1Text() {
-        capturedPlayer1 = new JTextArea("Captured ");
-        capturedPlayer1.setEditable(false);
+        capturedPlayer1 = new JLabel("Player 1 Captured");
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
-        constraints.gridy = 100;
+        constraints.gridy = 50;
         container.add(capturedPlayer1, constraints);
     }
 
@@ -78,11 +79,11 @@ public class StatusPane extends JPanel implements Observer {
      * Text for player Two "Captured"
      */
     public void CapPlayer2Text() {
-        capturedPlayer2 = new JTextArea("Captured ");
-        capturedPlayer2.setEditable(false);
+        capturedPlayer2 = new JLabel("Player 2 Captured");
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 150;
-        constraints.gridy = 150;
+        constraints.gridx = 500;
+        constraints.gridy = 50;
 
         container.add(capturedPlayer2, constraints);
     }
@@ -92,10 +93,10 @@ public class StatusPane extends JPanel implements Observer {
      * Will change everyTime it is called to
      */
     public void CapPlayer1Score() {
-        capturedScore1 = new JTextArea("0");
+        capturedScore1 = new JLabel("0");
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 200; //All these nums are arbitrary will change later
-        constraints.gridy = 300;
+        constraints.gridx = 0; //All these nums are arbitrary will change later
+        constraints.gridy = 100;
 
         container.add(capturedScore1, constraints);
 
@@ -106,10 +107,10 @@ public class StatusPane extends JPanel implements Observer {
      * Will change everytime it is called to
      */
     public void CapPlayer2Score() {
-        capturedScore2 = new JTextArea("0");
+        capturedScore2 = new JLabel("0");
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 250;
-        constraints.gridy = 150;
+        constraints.gridx = 500;
+        constraints.gridy = 100;
 
         container.add(capturedScore2, constraints);
 
@@ -120,8 +121,8 @@ public class StatusPane extends JPanel implements Observer {
      *
      */
     public void CurrentPlayer() {
-        currentPlayer = new JTextArea("Current Player");
-        currentPlayer.setEditable(false);
+        currentPlayer = new JLabel("Current Player");
+
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 100;
         constraints.gridy = 150;
@@ -133,15 +134,15 @@ public class StatusPane extends JPanel implements Observer {
      * Will have observer attached to it.
      */
     public void PlayerTxtArea() {
-        player = new JTextArea("Player");
+        player = new JLabel("Player");
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 75;
+        constraints.gridx = 200;
         constraints.gridy = 50;
         container.add(player, constraints);
     }
 
     public void PlayerNumber() {
-        numberOfPlayer = new JTextArea("1");
+        numberOfPlayer = new JLabel("1");
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 300;
         constraints.gridy = 450;

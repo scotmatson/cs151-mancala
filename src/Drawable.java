@@ -32,4 +32,52 @@ public interface Drawable
     @param c a Color object
     */
    public void setColor(Color c);
+
+   /**
+    Gets the x-coordinate
+    @return the x-coordinate
+    */
+   public int getX();
+
+   /**
+    Sets the x-coordinate
+    @param x the new x-coordinate
+    */
+   public void setX(int x);
+
+   /**
+    Gets the y-coordinate
+    @return the y-coordinate
+    */
+   public int getY();
+
+   /**
+    Sets the y-coordinate
+    @param y the new y-coordinate
+    */
+   public void setY(int y);
+
+   /**
+    Gets the width
+    @return the width
+    */
+   public int getWidth();
+
+   /**
+    Sets the width
+    @param w the new width
+    */
+   public void setWidth(int w);
+
+   /**
+    Gets the height
+    @return the height
+    */
+   public int getHeight();
+
+   /**
+    Sets the height
+    @param h the new height
+    */
+   public void setHeight(int h);
 }

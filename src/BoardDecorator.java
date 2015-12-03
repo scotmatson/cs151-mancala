@@ -23,23 +23,97 @@ public abstract class BoardDecorator implements Drawable
    }
 
    /**
-    Gets the board color
-    @return a Color object
+    Gets the x-coordinate
+    @return the x-coordinate
     */
    @Override
-   public Color getColor()
+   public int getX()
    {
-      return decoratedDrawable.getColor();
+      return decoratedDrawable.getX();
    }
 
    /**
-    Sets the board color
-    @param c a Color object
+    Sets the x-coordinate
+    @param x the new x-coordinate
     */
    @Override
+   public void setX(int x)
+   {
+      decoratedDrawable.setX(x);
+   }
+
+   /**
+    Gets the y-coordinate
+    @return the y-coordinate
+    */
+   @Override
+   public int getY()
+   {
+      return decoratedDrawable.getY();
+   }
+
+   /**
+    Sets the y-coordinate
+    @param y the new y-coordinate
+    */
+   @Override
+   public void setY(int y)
+   {
+      decoratedDrawable.setY(y);
+   }
+
+   /**
+    Get the width of the game board
+    @return the current width
+    */
+   public int getWidth()
+   {
+      return decoratedDrawable.getWidth();
+   }
+
+   /**
+    Sets the width of the game board
+    @param w the width to set
+    */
+   public void setWidth(int w)
+   {
+      decoratedDrawable.setWidth(w);
+   }
+
+   /**
+    Gets the height of the board
+    @return the current height
+    */
+   public int getHeight()
+   {
+      return decoratedDrawable.getHeight();
+   }
+
+   /**
+    Sets the height of the board
+    @param h the height to set
+    */
+   public void setHeight(int h)
+   {
+      decoratedDrawable.setHeight(h);
+   }
+
+   /**
+    Sets the color of the board
+    @param c the color to set
+    */
    public void setColor(Color c)
    {
       decoratedDrawable.setColor(c);
+   }
+
+   /**
+    Gets the color of the board
+    @return the current color
+    */
+   public Color getColor()
+   {
+      return decoratedDrawable.getColor();
    }
 
    /**

@@ -2,32 +2,14 @@ import java.awt.*;
 import java.util.ArrayList;
 
 
-public class Pit implements Drawable
+public class Pit extends GameBoardTile implements Drawable
 {
-
-   private final int X_COORD;
-   private final int Y_COORD;
-   private final int PIT_WIDTH;
-   private final int PIT_HEIGHT;
-
    private ArrayList<Stone> stoneContainer;
-   private Color color;
 
-   public Pit() // TODO: Remove after tests complete please
+   public Pit(int x, int y, int w, int h, Color c)
    {
-      X_COORD = Y_COORD = PIT_WIDTH = PIT_HEIGHT = 0;
+      super(x, y, w, h, c);
       stoneContainer = new ArrayList<>();
-      color = Color.white;
-   }
-
-   public Pit(int x, int y, int width, int height, Color c)
-   {
-       X_COORD = x;
-       Y_COORD = y;
-       PIT_WIDTH = width;
-       PIT_HEIGHT = height;
-       color = c;
-       stoneContainer = new ArrayList<>();
    }
 
    /**
@@ -69,18 +51,7 @@ public class Pit implements Drawable
    @Override
    public void draw(Graphics g)
    {
-
-   }
-
-   @Override
-   public Color getColor()
-   {
-      return null;
-   }
-
-   @Override
-   public void setColor(Color c)
-   {
-
+      super.draw(g);
+      // TODO: Add stones here
    }
 }

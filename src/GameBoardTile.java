@@ -2,21 +2,11 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 /**
-
- COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
-
- A generic game board class.
-
- Solves CS151 Project - Mancala Game
-
- @author Scot Matson
-
- @version 1.02 2015/12/01
-
+ Created by scot on 12/3/15.
  */
-public abstract class GameBoard implements Drawable
+public abstract class GameBoardTile implements Drawable
 {
-   Shape board;
+   Shape tile;
    private final int BORDER_RADIUS = 50;
    private int xPos;
    private int yPos;
@@ -24,22 +14,14 @@ public abstract class GameBoard implements Drawable
    private int height;
    private Color color;
 
-   /**
-    Constructor method for the GameBoard class.
-    @param x the x-position of the game board.
-    @param y the y-position of the game board.
-    @param width the width of the game board.
-    @param height the height of the game board.
-    @param c the color of the game board.
-    */
-   public GameBoard(int x, int y, int width, int height, Color c)
+   public GameBoardTile(int x, int y, int w, int h, Color c)
    {
-      this.xPos = x;
-      this.yPos = y;
-      this.width = width;
-      this.height = height;
-      this.color = c;
-      board = new RoundRectangle2D.Double(x, y, width, height, BORDER_RADIUS, BORDER_RADIUS);
+      xPos = x;
+      yPos = y;
+      width = w;
+      height = h;
+      color = c;
+      tile = new RoundRectangle2D.Double(x, y, width, height, BORDER_RADIUS, BORDER_RADIUS);
    }
 
    /**
@@ -83,7 +65,7 @@ public abstract class GameBoard implements Drawable
    }
 
    /**
-    Get the width of the game board
+    Get the width of the game tile
     @return the current width
     */
    public int getWidth()
@@ -92,7 +74,7 @@ public abstract class GameBoard implements Drawable
    }
 
    /**
-    Sets the width of the game board
+    Sets the width of the game tile
     @param width the width to set
     */
    public void setWidth(int width)
@@ -101,7 +83,7 @@ public abstract class GameBoard implements Drawable
    }
 
    /**
-    Gets the height of the board
+    Gets the height of the tile
     @return the current height
     */
    public int getHeight()
@@ -110,7 +92,7 @@ public abstract class GameBoard implements Drawable
    }
 
    /**
-    Sets the height of the board
+    Sets the height of the tile
     @param height the height to set
     */
    public void setHeight(int height)
@@ -119,7 +101,7 @@ public abstract class GameBoard implements Drawable
    }
 
    /**
-    Sets the color of the board
+    Sets the color of the tile
     @param c the color to set
     */
    public void setColor(Color c)
@@ -128,7 +110,7 @@ public abstract class GameBoard implements Drawable
    }
 
    /**
-    Gets the color of the board
+    Gets the color of the tile
     @return the current color
     */
    public Color getColor()
@@ -140,7 +122,7 @@ public abstract class GameBoard implements Drawable
    {
       Graphics2D g2 = (Graphics2D) g;
       g2.setColor(color);
-      g2.fill(board);
+      g2.fill(tile);
       g2.dispose();
    }
 }

@@ -44,6 +44,8 @@ public class MancalaBoard extends GameBoard
    {
       super(x, y, width, height, c);
       model = m;
+      //mancala1 = new Mancala();
+      //pit1 = new Pit();
    }
 
    @Override
@@ -51,7 +53,7 @@ public class MancalaBoard extends GameBoard
    {
       super.draw(g);
       Graphics2D g2 = (Graphics2D) g;
-      //g2.setColor();
+      g2.setColor(model.getPitColor());
       //g2.fill(pit1);
       //g2.fill(pit2);
       //g2.fill(pit3);

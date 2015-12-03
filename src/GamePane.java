@@ -20,6 +20,7 @@ public class GamePane extends JPanel implements Observer
 {
    private final int PANEL_WIDTH;
    private final int PANEL_HEIGHT;
+
    MancalaModel model;
    Drawable labeledBoard;
 
@@ -53,6 +54,7 @@ public class GamePane extends JPanel implements Observer
    {
       super.paintComponent(g);
       labeledBoard.draw(g);
+      System.out.println("Inside PC");
    }
 
    /**
@@ -66,7 +68,6 @@ public class GamePane extends JPanel implements Observer
       Color newColor = model.getBoardColor();
       labeledBoard.setColor(newColor);
 
-      validate();
       repaint();
    }
 }

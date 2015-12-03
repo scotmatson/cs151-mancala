@@ -16,7 +16,6 @@ import java.awt.*;
 public abstract class BoardDecorator implements Drawable
 {
    protected Drawable decoratedDrawable;
-   private Color color;
 
    public BoardDecorator(Drawable decoratedDrawable)
    {
@@ -30,7 +29,7 @@ public abstract class BoardDecorator implements Drawable
    @Override
    public Color getColor()
    {
-      return color;
+      return decoratedDrawable.getColor();
    }
 
    /**
@@ -40,7 +39,7 @@ public abstract class BoardDecorator implements Drawable
    @Override
    public void setColor(Color c)
    {
-      color = c;
+      decoratedDrawable.setColor(c);
    }
 
    /**

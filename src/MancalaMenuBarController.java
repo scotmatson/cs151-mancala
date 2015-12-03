@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -15,6 +16,10 @@ public class MancalaMenuBarController
       {
          System.out.println("New game.");
          // TODO: Set default game conditions
+         JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(view);
+         NewGameDialog dialog = new NewGameDialog(parentFrame, model);
+         dialog.setSize(300, 150);
+         model.notifyObservers();
       });
 
       view.undoMoveActionListener(e ->

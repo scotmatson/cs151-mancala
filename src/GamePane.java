@@ -54,7 +54,6 @@ public class GamePane extends JPanel implements Observer
    {
       super.paintComponent(g);
       labeledBoard.draw(g);
-      System.out.println("Inside PC");
    }
 
    /**

@@ -32,6 +32,8 @@ public class MancalaTest extends JFrame
 
       // The model
       MancalaModel model = new MancalaModel();
+      initilizeDefaults(model);
+
       // Todo: remove tests begin
       model.printCurrentState();
       model.pitSelector(2);
@@ -61,6 +63,13 @@ public class MancalaTest extends JFrame
       pack();
       setResizable(false);
       setVisible(true);
+   }
+
+   public void initilizeDefaults(MancalaModel model)
+   {
+      model.setBoardColor(new Color(173, 136, 100));
+      model.setPitColor(new Color(125, 69, 36));
+      model.setStoneColor(new Color(128, 140, 131));
    }
 
    /**

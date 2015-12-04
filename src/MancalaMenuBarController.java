@@ -19,6 +19,7 @@ public class MancalaMenuBarController
          JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(view);
          NewGameDialog dialog = new NewGameDialog(parentFrame, model);
          dialog.setSize(300, 150);
+
          model.notifyObservers();
       });
 

@@ -52,6 +52,6 @@ public class Pit extends GameBoardTile implements Drawable
    public void draw(Graphics g)
    {
       super.draw(g);
-      // TODO: Add stones here
+      // TODO: Add stones here... maybe
    }
 }

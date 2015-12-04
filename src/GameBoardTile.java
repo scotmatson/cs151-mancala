@@ -2,7 +2,17 @@ import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
 /**
- Created by scot on 12/3/15.
+
+ COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
+
+ TODO: Add Description
+
+ Solves CS151 Project - Mancala Game
+
+ @author Scot Matson
+
+ @version 1.01 2015/10/26
+
  */
 public abstract class GameBoardTile implements Drawable
 {
@@ -122,6 +132,7 @@ public abstract class GameBoardTile implements Drawable
    {
       Graphics2D g2 = (Graphics2D) g;
       g2.setColor(color);
+      System.out.println("Color: " + color);
       g2.fill(tile);
       g2.dispose();
    }

@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
 
@@ -18,6 +19,7 @@ public class MancalaBoard extends GameBoard
    private MancalaModel model;
    Mancala mancala1;
    Mancala mancala2;
+   ArrayList<Pit> mancalaPits;
    Pit pit1;
    Pit pit2;
    Pit pit3;
@@ -45,7 +47,8 @@ public class MancalaBoard extends GameBoard
       super(x, y, width, height, c);
       model = m;
       //mancala1 = new Mancala();
-      //pit1 = new Pit();
+      mancalaPits = new ArrayList<>();
+      mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor()));
    }
 
    @Override
@@ -53,8 +56,10 @@ public class MancalaBoard extends GameBoard
    {
       super.draw(g);
       Graphics2D g2 = (Graphics2D) g;
-      g2.setColor(model.getPitColor());
-      //g2.fill(pit1);
+      for (Pit p : mancalaPits)
+      {
+         p.draw(g);
+      }
       //g2.fill(pit2);
       //g2.fill(pit3);
       //g2.fill(pit4);

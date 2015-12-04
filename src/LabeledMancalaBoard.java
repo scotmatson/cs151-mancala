@@ -24,7 +24,7 @@ public class LabeledMancalaBoard extends BoardDecorator implements Drawable
    public void draw(Graphics g)
    {
       decoratedDrawable.draw(g);
-      setAllBorders();
+      //setAllBorders();
    }
 
    public void setAllBorders()

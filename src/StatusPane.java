@@ -1,25 +1,6 @@
 import javax.swing.*;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.ComponentOrientation;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.lang.Override;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -34,9 +15,20 @@ public class StatusPane extends JPanel implements Observer {
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
     private Color boardColor;
-    private JLabel capturedPlayer1, capturedPlayer2, currentPlayer, capturedScore1, capturedScore2, player, numberOfPlayer;
+    private JLabel capturedPlayer1;
+    private JLabel capturedPlayer2;
+    private JLabel currentPlayer;
+    private JLabel capturedScore1;
+    private JLabel capturedScore2;
+    private JLabel player;
+    private JLabel numberOfPlayer;
 
-
+   /**
+    Constructor method for the status pane
+    @param width
+    @param height
+    @param m
+    */
     public StatusPane(int width, int height, MancalaModel m) {
         model = m;
 
@@ -213,7 +205,6 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Updates the view with the current model
-     *
      * @param o   an Observable object
      * @param arg an argument passed to notify the notifyObservers method
      */
@@ -226,6 +217,5 @@ public class StatusPane extends JPanel implements Observer {
         updatePlayerNumber();
         validate();
         repaint();
-
     }
 }

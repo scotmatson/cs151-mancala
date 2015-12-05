@@ -60,11 +60,17 @@ public class MancalaTest extends JFrame
       setVisible(true);
    }
 
+   /**
+    Initializes UI components for presentation on application
+    launch.
+    @param model the data to model
+    @param pane
+    */
    public void initilizeDefaults(MancalaModel model, StatusPane pane)
    {
       Color color = new Color(173, 136, 100);
       model.setBoardColor(color);
-      pane.setStatusPaneColor(color);
+      pane.setStatusPaneColor(color); //TODO: Configure this so it is handled by the model
       model.setPitColor(new Color(125, 69, 36));
       model.setStoneColor(new Color(128, 140, 131));
    }

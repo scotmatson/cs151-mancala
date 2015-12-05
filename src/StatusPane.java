@@ -19,10 +19,6 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Rectangle;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.Rectangle2D;
 import java.lang.Override;
 import java.util.Observable;
 import java.util.Observer;
@@ -46,7 +42,7 @@ public class StatusPane extends JPanel implements Observer {
 
         pane = new JPanel(new GridBagLayout());
         container = new Container();
-        pane.setPreferredSize(new Dimension(width,height));
+        pane.setPreferredSize(new Dimension(width, height));
 
         constraints = new GridBagConstraints(); //I went with grid bag for ease of use
 
@@ -110,7 +106,7 @@ public class StatusPane extends JPanel implements Observer {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
         constraints.gridy = 1;
-        Border paddingBorder = BorderFactory.createEmptyBorder(0,50,0,0);
+        Border paddingBorder = BorderFactory.createEmptyBorder(0, 50, 0, 0);
         capturedScore1.setBorder(paddingBorder);
 
         pane.add(capturedScore1, constraints);
@@ -132,7 +128,7 @@ public class StatusPane extends JPanel implements Observer {
         constraints.gridx = 2;
         constraints.gridy = 1;
 
-        Border paddingBorder = BorderFactory.createEmptyBorder(0,0,0,50);
+        Border paddingBorder = BorderFactory.createEmptyBorder(0, 0, 0, 50);
         capturedScore2.setBorder(paddingBorder);
 
         pane.add(capturedScore2, constraints);
@@ -141,6 +137,7 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Updates player 2 score
+     *
      * @return
      */
     public void updatePlayer2Score() {
@@ -163,7 +160,6 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Creates a JLabel for the player 1
-     *
      */
     public void PlayerNumber() {
         numberOfPlayer = new JLabel("Player # 1");
@@ -176,10 +172,11 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Updates what player is playing
+     *
      * @return
      */
     public void updatePlayerNumber() {
-      numberOfPlayer.setText(java.lang.String.format("Player # %s", "" + model.getCurrentPlayer()));
+        numberOfPlayer.setText(java.lang.String.format("Player # %s", "" + model.getCurrentPlayer()));
     }
 
     /**
@@ -202,6 +199,7 @@ public class StatusPane extends JPanel implements Observer {
 
     /**
      * Paints the componets
+     *
      * @param g
      */
     public void paintComponent(Graphics g) {

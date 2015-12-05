@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import javax.swing.border.Border;
 
 /**
 
@@ -60,6 +61,8 @@ public class MancalaBoard extends GameBoard
       // TODO: change actual placement values of pits
       mancalaPits = new ArrayList<>();
       for (int i = 0; i < model.getNumberOfPits(); i++) {
+         Border paddingBorder = BorderFactory.createEmptyBorder(0, 100, 0, 0);
+         pitPanel.setBorder(paddingBorder);
          mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor(), i, model.getStonesInPit(i)));
          pitPanel.add(mancalaPits.get(i).getPitRepresentation());
       }

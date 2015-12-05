@@ -16,8 +16,6 @@ import java.util.Observer;
  */
 public class MancalaModel extends Observable // Shouldn't this be an observer updating other observable objects?
 {
-    // TODO: turns, stones (live, captured, position), previous turn
-
     // Logic Variables
     private boolean playerOneTurn;
     private boolean playerTwoTurn;
@@ -95,7 +93,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
      *
      * @return boolean value returns when finished
      */
-    public boolean distributeStones(int pitNumber) {
+    private boolean distributeStones(int pitNumber) { // Should be private/ only pit selector should use it
         int currentPit = pitNumber;
 
         while (pits.get(pitNumber) > 0) {
@@ -171,7 +169,6 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
         }
     }
 
-
     public boolean pitSelector(int pitSelected) {
         if (playerOneTurn && pitSelected >= 0 && pitSelected < 6) {
             playerOneTurn = false;
@@ -186,6 +183,31 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
         return false; // Returns a negative value when the pit wanted cannot be selected
     }
 
+   /**
+    * Meant to be an easy and straight forward way to reset the entire game.
+    * @param numOfPits
+    * @param numOfStones
+    */
+    public void resetGame (int numOfPits, int numOfStones)
+    {
+        numberOfPits = numOfPits;
+        numberOfStonesPerPit = numOfStones;
+        mancalas.set(0, 0);
+        mancalas.set(1, 0);
+
+        pits = new ArrayList<>();
+        for (int i = 0; i < numOfPits; i++) pits.add(numOfStones);
+    }
+
+   /**
+    * Same as above just with basic reset
+    */
+   public void resetGame()
+   {
+      mancalas.set(0, 0);
+      mancalas.set(0, 0);
+      for (int i = 0; i < pits.size(); i++) pits.add(numberOfStonesPerPit);
+   }
     /**
      * Returns color of board
      *

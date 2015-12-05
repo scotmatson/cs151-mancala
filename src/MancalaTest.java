@@ -35,12 +35,6 @@ public class MancalaTest extends JFrame
 
       // Todo: remove tests begin
       model.printCurrentState();
-      model.pitSelector(2);
-      model.printCurrentState();
-      model.pitSelector(2);
-      model.printCurrentState();
-      model.pitSelector(11);
-      model.printCurrentState();
       // Todo: remove tests end
 
       // View containers

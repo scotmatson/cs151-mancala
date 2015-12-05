@@ -197,9 +197,13 @@ public class StatusPane extends JPanel implements Observer {
      * @param c
      */
     public void setStatusPaneColor(Color c) {
-        boardColor = c;
+        pane.setBackground(c);
     }
 
+    /**
+     * Paints the componets
+     * @param g
+     */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;

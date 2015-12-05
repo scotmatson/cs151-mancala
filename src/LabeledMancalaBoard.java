@@ -32,6 +32,12 @@ public class LabeledMancalaBoard extends BoardDecorator implements Drawable
    }
 
    @Override
+   public Dimension getPreferredSize()
+   {
+      return super.getPreferredSize();
+   }
+
+   @Override
    public void draw(Graphics g)
    {
       super.draw(g);

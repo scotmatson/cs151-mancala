@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -35,6 +36,12 @@ public class MancalaBoard extends GameBoard
       model = m;
       mancala1 = new Mancala(5, 5, 20, 50, m.getPitColor());
       add(mancala1, BorderLayout.LINE_START);
+   }
+
+   @Override
+   public Dimension getPreferredSize()
+   {
+      return super.getPreferredSize();
    }
 
    @Override

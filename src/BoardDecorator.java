@@ -25,6 +25,7 @@ public abstract class BoardDecorator extends JPanel implements Drawable
       decoratedDrawable.setY(50);
       decoratedDrawable.setWidth(800);
       decoratedDrawable.setHeight(300);
+
    }
 
    /**

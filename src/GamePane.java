@@ -28,7 +28,8 @@ public class GamePane extends JPanel implements Observer
    public GamePane(int width, int height, MancalaModel m)
    {
       model = m;
-      setLayout(new BorderLayout());
+      setLayout(null);
+      setBorder(BorderFactory.createLineBorder(Color.black, 5));
 
       PANEL_WIDTH = width;
       PANEL_HEIGHT = height;

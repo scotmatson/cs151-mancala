@@ -147,6 +147,12 @@ public abstract class GameBoard extends JPanel implements Drawable
    }
 
    @Override
+   public void setPreferredSize(Dimension preferredSize)
+   {
+      super.setPreferredSize(preferredSize);
+   }
+
+   @Override
    public Dimension getPreferredSize()
    {
       return new Dimension(width, height);

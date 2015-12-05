@@ -7,7 +7,7 @@ import java.util.Observer;
 
  COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
 
- TODO: Add description
+ Panel for holding graphical components of the Mancala game
 
  Solves CS151 Project - Mancala Game
 
@@ -22,7 +22,8 @@ public class GamePane extends JPanel implements Observer
    private final int PANEL_HEIGHT;
 
    MancalaModel model;
-   Drawable labeledBoard;
+   MancalaBoard board;
+   LabeledMancalaBoard labeledBoard;
 
    public GamePane(int width, int height, MancalaModel m)
    {
@@ -31,8 +32,10 @@ public class GamePane extends JPanel implements Observer
 
       PANEL_WIDTH = width;
       PANEL_HEIGHT = height;
-      MancalaBoard board = new MancalaBoard(0, 0, PANEL_WIDTH, PANEL_HEIGHT, model.getBoardColor(), model);
+      board = new MancalaBoard(0, 0, PANEL_WIDTH, PANEL_HEIGHT, model.getBoardColor(), model);
       labeledBoard = new LabeledMancalaBoard(board);
+
+      add(labeledBoard, BorderLayout.CENTER);
    }
 
    /**
@@ -44,12 +47,12 @@ public class GamePane extends JPanel implements Observer
       return new Dimension(PANEL_WIDTH, PANEL_HEIGHT);
    }
 
-   @Override
-   protected void paintComponent(Graphics g)
-   {
-      super.paintComponent(g);
-      labeledBoard.draw(g);
-   }
+   //@Override
+   //protected void paintComponent(Graphics g)
+   //{
+   //   super.paintComponent(g);
+   //   labeledBoard.draw(g);
+   //}
 
    /**
     Updates the view with the current model

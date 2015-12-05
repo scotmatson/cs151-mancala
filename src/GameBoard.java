@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -14,7 +15,7 @@ import java.awt.geom.RoundRectangle2D;
  @version 1.02 2015/12/01
 
  */
-public abstract class GameBoard implements Drawable
+public abstract class GameBoard extends JPanel implements Drawable
 {
    Shape board;
    private final int BORDER_RADIUS = 50;
@@ -28,17 +29,18 @@ public abstract class GameBoard implements Drawable
     Constructor method for the GameBoard class.
     @param x the x-position of the game board.
     @param y the y-position of the game board.
-    @param width the width of the game board.
-    @param height the height of the game board.
+    @param w the width of the game board.
+    @param h the height of the game board.
     @param c the color of the game board.
     */
-   public GameBoard(int x, int y, int width, int height, Color c)
+   public GameBoard(int x, int y, int w, int h, Color c)
    {
-      this.xPos = x;
-      this.yPos = y;
-      this.width = width;
-      this.height = height;
-      this.color = c;
+      setLayout(new BorderLayout());
+      xPos = x;
+      yPos = y;
+      width = w;
+      height = h;
+      color = c;
       board = new RoundRectangle2D.Double(x, y, width, height, BORDER_RADIUS, BORDER_RADIUS);
    }
 
@@ -142,5 +144,18 @@ public abstract class GameBoard implements Drawable
       g2.setColor(color);
       g2.fill(board);
       g2.dispose();
+   }
+
+   @Override
+   public Dimension getPreferredSize()
+   {
+      return new Dimension(width, height);
+   }
+
+   @Override
+   protected void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      draw(g);
    }
 }

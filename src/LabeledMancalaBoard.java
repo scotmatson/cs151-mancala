@@ -23,8 +23,14 @@ public class LabeledMancalaBoard extends BoardDecorator implements Drawable
    @Override
    public void draw(Graphics g)
    {
-      decoratedDrawable.draw(g);
-      //setAllBorders();
+      super.draw(g);
+   }
+
+   @Override
+   protected void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      draw(g);
    }
 
    public void setAllBorders()

@@ -17,7 +17,7 @@ public class Mancala extends GameBoardTile
       super(x, y, w, h, c);
       //mancalaID = super.getCount();
       stoneContainer = new ArrayList<Stone>();
-
+      System.out.println("Mancala Board Constructor");
    }
 
    //public void addPit(Stone newStone) { stoneContainer.add(newStone); }
@@ -31,6 +31,13 @@ public class Mancala extends GameBoardTile
    public void draw(Graphics g)
    {
       super.draw(g);
-      // TODO: Add stones here
+      System.out.println("M D");
+   }
+
+   @Override
+   protected void paintComponent(Graphics g)
+   {
+      super.paintComponent(g);
+      System.out.println("M PC");
    }
 }

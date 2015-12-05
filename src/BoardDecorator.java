@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -13,7 +14,7 @@ import java.awt.*;
  @version 1.01 2015/12/01
 
  */
-public abstract class BoardDecorator implements Drawable
+public abstract class BoardDecorator extends JPanel implements Drawable
 {
    protected Drawable decoratedDrawable;
 
@@ -123,5 +124,19 @@ public abstract class BoardDecorator implements Drawable
    public void draw(Graphics g)
    {
       decoratedDrawable.draw(g);
+   }
+
+   @Override
+   public Dimension getPreferredSize()
+   {
+      return new Dimension(decoratedDrawable.getWidth(), decoratedDrawable.getHeight());
+   }
+
+   @Override
+   protected void paintComponent(Graphics g)
+   {
+      //decoratedDrawable.draw(g);
+      super.paintComponent(g);
+      draw(g);
    }
 }

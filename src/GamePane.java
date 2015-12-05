@@ -33,6 +33,9 @@ public class GamePane extends JPanel implements Observer
       PANEL_HEIGHT = height;
       MancalaBoard board = new MancalaBoard(0, 0, PANEL_WIDTH, PANEL_HEIGHT, model.getBoardColor(), model);
       labeledBoard = new LabeledMancalaBoard(board);
+
+      // TODO: just wip
+      this.add(board.getMancalaBoardPanel(), BorderLayout.CENTER);
    }
 
    /**

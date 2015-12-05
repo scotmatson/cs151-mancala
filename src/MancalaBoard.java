@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class MancalaBoard extends GameBoard
 {
    private MancalaModel model;
+   private JPanel mancalaBoardPanel;
 
    // TODO: Shouldn't these be private?
    Mancala mancala1;
@@ -48,6 +50,8 @@ public class MancalaBoard extends GameBoard
    {
       super(x, y, width, height, c);
       model = m;
+      mancalaBoardPanel = new JPanel(new BorderLayout());
+      JPanel pitPanel = new JPanel(new GridLayout(2, model.getNumberOfPits()/2));
 
       // TODO: change actual placement values of mancala
       mancala1 = new Mancala(0, 0, 0, 0, Color.white, 0);
@@ -55,18 +59,27 @@ public class MancalaBoard extends GameBoard
 
       // TODO: change actual placement values of pits
       mancalaPits = new ArrayList<>();
-      for (int i = 0; i < model.getNumberOfPits(); i++)
-         mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor(), i));
+      for (int i = 0; i < model.getNumberOfPits(); i++) {
+         mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor(), i, model.getStonesInPit(i)));
+         pitPanel.add(mancalaPits.get(i).getPitRepresentation());
+      }
+
+      mancalaBoardPanel.add(pitPanel, BorderLayout.CENTER);
+      mancalaBoardPanel.add(mancala1.getMancalaRepresentation(), BorderLayout.WEST);
+      mancalaBoardPanel.add(mancala2.getMancalaRepresentation(), BorderLayout.EAST);
    }
+
+   public JPanel getMancalaBoardPanel() { return mancalaBoardPanel; }
 
    @Override
    public void draw(Graphics g)
    {
       super.draw(g);
       Graphics2D g2 = (Graphics2D) g;
+
       for (Pit p : mancalaPits)
       {
-         p.draw(g);
+         p.draw(g2);
       }
       //g2.fill(pit2);
       //g2.fill(pit3);
@@ -79,6 +92,6 @@ public class MancalaBoard extends GameBoard
       //g2.fill(pit10);
       //g2.fill(pit11);
       //g2.fill(pit12);
-      g2.dispose();
+      //g2.dispose();
    }
 }

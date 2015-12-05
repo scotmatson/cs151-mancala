@@ -1,5 +1,5 @@
+import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  Created by scot on 11/14/15.
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class Mancala extends GameBoardTile
 {
    private int mancalaID;
+   private JLabel mancalaRepresentation;
 
    /**
     Constructor method for the Mancala class.
@@ -15,19 +16,24 @@ public class Mancala extends GameBoardTile
    {
       super(x, y, w, h, c);
       mancalaID = pid;
+      mancalaRepresentation = new JLabel("0");
+      mancalaRepresentation.setBackground(c);
    }
 
-   //public void addPit(Stone newStone) { stoneContainer.add(newStone); }
+   public int getMancalaID() { return mancalaID; }
 
-   //public int size() { return stoneContainer.size(); }
+   public JLabel getMancalaRepresentation() { return mancalaRepresentation; }
 
-   //public int getMancalaID() { return mancalaID; }
-
+   public void update(int numberOfStones)
+   {
+      mancalaRepresentation.setText(Integer.toString(numberOfStones));
+   }
 
    @Override
    public void draw(Graphics g)
    {
       super.draw(g);
+      mancalaRepresentation.setBackground(g.getColor());
       // TODO: Add stones here
    }
 }

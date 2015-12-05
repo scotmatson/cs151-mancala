@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -13,7 +14,7 @@ import java.awt.*;
  @version 1.01 2015/12/01
 
  */
-public abstract class BoardDecorator implements Drawable
+public abstract class BoardDecorator extends JPanel implements Drawable
 {
    protected Drawable decoratedDrawable;
 

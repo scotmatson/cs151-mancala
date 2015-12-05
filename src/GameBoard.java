@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
@@ -14,7 +15,7 @@ import java.awt.geom.RoundRectangle2D;
  @version 1.02 2015/12/01
 
  */
-public abstract class GameBoard implements Drawable
+public abstract class GameBoard extends JPanel implements Drawable
 {
    Shape board;
    private final int BORDER_RADIUS = 50;

@@ -22,7 +22,8 @@ public class GamePane extends JPanel implements Observer
    private final int PANEL_HEIGHT;
 
    MancalaModel model;
-   Drawable labeledBoard;
+   MancalaBoard board;
+   LabeledMancalaBoard labeledBoard;
 
    public GamePane(int width, int height, MancalaModel m)
    {
@@ -31,11 +32,11 @@ public class GamePane extends JPanel implements Observer
 
       PANEL_WIDTH = width;
       PANEL_HEIGHT = height;
-      MancalaBoard board = new MancalaBoard(0, 0, PANEL_WIDTH, PANEL_HEIGHT, model.getBoardColor(), model);
+      board = new MancalaBoard(0, 0, PANEL_WIDTH, PANEL_HEIGHT, model.getBoardColor(), model);
       labeledBoard = new LabeledMancalaBoard(board);
 
       // TODO: just wip
-      this.add(board.getMancalaBoardPanel(), BorderLayout.CENTER);
+      this.add(board, BorderLayout.CENTER);
    }
 
    /**

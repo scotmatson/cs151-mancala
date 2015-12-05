@@ -1,7 +1,7 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
-import javax.swing.border.Border;
 
 /**
 
@@ -51,28 +51,27 @@ public class MancalaBoard extends GameBoard
    {
       super(x, y, width, height, c);
       model = m;
-      mancalaBoardPanel = new JPanel(new BorderLayout());
-      JPanel pitPanel = new JPanel(new GridLayout(2, model.getNumberOfPits()/2));
+      setLayout(new BorderLayout());
 
       // TODO: change actual placement values of mancala
       mancala1 = new Mancala(0, 0, 0, 0, Color.white, 0);
       mancala2 = new Mancala(0, 0, 0, 0, Color.white, 1);
+      JPanel pitPanel = new JPanel(new GridLayout(2, model.getNumberOfPits()/2));
 
       // TODO: change actual placement values of pits
       mancalaPits = new ArrayList<>();
-      for (int i = 0; i < model.getNumberOfPits(); i++) {
+      for (int i = 0; i < model.getNumberOfPits(); i++)
+      {
          Border paddingBorder = BorderFactory.createEmptyBorder(0, 100, 0, 0);
          pitPanel.setBorder(paddingBorder);
          mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor(), i, model.getStonesInPit(i)));
          pitPanel.add(mancalaPits.get(i).getPitRepresentation());
       }
 
-      mancalaBoardPanel.add(pitPanel, BorderLayout.CENTER);
-      mancalaBoardPanel.add(mancala1.getMancalaRepresentation(), BorderLayout.WEST);
-      mancalaBoardPanel.add(mancala2.getMancalaRepresentation(), BorderLayout.EAST);
+      add(pitPanel, BorderLayout.CENTER);
+      add(mancala1.getMancalaRepresentation(), BorderLayout.WEST);
+      add(mancala2.getMancalaRepresentation(), BorderLayout.EAST);
    }
-
-   public JPanel getMancalaBoardPanel() { return mancalaBoardPanel; }
 
    @Override
    public void draw(Graphics g)

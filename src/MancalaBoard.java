@@ -31,9 +31,9 @@ public class MancalaBoard extends GameBoard
    public MancalaBoard(int x, int y, int width, int height, Color c, MancalaModel m)
    {
       super(x, y, width, height, c);
+
       model = m;
       mancala1 = new Mancala(5, 5, 20, 50, m.getPitColor());
-
       add(mancala1, BorderLayout.LINE_START);
    }
 

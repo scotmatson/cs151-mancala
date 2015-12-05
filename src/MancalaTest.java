@@ -28,6 +28,7 @@ public class MancalaTest extends JFrame
       setTitle(FRAME_TITLE);
       setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
       setDefaultLookAndFeelDecorated(true);
+      setLayout(new BorderLayout());
       MancalaMenuBar menuBar = new MancalaMenuBar();
 
       // The model

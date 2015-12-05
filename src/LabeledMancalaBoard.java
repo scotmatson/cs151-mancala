@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -18,6 +19,16 @@ public class LabeledMancalaBoard extends BoardDecorator implements Drawable
    public LabeledMancalaBoard(Drawable decoratedDrawable)
    {
       super(decoratedDrawable);
+
+      JLabel playerA = new JLabel("Player A -->");
+      JLabel playerB = new JLabel("<-- Player B");
+      JLabel mancalaA = new JLabel("<html>M<br>a<br>n<br>c<br>a<br>l<br>a<br><br>A</html>");
+      JLabel mancalaB = new JLabel("<html>M<br>a<br>n<br>c<br>a<br>l<br>a<br><br>B</html>");
+
+      add(playerA, BorderLayout.PAGE_END);
+      add(playerB, BorderLayout.PAGE_START);
+      add(mancalaB, BorderLayout.LINE_START);
+      add(mancalaA, BorderLayout.LINE_END);
    }
 
    @Override

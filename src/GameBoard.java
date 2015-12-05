@@ -18,7 +18,7 @@ import java.awt.geom.RoundRectangle2D;
 public abstract class GameBoard extends JPanel implements Drawable
 {
    Shape board;
-   private final int BORDER_RADIUS = 50;
+   private final int BORDER_RADIUS = 100;
    private int xPos;
    private int yPos;
    private int width;

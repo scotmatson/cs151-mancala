@@ -21,6 +21,10 @@ public abstract class BoardDecorator extends JPanel implements Drawable
    public BoardDecorator(Drawable decoratedDrawable)
    {
       this.decoratedDrawable = decoratedDrawable;
+      decoratedDrawable.setX(100);
+      decoratedDrawable.setY(50);
+      decoratedDrawable.setWidth(800);
+      decoratedDrawable.setHeight(300);
    }
 
    /**

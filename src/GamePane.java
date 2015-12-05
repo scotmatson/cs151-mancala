@@ -65,7 +65,6 @@ public class GamePane extends JPanel implements Observer
       Color newColor = model.getBoardColor();
       labeledBoard.setColor(newColor);
 
-      revalidate();
       repaint();
    }
 }

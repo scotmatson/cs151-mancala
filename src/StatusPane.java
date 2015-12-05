@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -15,7 +16,10 @@ import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
+import java.lang.Override;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -63,7 +67,6 @@ public class StatusPane extends JPanel implements Observer {
         CurrentPlayer();
         PlayerTxtArea();
         PlayerNumber();
-
     }
 
     /**
@@ -91,7 +94,7 @@ public class StatusPane extends JPanel implements Observer {
 
         constraints.ipadx = 10;
         constraints.ipady = 10;
-        constraints.gridx = 30;
+        constraints.gridx = 2;
         constraints.gridy = 0;
 
         pane.add(capturedPlayer2, constraints);
@@ -112,7 +115,7 @@ public class StatusPane extends JPanel implements Observer {
     }
 
     public void updatePlayer1Score() {
-        capturedScore1.setText("" + model.getStonesInMancala(1));
+        capturedScore1.setText(java.lang.String.format("%s", "" + model.getStonesInMancala(0)));
     }
 
     /**
@@ -134,7 +137,7 @@ public class StatusPane extends JPanel implements Observer {
      * @return
      */
     public void updatePlayer2Score() {
-        capturedScore2.setText("" +model.getStonesInMancala(2));
+        capturedScore2.setText(java.lang.String.format("%s", "" + model.getStonesInMancala(1)));
     }
 
     /**
@@ -178,7 +181,7 @@ public class StatusPane extends JPanel implements Observer {
      * @return
      */
     public void updatePlayerNumber() {
-      numberOfPlayer.setText("" +model.getCurrentPlayer());
+      numberOfPlayer.setText(java.lang.String.format("%s", "" + model.getCurrentPlayer()));
     }
 
 
@@ -218,7 +221,6 @@ public class StatusPane extends JPanel implements Observer {
      */
     @Override
     public void update(Observable o, Object arg) {
-
         Color newColor = model.getBoardColor();
         setStatusPaneColor(newColor);
         updatePlayer2Score();

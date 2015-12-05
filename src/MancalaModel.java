@@ -1,306 +1,296 @@
 import java.awt.*;
+import java.lang.System;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 /**
-
- COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
-
- Model class for Mancala game.
-
- Solves CS151 Project - Mancala Game
-
- @author Scot Matson
-
- @version 1.01 2015/11/14
-
+ * COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
+ * <p/>
+ * Model class for Mancala game.
+ * <p/>
+ * Solves CS151 Project - Mancala Game
+ *
+ * @author Scot Matson
+ * @version 1.01 2015/11/14
  */
 public class MancalaModel extends Observable // Shouldn't this be an observer updating other observable objects?
 {
-   // TODO: turns, stones (live, captured, position), previous turn
+    // TODO: turns, stones (live, captured, position), previous turn
 
-   // Logic Variables
-   private boolean playerOneTurn;
-   private boolean playerTwoTurn;
-   private int numberOfPits;
-   private int numberOfStonesPerPit;
-   /*
-    * The first half of the pits array are for player one
-    * The second half are for player two
-    * pits(i + numberOfPits/2 is the pit parallel to player two)
-    * pits(i - numberOfPits/2 is the pit parallel to player one)
-    *
-    * mancalas(0) is player one's mancala
-    * mancalas(1) is player two's mancala
-    */
-   private ArrayList<Integer> pits;
-   private ArrayList<Integer> mancalas;
+    // Logic Variables
+    private boolean playerOneTurn;
+    private boolean playerTwoTurn;
+    private int numberOfPits;
+    private int numberOfStonesPerPit;
+    /*
+     * The first half of the pits array are for player one
+     * The second half are for player two
+     * pits(i + numberOfPits/2 is the pit parallel to player two)
+     * pits(i - numberOfPits/2 is the pit parallel to player one)
+     *
+     * mancalas(0) is player one's mancala
+     * mancalas(1) is player two's mancala
+     */
+    private ArrayList<Integer> pits;
+    private ArrayList<Integer> mancalas;
 
-   // THEME VARIABLES, PERHAPS MOVE INTO A LIST LATER
-   // private Color backgroundColor
-   private Color boardColor;
-   private Color pitColor;
-   private Color stoneColor;
-   // private Color textColor
+    // THEME VARIABLES, PERHAPS MOVE INTO A LIST LATER
+    // private Color backgroundColor
+    private Color boardColor;
+    private Color pitColor;
+    private Color stoneColor;
+    // private Color textColor
 
-   public MancalaModel(int numOfPits, int numOfStonePP, Color bColor,
-                       Color pColor, Color sColor)
-   {
-      // Theme Variable Settings
-      pitColor = pColor;
-      boardColor = bColor;
-      stoneColor = sColor;
+    public MancalaModel(int numOfPits, int numOfStonePP, Color bColor,
+                        Color pColor, Color sColor) {
+        // Theme Variable Settings
+        pitColor = pColor;
+        boardColor = bColor;
+        stoneColor = sColor;
 
-      // Game Variables
-      playerOneTurn = true;
-      playerTwoTurn = false;
+        // Game Variables
+        playerOneTurn = true;
+        playerTwoTurn = false;
 
-      numberOfPits = numOfPits;
-      numberOfStonesPerPit = numOfStonePP;
+        numberOfPits = numOfPits;
+        numberOfStonesPerPit = numOfStonePP;
 
-      pits = new ArrayList<>();
+        pits = new ArrayList<>();
 
-      mancalas = new ArrayList<>();
-      mancalas.add(0);
-      mancalas.add(0);
+        mancalas = new ArrayList<>();
+        mancalas.add(0);
+        mancalas.add(0);
 
-      for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
-   }
+        for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
+    }
 
-   // Set to Defaults
-   public MancalaModel()
-   {
-      // Theme Variable Settings
-      pitColor = Color.white;
-      boardColor = Color.orange;
-      stoneColor = Color.black;
+    // Set to Defaults
+    public MancalaModel() {
+        // Theme Variable Settings
+        pitColor = Color.white;
+        boardColor = Color.orange;
+        stoneColor = Color.black;
 
-      // Game Variables
-      playerOneTurn = true;
-      playerTwoTurn = false;
+        // Game Variables
+        playerOneTurn = true;
+        playerTwoTurn = false;
 
-      numberOfPits = 12;
-      numberOfStonesPerPit = 4;
+        numberOfPits = 12;
+        numberOfStonesPerPit = 4;
 
-      pits = new ArrayList();
+        pits = new ArrayList();
 
-      mancalas = new ArrayList();
-      mancalas.add(0);
-      mancalas.add(0);
+        mancalas = new ArrayList();
+        mancalas.add(0);
+        mancalas.add(0);
 
-      for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
-      // TODO: Stores game logic.
-   }
+        for (int i = 0; i < numberOfPits; i++) pits.add(numberOfStonesPerPit);
+        // TODO: Stores game logic.
+    }
 
-   /**
-    * This function is meant to perform the logic representing which pit a player
-    * selects and distributes stones accordingly.
-    * @return boolean value returns when finished
-    */
-   private boolean distributeStones(int pitNumber){
-      int currentPit = pitNumber;
+    /**
+     * This function is meant to perform the logic representing which pit a player
+     * selects and distributes stones accordingly.
+     *
+     * @return boolean value returns when finished
+     */
+    public boolean distributeStones(int pitNumber) {
+        int currentPit = pitNumber;
 
-      while(pits.get(pitNumber) > 0){
-         // More logic here
-         switch (currentPit) {
-            case 0:
-               currentPit = -1;
-               mancalas.set(0, mancalas.get(0) + 1);
-               pits.set(pitNumber, pits.get(pitNumber) - 1);
-               break;
-            case 11:
-               currentPit = -2;
-               mancalas.set(1, mancalas.get(1) + 1);
-               pits.set(pitNumber, pits.get(pitNumber) - 1);
-               break;
-            case -1:
-               currentPit = 6;
-               pits.set(pitNumber, pits.get(pitNumber) - 1);
-               pits.set(currentPit, pits.get(currentPit) + 1);
-               break;
-            case -2:
-               currentPit = 5;
-               pits.set(pitNumber, pits.get(pitNumber) - 1);
-               pits.set(currentPit, pits.get(currentPit) + 1);
-               break;
-            default:
-               if (currentPit <= 5) --currentPit;
-               else if(currentPit >= 6) ++currentPit;
-               pits.set(pitNumber, pits.get(pitNumber) - 1);
-               pits.set(currentPit, pits.get(currentPit) + 1);
-               break;
-         }
-      }
+        while (pits.get(pitNumber) > 0) {
+            // More logic here
+            switch (currentPit) {
+                case 0:
+                    currentPit = -1;
+                    mancalas.set(0, mancalas.get(0) + 1);
+                    pits.set(pitNumber, pits.get(pitNumber) - 1);
+                    break;
+                case 11:
+                    currentPit = -2;
+                    mancalas.set(1, mancalas.get(1) + 1);
+                    pits.set(pitNumber, pits.get(pitNumber) - 1);
+                    break;
+                case -1:
+                    currentPit = 6;
+                    pits.set(pitNumber, pits.get(pitNumber) - 1);
+                    pits.set(currentPit, pits.get(currentPit) + 1);
+                    break;
+                case -2:
+                    currentPit = 5;
+                    pits.set(pitNumber, pits.get(pitNumber) - 1);
+                    pits.set(currentPit, pits.get(currentPit) + 1);
+                    break;
+                default:
+                    if (currentPit <= 5) --currentPit;
+                    else if (currentPit >= 6) ++currentPit;
+                    pits.set(pitNumber, pits.get(pitNumber) - 1);
+                    pits.set(currentPit, pits.get(currentPit) + 1);
+                    break;
+            }
+        }
 
-      if (currentPit == -1 && playerOneTurn == false) {
-          playerOneTurn = true;
-      }
-      else if (currentPit == -2 && playerTwoTurn == false) {
-          playerTwoTurn = true;
-      }
-      else if (currentPit > -1 && pits.get(currentPit) == 1) // Almost but not quite done
-      {
-         if (currentPit > 5 && playerTwoTurn == false){
-            int temp = mancalas.get(1);
-            mancalas.set(1, temp + pits.get(currentPit - 6) + 1);
-            pits.set(currentPit, 0);
-            pits.set(currentPit - 6, 0);
-         }
-         else if (currentPit < 6 && playerOneTurn == false){
-            int temp = mancalas.get(0);
-            mancalas.set(0, temp + pits.get(currentPit + 6) + 1);
-            pits.set(currentPit, 0);
-            pits.set(currentPit + 6, 0);
-         }
-      }
+        if (currentPit == -1 && playerOneTurn == false) {
+            playerOneTurn = true;
+
+        } else if (currentPit == -2 && playerTwoTurn == false) {
+            playerTwoTurn = true;
+
+        } else if (currentPit > -1 && pits.get(currentPit) == 1) // Almost but not quite done
+        {
+            if (currentPit > 5 && playerTwoTurn == false) {
+                int temp = mancalas.get(1);
+                mancalas.set(1, temp + pits.get(currentPit - 6) + 1);
+                pits.set(currentPit, 0);
+                pits.set(currentPit - 6, 0);
+
+            } else if (currentPit < 6 && playerOneTurn == false) {
+                int temp = mancalas.get(0);
+                mancalas.set(0, temp + pits.get(currentPit + 6) + 1);
+                pits.set(currentPit, 0);
+                pits.set(currentPit + 6, 0);
+            }
+        }
+        setChanged();
         notifyObservers();
-      return true; // returns a value that stating successful completion
-   }
+        return true; // returns a value that stating successful completion
+    }
 
     /**
      * Returns 1 if player one is true else player 2s turn
+     *
      * @param player
      * @return
      */
     public int getCurrentPlayer() {
         if (playerOneTurn == true) {
+            System.out.print("Dogs");
             return 1;
-        }
-        else {
+        } else {
             return 2;
         }
     }
 
 
+    public boolean pitSelector(int pitSelected) {
+        if (playerOneTurn && pitSelected >= 0 && pitSelected < 6) {
+            playerOneTurn = false;
+            playerTwoTurn = true;
+            return distributeStones(pitSelected);
+        } else if (playerTwoTurn && pitSelected > 5 && pitSelected < 12) {
+            playerOneTurn = true;
+            playerTwoTurn = false;
+            return distributeStones(pitSelected);
+        }
 
-   public boolean pitSelector(int pitSelected)
-   {
-      if (playerOneTurn && pitSelected >= 0 && pitSelected < 6) {
-         playerOneTurn = false;
-         playerTwoTurn = true;
-         return distributeStones(pitSelected);
-      }
-      else if (playerTwoTurn && pitSelected > 5 && pitSelected < 12) {
-         playerOneTurn = true;
-         playerTwoTurn = false;
-         return distributeStones(pitSelected);
-      }
+        return false; // Returns a negative value when the pit wanted cannot be selected
+    }
 
-      return false; // Returns a negative value when the pit wanted cannot be selected
-   }
+    /**
+     * Returns color of board
+     *
+     * @return Color
+     */
+    public Color getBoardColor() {
+        return boardColor;
+    }
 
-   /**
-    * Returns color of board
-    * @return Color
-    */
-   public Color getBoardColor()
-   {
-      return boardColor;
-   }
+    /**
+     * Set the color of the board
+     *
+     * @param boardColor a Color object
+     */
+    public void setBoardColor(Color boardColor) {
+        this.boardColor = boardColor;
+        setChanged();
+    }
 
-   /**
-    Set the color of the board
-    @param boardColor a Color object
-    */
-   public void setBoardColor(Color boardColor)
-   {
-      this.boardColor = boardColor;
-      setChanged();
-   }
+    /**
+     * Get the color of the stones
+     *
+     * @return a Color object
+     */
+    public Color getStoneColor() {
+        return stoneColor;
+    }
 
-   /**
-    Get the color of the stones
-    @return a Color object
-    */
-   public Color getStoneColor()
-   {
-      return stoneColor;
-   }
+    /**
+     * @param pitNumber
+     * @return number of stones in the pit
+     */
+    public int getStonesInPit(int pitNumber) {
+        return pits.get(pitNumber);
+    }
 
-   /**
-    *
-    * @param pitNumber
-    * @return number of stones in the pit
-    */
-   public int getStonesInPit(int pitNumber) { return pits.get(pitNumber); }
+    /**
+     * @param pitNumber
+     * @return number of stones in mancala
+     */
+    public int getStonesInMancala(int mancalaNumber) {
+        return mancalas.get(mancalaNumber);
+    }
 
-   /**
-    *
-    * @param pitNumber
-    * @return number of stones in mancala
-    */
-   public int getStonesInMancala(int mancalaNumber) {
-       return mancalas.get(mancalaNumber);
-   }
+    /**
+     * Set the color of the stones
+     *
+     * @param stoneColor a Color object
+     */
+    public void setStoneColor(Color stoneColor) {
+        this.stoneColor = stoneColor;
+        setChanged();
+    }
 
-   /**
-    Set the color of the stones
-    @param stoneColor a Color object
-    */
-   public void setStoneColor(Color stoneColor)
-   {
-      this.stoneColor = stoneColor;
-      setChanged();
-   }
+    /**
+     * Get the color of the pits
+     *
+     * @return a Color object
+     */
+    public Color getPitColor() {
+        return pitColor;
+    }
 
-   /**
-    Get the color of the pits
-    @return a Color object
-    */
-   public Color getPitColor()
-   {
-      return pitColor;
-   }
-
-   /**
-    Set the color of the pits
-    @param pitColor a Color object
-    */
-   public void setPitColor(Color pitColor)
-   {
-      this.pitColor = pitColor;
-      setChanged();
-   }
+    /**
+     * Set the color of the pits
+     *
+     * @param pitColor a Color object
+     */
+    public void setPitColor(Color pitColor) {
+        this.pitColor = pitColor;
+        setChanged();
+    }
 
 
-   // TODO: remove method as it's only useful for testing game logic
-   public void printCurrentState()
-   {
-      String actualGame = "    ";
-      for (int i = 0; i < 6; i++)
-      {
-         actualGame += pits.get(i) + " ";
-      }
+    // TODO: remove method as it's only useful for testing game logic
+    public void printCurrentState() {
+        String actualGame = "    ";
+        for (int i = 0; i < 6; i++) {
+            actualGame += pits.get(i) + " ";
+        }
 
-      actualGame += "\n" + mancalas.get(0) + "                    " + mancalas.get(1) + "\n    ";
-      for (int i = 0; i < 6; i++)
-      {
-         actualGame += pits.get(i + 6) + " ";
-      }
+        actualGame += "\n" + mancalas.get(0) + "                    " + mancalas.get(1) + "\n    ";
+        for (int i = 0; i < 6; i++) {
+            actualGame += pits.get(i + 6) + " ";
+        }
 
-      System.out.println(actualGame);
-      System.out.println("It is player one's turn? " + playerOneTurn);
-   }
+        System.out.println(actualGame);
+        System.out.println("It is player one's turn? " + playerOneTurn);
+    }
 
-   @Override
-   public synchronized void addObserver(Observer o)
-   {
-      super.addObserver(o);
-   }
+    @Override
+    public synchronized void addObserver(Observer o) {
+        super.addObserver(o);
+    }
 
-   @Override
-   public synchronized void deleteObserver(Observer o)
-   {
-      super.deleteObserver(o);
-   }
+    @Override
+    public synchronized void deleteObserver(Observer o) {
+        super.deleteObserver(o);
+    }
 
-   /**
-    Notifies observers of changes to the model
-    */
-   @Override
-   public void notifyObservers()
-   {
-      super.notifyObservers();
-   }
+    /**
+     * Notifies observers of changes to the model
+     */
+    @Override
+    public void notifyObservers() {
+        super.notifyObservers();
+    }
 }

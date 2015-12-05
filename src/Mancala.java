@@ -7,17 +7,14 @@ import java.util.ArrayList;
 public class Mancala extends GameBoardTile
 {
    private int mancalaID;
-   private ArrayList<Stone> stoneContainer;
 
    /**
     Constructor method for the Mancala class.
     */
-   public Mancala(int x, int y, int w, int h, Color c)
+   public Mancala(int x, int y, int w, int h, Color c, int pid)
    {
       super(x, y, w, h, c);
-      //mancalaID = super.getCount();
-      stoneContainer = new ArrayList<Stone>();
-
+      mancalaID = pid;
    }
 
    //public void addPit(Stone newStone) { stoneContainer.add(newStone); }

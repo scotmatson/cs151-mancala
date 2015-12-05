@@ -4,48 +4,12 @@ import java.util.ArrayList;
 
 public class Pit extends GameBoardTile implements Drawable
 {
-   private ArrayList<Stone> stoneContainer;
+   private int pitID;
 
-   public Pit(int x, int y, int w, int h, Color c)
+   public Pit(int x, int y, int w, int h, Color c, int pitNumber)
    {
       super(x, y, w, h, c);
-      stoneContainer = new ArrayList<>();
-   }
-
-   /**
-    * @param newStone
-    */
-   public void populatePit(ArrayList<Stone> newStone)
-   {
-       for (int i = 0; i < newStone.size(); i++)
-       {
-           stoneContainer.add(newStone.get(i));
-       }
-   }
-
-   /**
-    * Returns the size of each pit
-    * @return
-    */
-   public int pitCount()
-   {
-       return stoneContainer.size();
-   }
-
-   /**
-    * @param addStone
-    */
-   public void incrementPit(Stone addStone)
-   {
-       stoneContainer.add(addStone);
-   }
-
-   /**
-    * @return
-    */
-   public ArrayList<Stone> unpopulatePit()
-   {
-       return stoneContainer;
+      pitID = pitNumber;
    }
 
    @Override

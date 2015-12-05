@@ -17,21 +17,23 @@ import java.util.ArrayList;
 public class MancalaBoard extends GameBoard
 {
    private MancalaModel model;
+
+   // TODO: Shouldn't these be private?
    Mancala mancala1;
    Mancala mancala2;
    ArrayList<Pit> mancalaPits;
-   Pit pit1;
-   Pit pit2;
-   Pit pit3;
-   Pit pit4;
-   Pit pit5;
-   Pit pit6;
-   Pit pit7;
-   Pit pit8;
-   Pit pit9;
-   Pit pit10;
-   Pit pit11;
-   Pit pit12;
+   //Pit pit1;
+   //Pit pit2;
+   //Pit pit3;
+   //Pit pit4;
+   //Pit pit5;
+   //Pit pit6;
+   //Pit pit7;
+   //Pit pit8;
+   //Pit pit9;
+   //Pit pit10;
+   //Pit pit11;
+   //Pit pit12;
 
    /**
     Constructor method for the MancalaBoard class.
@@ -46,9 +48,15 @@ public class MancalaBoard extends GameBoard
    {
       super(x, y, width, height, c);
       model = m;
-      //mancala1 = new Mancala();
+
+      // TODO: change actual placement values of mancala
+      mancala1 = new Mancala(0, 0, 0, 0, Color.white, 0);
+      mancala2 = new Mancala(0, 0, 0, 0, Color.white, 1);
+
+      // TODO: change actual placement values of pits
       mancalaPits = new ArrayList<>();
-      mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor()));
+      for (int i = 0; i < model.getNumberOfPits(); i++)
+         mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor(), i));
    }
 
    @Override

@@ -183,6 +183,8 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
         return false; // Returns a negative value when the pit wanted cannot be selected
     }
 
+   public int getNumberOfPits() { return numberOfPits; }
+
    /**
     * Meant to be an easy and straight forward way to reset the entire game.
     * @param numOfPits

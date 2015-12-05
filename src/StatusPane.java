@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import java.awt.*;
@@ -24,6 +25,7 @@ import java.util.Observer;
 public class StatusPane extends JPanel implements Observer {
     private MancalaModel model;
     private Container container;
+    private JPanel pane;
     private GridBagConstraints constraints;
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
@@ -34,32 +36,33 @@ public class StatusPane extends JPanel implements Observer {
     public StatusPane(int width, int height, MancalaModel m) {
         model = m;
 
+        pane = new JPanel(new GridBagLayout());
         container = new Container();
-        constraints = new GridBagConstraints(); //I went with grid bag for ease of use
-        container.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT); //Right to left on the screen
-        container.setLayout(new GridBagLayout());
-        container.setBackground(boardColor);
 
+        constraints = new GridBagConstraints(); //I went with grid bag for ease of use
 
         PANEL_WIDTH = width;
         PANEL_HEIGHT = height;
 
+        //pane.setSize(PANEL_WIDTH, PANEL_HEIGHT);
+
+
         createPane();
 
-        add(container, BorderLayout.WEST);
+        add(pane, BorderLayout.PAGE_START);
     }
 
     /**
      * Creates all of the Pane
      */
     public void createPane() {
-//        CapPlayer1Text();
-//        CapPlayer2Text();
-//        CapPlayer1Score();
-//        CapPlayer2Score();
-//        CurrentPlayer();
-//        PlayerTxtArea();
-//        PlayerNumber();
+        CapPlayer1Text();
+        CapPlayer2Text();
+        CapPlayer1Score();
+        CapPlayer2Score();
+        CurrentPlayer();
+        PlayerTxtArea();
+        PlayerNumber();
 
     }
 
@@ -70,9 +73,12 @@ public class StatusPane extends JPanel implements Observer {
         capturedPlayer1 = new JLabel("Player 1 Captured");
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridwidth = 30;
+        constraints.ipadx = 10;
+        constraints.ipady = 10;
         constraints.gridx = 0;
-        constraints.gridy = 50;
-        container.add(capturedPlayer1, constraints);
+        constraints.gridy = 0;
+        pane.add(capturedPlayer1, constraints);
     }
 
     /**
@@ -82,10 +88,13 @@ public class StatusPane extends JPanel implements Observer {
         capturedPlayer2 = new JLabel("Player 2 Captured");
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 500;
-        constraints.gridy = 50;
 
-        container.add(capturedPlayer2, constraints);
+        constraints.ipadx = 10;
+        constraints.ipady = 10;
+        constraints.gridx = 30;
+        constraints.gridy = 0;
+
+        pane.add(capturedPlayer2, constraints);
     }
 
     /**
@@ -98,8 +107,12 @@ public class StatusPane extends JPanel implements Observer {
         constraints.gridx = 0; //All these nums are arbitrary will change later
         constraints.gridy = 100;
 
-        container.add(capturedScore1, constraints);
+        pane.add(capturedScore1, constraints);
 
+    }
+
+    public void updatePlayer1Score() {
+        capturedScore1.setText("" + model.getStonesInMancala(1));
     }
 
     /**
@@ -112,13 +125,20 @@ public class StatusPane extends JPanel implements Observer {
         constraints.gridx = 500;
         constraints.gridy = 100;
 
-        container.add(capturedScore2, constraints);
+        pane.add(capturedScore2, constraints);
 
     }
 
     /**
+     * Updates player 2 score
+     * @return
+     */
+    public void updatePlayer2Score() {
+        capturedScore2.setText("" +model.getStonesInMancala(2));
+    }
+
+    /**
      * Shows the Current player
-     *
      */
     public void CurrentPlayer() {
         currentPlayer = new JLabel("Current Player");
@@ -126,7 +146,7 @@ public class StatusPane extends JPanel implements Observer {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 100;
         constraints.gridy = 150;
-        container.add(currentPlayer, constraints);
+        pane.add(currentPlayer, constraints);
     }
 
     /**
@@ -138,16 +158,29 @@ public class StatusPane extends JPanel implements Observer {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 200;
         constraints.gridy = 50;
-        container.add(player, constraints);
+        pane.add(player, constraints);
     }
 
+    /**
+     * Creates a JLabel for the player 1
+     *
+     */
     public void PlayerNumber() {
         numberOfPlayer = new JLabel("1");
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 300;
         constraints.gridy = 450;
-        container.add(numberOfPlayer, constraints);
+        pane.add(numberOfPlayer, constraints);
     }
+
+    /**
+     * Updates what player is playing
+     * @return
+     */
+    public void updatePlayerNumber() {
+      numberOfPlayer.setText("" +model.getCurrentPlayer());
+    }
+
 
 
     /**
@@ -188,6 +221,9 @@ public class StatusPane extends JPanel implements Observer {
 
         Color newColor = model.getBoardColor();
         setStatusPaneColor(newColor);
+        updatePlayer2Score();
+        updatePlayer1Score();
+        updatePlayerNumber();
         validate();
         repaint();
 

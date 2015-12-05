@@ -133,8 +133,12 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
          }
       }
 
-      if (currentPit == -1 && playerOneTurn == false) playerOneTurn = true;
-      else if (currentPit == -2 && playerTwoTurn == false) playerTwoTurn = true;
+      if (currentPit == -1 && playerOneTurn == false) {
+          playerOneTurn = true;
+      }
+      else if (currentPit == -2 && playerTwoTurn == false) {
+          playerTwoTurn = true;
+      }
       else if (currentPit > -1 && pits.get(currentPit) == 1) // Almost but not quite done
       {
          if (currentPit > 5 && playerTwoTurn == false){
@@ -150,9 +154,25 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
             pits.set(currentPit + 6, 0);
          }
       }
-
+        notifyObservers();
       return true; // returns a value that stating successful completion
    }
+
+    /**
+     * Returns 1 if player one is true else player 2s turn
+     * @param player
+     * @return
+     */
+    public int getCurrentPlayer() {
+        if (playerOneTurn == true) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    }
+
+
 
    public boolean pitSelector(int pitSelected)
    {
@@ -210,7 +230,9 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     * @param pitNumber
     * @return number of stones in mancala
     */
-   public int getStonesInMancala(int mancalaNumber) { return mancalas.get(mancalaNumber); }
+   public int getStonesInMancala(int mancalaNumber) {
+       return mancalas.get(mancalaNumber);
+   }
 
    /**
     Set the color of the stones

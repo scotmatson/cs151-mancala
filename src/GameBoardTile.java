@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.RoundRectangle2D;
 
 /**
 
@@ -15,7 +14,7 @@ import java.awt.geom.RoundRectangle2D;
  @version 1.01 2015/10/26
 
  */
-public abstract class GameBoardTile extends JComponent implements Drawable
+public abstract class GameBoardTile extends JPanel implements Drawable
 {
    Shape tile;
    private final int BORDER_RADIUS = 50;
@@ -32,7 +31,9 @@ public abstract class GameBoardTile extends JComponent implements Drawable
       width = w;
       height = h;
       color = c;
-      tile = new RoundRectangle2D.Double(x, y, width, height, BORDER_RADIUS, BORDER_RADIUS);
+
+      //setPreferredSize(new Dimension(width, height));
+      //tile = new RoundRectangle2D.Double(x, y, width, height, BORDER_RADIUS, BORDER_RADIUS);
    }
 
    /**
@@ -131,9 +132,9 @@ public abstract class GameBoardTile extends JComponent implements Drawable
 
    public void draw(Graphics g)
    {
+      System.out.println("Inside GameBoardTile draw()");
       Graphics2D g2 = (Graphics2D) g;
       g2.setColor(color);
-      System.out.println("Color: " + color);
       g2.fill(tile);
       g2.dispose();
    }

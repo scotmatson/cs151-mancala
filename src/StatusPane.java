@@ -41,8 +41,7 @@ public class StatusPane extends JPanel implements Observer {
         PANEL_WIDTH = width;
         PANEL_HEIGHT = height;
 
-        //pane.setSize(PANEL_WIDTH, PANEL_HEIGHT);
-
+        setStatusPaneColor(model.getStatusPaneColor());
 
         createPane();
 
@@ -211,7 +210,7 @@ public class StatusPane extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Color newColor = model.getBoardColor();
-        setStatusPaneColor(newColor);
+        setStatusPaneColor(model.getStatusPaneColor());
         updatePlayer2Score();
         updatePlayer1Score();
         updatePlayerNumber();

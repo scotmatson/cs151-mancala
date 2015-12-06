@@ -32,6 +32,7 @@ public class MancalaTest extends JFrame
 
       // The model
       MancalaModel model = new MancalaModel();
+      initilizeDefaults(model);
 
       // Todo: remove tests begin
       model.printCurrentState();
@@ -43,7 +44,6 @@ public class MancalaTest extends JFrame
       model.addObserver(statusPane);
       model.addObserver(gamePane);
 
-      initilizeDefaults(model, statusPane);
 
       // Menu Controller
       new MancalaMenuBarController(menuBar, model);
@@ -64,13 +64,13 @@ public class MancalaTest extends JFrame
     Initializes UI components for presentation on application
     launch.
     @param model the data to model
-    @param pane
+    //@param pane
     */
-   public void initilizeDefaults(MancalaModel model, StatusPane pane)
+   public void initilizeDefaults(MancalaModel model)
    {
       Color color = new Color(173, 136, 100);
+      model.setStatusPaneColor(color);
       model.setBoardColor(color);
-      pane.setStatusPaneColor(color); //TODO: Configure this so it is handled by the model
       model.setPitColor(new Color(125, 69, 36));
       model.setStoneColor(new Color(128, 140, 131));
    }

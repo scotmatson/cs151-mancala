@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
 
@@ -17,6 +18,7 @@ import java.awt.*;
 public class MancalaBoard extends GameBoard
 {
    private MancalaModel model;
+   private ArrayList<Pit> pits = new ArrayList<>();
 
    // TODO: Shouldn't these be private?
    Mancala mancala1;
@@ -91,6 +93,18 @@ public class MancalaBoard extends GameBoard
       pitPanel.add(pita5);
       pitPanel.add(pita6);
 
+      pits.add(pitb6);
+      pits.add(pitb5);
+      pits.add(pitb4);
+      pits.add(pitb3);
+      pits.add(pitb2);
+      pits.add(pitb1);
+      pits.add(pita1);
+      pits.add(pita2);
+      pits.add(pita3);
+      pits.add(pita4);
+      pits.add(pita5);
+      pits.add(pita6);
       //for (int i = 0; i < model.getNumberOfPits(); i++)
       //{
          //pitPanel.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 0));

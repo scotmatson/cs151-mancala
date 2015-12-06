@@ -56,7 +56,8 @@ public class LabeledMancalaBoard extends JPanel
     }
 
     public void setPlayerAText() {
-        JLabel playerA = new JLabel("Player A ---->", JLabel.CENTER);
+        JLabel playerA = new JLabel("Player A -------->", JLabel.CENTER);
+        playerA.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
         constraints.gridy = 2;
@@ -65,7 +66,8 @@ public class LabeledMancalaBoard extends JPanel
     }
 
     public void setPlayerBText() {
-        JLabel playerB = new JLabel("<--- Player B", JLabel.CENTER);
+        JLabel playerB = new JLabel("<-------- Player B", JLabel.CENTER);
+        playerB.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
         constraints.gridy = 0;

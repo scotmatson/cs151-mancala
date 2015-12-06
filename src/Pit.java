@@ -1,18 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 
 public class Pit extends GameBoardTile implements Drawable
 {
    private int pitID;
    //private JLabel pitRepresentation;
+   private String name;
 
    public Pit(int x, int y, int w, int h, Color c, int pitNumber, int numberOfStones, String name)
    {
       super(x, y, w, h, c);
+      this.name = name;
       pitID = pitNumber;
 
       JLabel pitStore = new JLabel(Integer.toString(numberOfStones));
-      pitStore.setPreferredSize(new Dimension(getWidth(), getHeight()/2));
+      pitStore.setPreferredSize(new Dimension(getWidth(), getHeight() / 2));
       pitStore.setHorizontalAlignment(SwingConstants.CENTER);
       pitStore.setVerticalAlignment(SwingConstants.CENTER);
       pitStore.setOpaque(true);
@@ -39,10 +42,21 @@ public class Pit extends GameBoardTile implements Drawable
       //pitRepresentation.setText(Integer.toString(numberOfStones));
    }
 
+   public void addPitListener(MouseAdapter listenForClicks)
+   {
+      this.addMouseListener(listenForClicks);
+   }
+
    @Override
    public void draw(Graphics g)
    {
       super.draw(g);
       //pitRepresentation.setBackground(g.getColor());
+   }
+
+   @Override
+   public String getName()
+   {
+      return name;
    }
 }

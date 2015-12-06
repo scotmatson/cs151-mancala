@@ -105,6 +105,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
    public void setStatusPaneColor(Color statusPaneColor)
    {
       this.statusPaneColor = statusPaneColor;
+      setChanged();
    }
 
    /**

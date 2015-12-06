@@ -1,5 +1,7 @@
 import javax.swing.*;
+import javax.swing.JPanel;
 import java.awt.*;
+import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -21,8 +23,8 @@ public class GamePane extends JPanel implements Observer
    private final int PANEL_WIDTH;
    private final int PANEL_HEIGHT;
 
-   MancalaModel model;
-   MancalaBoard board;
+   public MancalaModel model;
+   public MancalaBoard board;
 
    public GamePane(int width, int height, MancalaModel m)
    {
@@ -61,6 +63,7 @@ public class GamePane extends JPanel implements Observer
    public void update(Observable o, Object arg)
    {
       Color newColor = model.getBoardColor();
+       board.setColor(Color.black);
 
       revalidate();
       repaint();

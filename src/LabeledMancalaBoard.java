@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
+import java.awt.Color;
 import java.awt.GridBagLayout;
 import java.util.Observer;
 import java.util.Observable;
@@ -22,13 +23,15 @@ public class LabeledMancalaBoard extends JPanel implements Observer
 {
     private JPanel pane;
     private GridBagConstraints constraints;
+    private GamePane gamePane;
 
-    public LabeledMancalaBoard(int width, int height, GamePane gamePane) {
+    public LabeledMancalaBoard(GamePane gamePane) {
+       this.gamePane = gamePane;
        pane = new JPanel(new GridBagLayout());
        setLayout(new GridBagLayout());
        constraints = new GridBagConstraints();
 
-       addGamePane(gamePane);
+       addGamePane();
        setMancalaA();
        setManacalB();
        setPlayerAText();
@@ -77,7 +80,7 @@ public class LabeledMancalaBoard extends JPanel implements Observer
         pane.add(playerB, constraints);
     }
 
-    private void addGamePane(GamePane gamePane) {
+    private void addGamePane() {
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
         constraints.gridy = 1;
@@ -91,7 +94,7 @@ public class LabeledMancalaBoard extends JPanel implements Observer
     @Override
     public void update(Observable o, Object arg)
     {
-
+        gamePane.board.setColor(Color.black);
         revalidate();
         repaint();
     }

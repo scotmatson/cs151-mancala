@@ -44,7 +44,7 @@ public class MancalaTest extends JFrame
       // View containers
 
       GamePane gamePane = new GamePane(FRAME_WIDTH, 400, model);
-      LabeledMancalaBoard labeledBoard = new LabeledMancalaBoard(FRAME_WIDTH, 400, gamePane);
+      LabeledMancalaBoard labeledBoard = new LabeledMancalaBoard(gamePane);
       StatusPane statusPane = new StatusPane(labeledBoard.getWidth(), 150, model);
       model.addObserver(statusPane);
       model.addObserver(gamePane);

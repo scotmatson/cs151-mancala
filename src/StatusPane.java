@@ -210,7 +210,7 @@ public class StatusPane extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Color newColor = model.getBoardColor();
-        setStatusPaneColor(model.getStatusPaneColor());
+        setStatusPaneColor(newColor);
         updatePlayer2Score();
         updatePlayer1Score();
         updatePlayerNumber();

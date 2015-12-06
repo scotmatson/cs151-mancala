@@ -11,17 +11,21 @@ import java.util.Observer;
  * Author Alex,
  */
 public class WinnerDialog implements Observer {
-    private JLabel winnerLable;
+    private JLabel winnerLabel;
     private JFrame jFrame;
     private MancalaModel mancalaModel;
 
     public WinnerDialog() {
         jFrame = new JFrame();
-        winnerLable = new JLabel();
+        winnerLabel = new JLabel();
         mancalaModel = new MancalaModel();
+
+        jFrame.setSize(200,300);
 
         jFrame.setResizable(false);
         jFrame.setVisible(true);
+
+        jFrame.add(winnerLabel);
 
     }
 
@@ -29,7 +33,12 @@ public class WinnerDialog implements Observer {
      * Sets the winner
      */
     public void setWinnerLable() {
-       // winnerLable.setText(java.lang.String.format("%s", "" + mancalaModel.));
+        if(mancalaModel.playerOneWins > mancalaModel.playerTwoWins) {
+            winnerLabel.setText("Congrats! Player 1 wins");
+        }
+        else {
+            winnerLabel.setText("Congrats! Player 2 wings");
+        }
     }
 
     @Override

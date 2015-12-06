@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
@@ -14,14 +13,14 @@ public class StatusPane extends JPanel implements Observer {
     private GridBagConstraints constraints;
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
-    private Color boardColor;
     private JLabel capturedPlayer1;
     private JLabel capturedPlayer2;
     private JLabel currentPlayer;
     private JLabel capturedScore1;
     private JLabel capturedScore2;
-    private JLabel player;
     private JLabel numberOfPlayer;
+    private Color boardColor;
+    int fontSize = 20;
 
    /**
     Constructor method for the status pane
@@ -65,11 +64,12 @@ public class StatusPane extends JPanel implements Observer {
      */
     public void CapPlayer1Text() {
         capturedPlayer1 = new JLabel("Player 1 Captured");
-
+        capturedPlayer1.setFont(new Font("Serif", Font.PLAIN, fontSize));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
         constraints.gridy = 0;
         pane.add(capturedPlayer1, constraints);
+        capturedPlayer1.setBorder(BorderFactory.createEmptyBorder(0, 50, 0, 0));
     }
 
     /**
@@ -77,9 +77,9 @@ public class StatusPane extends JPanel implements Observer {
      */
     public void CapPlayer2Text() {
         capturedPlayer2 = new JLabel("Player 2 Captured");
-
+        capturedPlayer2.setFont(new Font("Serif", Font.PLAIN, fontSize));
         constraints.fill = GridBagConstraints.HORIZONTAL;
-
+        capturedPlayer2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 50));
         constraints.gridx = 2;
         constraints.gridy = 0;
         capturedPlayer2.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -94,11 +94,11 @@ public class StatusPane extends JPanel implements Observer {
      */
     public void CapPlayer1Score() {
         capturedScore1 = new JLabel("0");
+        capturedScore1.setFont(new Font("Serif", Font.PLAIN, fontSize));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 0;
         constraints.gridy = 1;
-        Border paddingBorder = BorderFactory.createEmptyBorder(0, 50, 0, 0);
-        capturedScore1.setBorder(paddingBorder);
+        capturedScore1.setBorder(BorderFactory.createEmptyBorder(0, 130, 0, 0));
 
         pane.add(capturedScore1, constraints);
 
@@ -114,13 +114,12 @@ public class StatusPane extends JPanel implements Observer {
      */
     public void CapPlayer2Score() {
         capturedScore2 = new JLabel("0");
+        capturedScore2.setFont(new Font("Serif", Font.PLAIN, fontSize));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         capturedScore2.setHorizontalAlignment(SwingConstants.RIGHT);
         constraints.gridx = 2;
         constraints.gridy = 1;
-
-        Border paddingBorder = BorderFactory.createEmptyBorder(0, 0, 0, 50);
-        capturedScore2.setBorder(paddingBorder);
+        capturedScore2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 140));
 
         pane.add(capturedScore2, constraints);
 
@@ -140,7 +139,7 @@ public class StatusPane extends JPanel implements Observer {
      */
     public void CurrentPlayer() {
         currentPlayer = new JLabel("Current Player");
-
+        currentPlayer.setFont(new Font("Serif", Font.PLAIN, fontSize));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
         constraints.gridy = 0;
@@ -153,12 +152,13 @@ public class StatusPane extends JPanel implements Observer {
      * Creates a JLabel for the player 1
      */
     public void PlayerNumber() {
-        numberOfPlayer = new JLabel("Player # 1");
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 1;
-        constraints.gridy = 1;
-        numberOfPlayer.setHorizontalAlignment(SwingConstants.CENTER);
-        pane.add(numberOfPlayer, constraints);
+       numberOfPlayer = new JLabel("Player # 1");
+       numberOfPlayer.setFont(new Font("Serif", Font.PLAIN, fontSize));
+       constraints.fill = GridBagConstraints.HORIZONTAL;
+       constraints.gridx = 1;
+       constraints.gridy = 1;
+       numberOfPlayer.setHorizontalAlignment(SwingConstants.CENTER);
+       pane.add(numberOfPlayer, constraints);
     }
 
     /**
@@ -196,10 +196,7 @@ public class StatusPane extends JPanel implements Observer {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-
         g2.setColor(boardColor);
-
-
     }
 
     /**

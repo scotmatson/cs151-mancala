@@ -116,6 +116,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
      */
     private boolean distributeStones(int pitNumber) { // Should be private/ only pit selector should use it
         int currentPit = pitNumber;
+        int prevStones = 0;
 
         while (pits.get(pitNumber) > 0) {
             // More logic here
@@ -132,17 +133,20 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
                     break;
                 case -1:
                     currentPit = 6;
+                    prevStones = pits.get(currentPit);
                     pits.set(pitNumber, pits.get(pitNumber) - 1);
                     pits.set(currentPit, pits.get(currentPit) + 1);
                     break;
                 case -2:
                     currentPit = 5;
+                    prevStones = pits.get(currentPit);
                     pits.set(pitNumber, pits.get(pitNumber) - 1);
                     pits.set(currentPit, pits.get(currentPit) + 1);
                     break;
                 default:
                     if (currentPit <= 5) --currentPit;
                     else if (currentPit >= 6) ++currentPit;
+                    prevStones = pits.get(currentPit);
                     pits.set(pitNumber, pits.get(pitNumber) - 1);
                     pits.set(currentPit, pits.get(currentPit) + 1);
                     break;
@@ -155,7 +159,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
         } else if (currentPit == -2 && playerTwoTurn == false) {
             playerTwoTurn = true;
 
-        } else if (currentPit > -1 && pits.get(currentPit) == 1) // Almost but not quite done
+        } else if (currentPit > -1 && pits.get(currentPit) == 1 && prevStones == 0)
         {
             if (currentPit > 5 && playerTwoTurn == false) {
                 int temp = mancalas.get(1);

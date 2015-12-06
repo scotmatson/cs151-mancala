@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -19,24 +18,23 @@ import java.util.ArrayList;
 public class MancalaBoard extends GameBoard
 {
    private MancalaModel model;
-   private JPanel mancalaBoardPanel;
 
    // TODO: Shouldn't these be private?
    Mancala mancala1;
    Mancala mancala2;
    ArrayList<Pit> mancalaPits;
-   //Pit pit1;
-   //Pit pit2;
-   //Pit pit3;
-   //Pit pit4;
-   //Pit pit5;
-   //Pit pit6;
-   //Pit pit7;
-   //Pit pit8;
-   //Pit pit9;
-   //Pit pit10;
-   //Pit pit11;
-   //Pit pit12;
+   Pit pitb1;
+   Pit pitb2;
+   Pit pitb3;
+   Pit pitb4;
+   Pit pitb5;
+   Pit pitb6;
+   Pit pita1;
+   Pit pita2;
+   Pit pita3;
+   Pit pita4;
+   Pit pita5;
+   Pit pita6;
 
    /**
     Constructor method for the MancalaBoard class.
@@ -54,23 +52,64 @@ public class MancalaBoard extends GameBoard
       setLayout(new BorderLayout());
 
       // TODO: change actual placement values of mancala
-      mancala1 = new Mancala(0, 0, 0, 0, Color.white, 0);
-      mancala2 = new Mancala(0, 0, 0, 0, Color.white, 1);
+      int mancalaWidth = 150;
+      mancala1 = new Mancala(0, 0, mancalaWidth, height, m.getPitColor(), 0);
+      //mancala1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); // TODO: TEST
+      mancala2 = new Mancala((width - mancalaWidth), 0, mancalaWidth, height, m.getPitColor(), 1);
+      //mancala2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); // TODO: TEST
+
       JPanel pitPanel = new JPanel(new GridLayout(2, model.getNumberOfPits()/2));
 
-      // TODO: change actual placement values of pits
-      mancalaPits = new ArrayList<>();
-      for (int i = 0; i < model.getNumberOfPits(); i++)
-      {
-         Border paddingBorder = BorderFactory.createEmptyBorder(0, 100, 0, 0);
-         pitPanel.setBorder(paddingBorder);
-         mancalaPits.add(new Pit(x, y, 50, 50, m.getPitColor(), i, model.getStonesInPit(i)));
-         pitPanel.add(mancalaPits.get(i).getPitRepresentation());
-      }
+      int pitWidth = 115;
+      int pitHeight = 100;
+      pitb6 = new Pit(pitWidth*0, 0, pitWidth, height/2, m.getPitColor(), 0, model.getStonesInPit(0), "B6");
+      pitb5 = new Pit(pitWidth*1, 0, pitWidth, height/2, m.getPitColor(), 1, model.getStonesInPit(1), "B5");
+      pitb4 = new Pit(pitWidth*2, 0, pitWidth, height/2, m.getPitColor(), 2, model.getStonesInPit(2), "B4");
+      pitb3 = new Pit(pitWidth*3, 0, pitWidth, height/2, m.getPitColor(), 3, model.getStonesInPit(3), "B3");
+      pitb2 = new Pit(pitWidth*4, 0, pitWidth, height/2, m.getPitColor(), 4, model.getStonesInPit(4), "B2");
+      pitb1 = new Pit(pitWidth*5, 0, pitWidth, height/2, m.getPitColor(), 5, model.getStonesInPit(5), "B1");
 
+      pita1 = new Pit(pitWidth*0, height/2, pitWidth, height/2, m.getPitColor(), 6, model.getStonesInPit(6), "A1");
+      pita2 = new Pit(pitWidth*1, height/2, pitWidth, height/2, m.getPitColor(), 7, model.getStonesInPit(7), "A2");
+      pita3 = new Pit(pitWidth*2, height/2, pitWidth, height/2, m.getPitColor(), 8, model.getStonesInPit(8), "A3");
+      pita4 = new Pit(pitWidth*3, height/2, pitWidth, height/2, m.getPitColor(), 9, model.getStonesInPit(9), "A4");
+      pita5 = new Pit(pitWidth*4, height/2, pitWidth, height/2, m.getPitColor(), 10, model.getStonesInPit(10), "A5");
+      pita6 = new Pit(pitWidth*5, height/2, pitWidth, height/2, m.getPitColor(), 11, model.getStonesInPit(11), "A6");
+
+      mancalaPits = new ArrayList<>();
+      pitPanel.add(pitb6);
+      pitPanel.add(pitb5);
+      pitPanel.add(pitb4);
+      pitPanel.add(pitb3);
+      pitPanel.add(pitb2);
+      pitPanel.add(pitb1);
+      pitPanel.add(pita1);
+      pitPanel.add(pita2);
+      pitPanel.add(pita3);
+      pitPanel.add(pita4);
+      pitPanel.add(pita5);
+      pitPanel.add(pita6);
+
+
+      //for (int i = 0; i < model.getNumberOfPits(); i++)
+      //{
+         //pitPanel.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 0));
+         //pitPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); // TODO: TEST
+      //   Pit pit = new Pit(x, y, 100, height/2, m.getPitColor(), i, model.getStonesInPit(i), "Test");
+         //pit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+
+      //   mancalaPits.add(pit);
+
+      //   //pitPanel.add(mancalaPits.get(i).getPitRepresentation());
+        // pitPanel.add(mancalaPits.get(i));
+      //}
+
+
+      add(mancala1, BorderLayout.WEST);
       add(pitPanel, BorderLayout.CENTER);
-      add(mancala1.getMancalaRepresentation(), BorderLayout.WEST);
-      add(mancala2.getMancalaRepresentation(), BorderLayout.EAST);
+      add(mancala2, BorderLayout.EAST);
+      //add(mancala1.getMancalaRepresentation(), BorderLayout.WEST);
+      //add(mancala2.getMancalaRepresentation(), BorderLayout.EAST);
    }
 
    @Override
@@ -79,10 +118,10 @@ public class MancalaBoard extends GameBoard
       super.draw(g);
       Graphics2D g2 = (Graphics2D) g;
 
-      for (Pit p : mancalaPits)
-      {
-         p.draw(g2);
-      }
+      //for (Pit p : mancalaPits)
+      //{
+      //   p.draw(g2);
+      //}
       //g2.fill(pit2);
       //g2.fill(pit3);
       //g2.fill(pit4);

@@ -39,6 +39,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     private Color pitColor;
     private Color stoneColor;
     // private Color textColor
+    private Color statusPaneColor;
 
     public MancalaModel(int numOfPits, int numOfStonePP, Color bColor,
                         Color pColor, Color sColor) {
@@ -87,7 +88,26 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
         // TODO: Stores game logic.
     }
 
-    /**
+
+   /**
+    Gets the color of the status pane
+    @return the color of the status pane
+    */
+   public Color getStatusPaneColor()
+   {
+      return statusPaneColor;
+   }
+
+   /**
+    Sets the color of the status pane
+    @param statusPaneColor the color to set the status pane
+    */
+   public void setStatusPaneColor(Color statusPaneColor)
+   {
+      this.statusPaneColor = statusPaneColor;
+   }
+
+   /**
      * This function is meant to perform the logic representing which pit a player
      * selects and distributes stones accordingly.
      *
@@ -157,12 +177,12 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     /**
      * Returns 1 if player one is true else player 2s turn
      *
-     * @param player
+     //* @param player
      * @return
      */
     public int getCurrentPlayer() {
         if (playerOneTurn == true) {
-            System.out.print("Dogs");
+            System.out.print("Dogs"); // TODO: Testing I guess? Why does this say dogs?
             return 1;
         } else {
             return 2;
@@ -247,7 +267,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     }
 
     /**
-     * @param pitNumber
+     //* @param pitNumber
      * @return number of stones in mancala
      */
     public int getStonesInMancala(int mancalaNumber) {

@@ -67,6 +67,11 @@ public class Pit extends GameBoardTile implements Drawable
       pitStore.setBackground(c);
    }
 
+   public void setPitNumberOfStones(int numberOfStones)
+   {
+      this.pitStore.setText(Integer.toString(numberOfStones));
+   }
+
    @Override
    public String getName()
    {

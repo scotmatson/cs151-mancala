@@ -161,7 +161,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
 
         } else if (currentPit > -1 && pits.get(currentPit) == 1 && prevStones == 0)
         {
-            if (currentPit > 5 && playerTwoTurn == false) {
+            if (currentPit > 5 && playerTwoTurn == false) { // TODO: fix the logic here
                 int temp = mancalas.get(1);
                 mancalas.set(1, temp + pits.get(currentPit - 6) + 1);
                 pits.set(currentPit, 0);

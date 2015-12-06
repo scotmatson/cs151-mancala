@@ -42,8 +42,10 @@ public class MancalaTest extends JFrame
       // Todo: remove tests end
 
       // View containers
-      StatusPane statusPane = new StatusPane(FRAME_WIDTH, 150, model);
+
       GamePane gamePane = new GamePane(FRAME_WIDTH, 400, model);
+      LabeledMancalaBoard labeledBoard = new LabeledMancalaBoard(FRAME_WIDTH, 400, gamePane);
+      StatusPane statusPane = new StatusPane(labeledBoard.getWidth(), 150, model);
       model.addObserver(statusPane);
       model.addObserver(gamePane);
 
@@ -61,7 +63,7 @@ public class MancalaTest extends JFrame
       pane.add(statusPane, constraints);
       constraints.gridx = 0;
       constraints.gridy = 1;
-      pane.add(gamePane, constraints);
+      pane.add(labeledBoard, constraints);
 
       // Display the window.
       pack();

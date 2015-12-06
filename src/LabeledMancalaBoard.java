@@ -1,4 +1,7 @@
+import javax.swing.*;
+import javax.swing.JLabel;
 import java.awt.*;
+import java.awt.GridBagLayout;
 
 /**
 
@@ -13,45 +16,71 @@ import java.awt.*;
  @version 1.01 2015/12/01
 
  */
-public class LabeledMancalaBoard extends BoardDecorator implements Drawable
+public class LabeledMancalaBoard extends JPanel
 {
-   public LabeledMancalaBoard(Drawable decoratedDrawable)
-   {
-      super(decoratedDrawable);
-   }
+    private JPanel pane;
+    private GridBagConstraints constraints;
 
-   @Override
-   public void draw(Graphics g)
-   {
-      decoratedDrawable.draw(g);
-      //setAllBorders();
-   }
+    public LabeledMancalaBoard(int width, int height, GamePane gamePane) {
+       pane = new JPanel(new GridBagLayout());
+       setLayout(new GridBagLayout());
+       constraints = new GridBagConstraints();
 
-   public void setAllBorders()
-   {
-      setBorderNorth();
-      setBorderEast();
-      setBorderSouth();
-      setBorderWest();
-   }
+       addGamePane(gamePane);
+       setMancalaA();
+       setManacalB();
+       setPlayerAText();
+       setPlayerBText();
 
-   public void setBorderNorth()
-   {
-      System.out.println("Adding North");
-   }
+       this.add(pane);
+    }
 
-   public void setBorderEast()
-   {
-      System.out.println("Adding East");
-   }
+    private void setMancalaA() {
+        JLabel mancalaA = new JLabel("Mancala A", JLabel.CENTER);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        mancalaA.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+        constraints.gridx = 0;
+        constraints.gridy = 1;
 
-   public void setBorderSouth()
-   {
-      System.out.println("Adding South");
-   }
+        pane.add(mancalaA, constraints);
+    }
 
-   public void setBorderWest()
-   {
-      System.out.println("Adding West");
-   }
+    private void setManacalB() {
+        JLabel mancalaB = new JLabel("Mancala B", JLabel.CENTER);
+        mancalaB.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 2;
+        constraints.gridy = 1;
+
+        pane.add(mancalaB, constraints);
+    }
+
+    public void setPlayerAText() {
+        JLabel playerA = new JLabel("Player A ---->", JLabel.CENTER);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 1;
+        constraints.gridy = 2;
+
+        pane.add(playerA, constraints);
+    }
+
+    public void setPlayerBText() {
+        JLabel playerB = new JLabel("<--- Player B", JLabel.CENTER);
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 1;
+        constraints.gridy = 0;
+
+        pane.add(playerB, constraints);
+    }
+
+    private void addGamePane(GamePane gamePane) {
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.gridx = 1;
+        constraints.gridy = 1;
+        pane.add(gamePane, constraints);
+    }
+
+    public int getWidth() {
+        return (int)pane.getPreferredSize().getWidth();
+    }
 }

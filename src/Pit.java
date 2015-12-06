@@ -10,13 +10,14 @@ public class Pit extends GameBoardTile implements Drawable
    private JLabel pitLabel;
    private String name;
 
-   public Pit(int x, int y, int w, int h, Color c, int pitNumber, int numberOfStones, String name)
+   public Pit(int x, int y, int w, int h, Color c, int pitNumber, int numberOfStones, String name, Boolean labelsTop)
    {
       super(x, y, w, h, c);
       this.name = name;
       pitID = pitNumber;
 
       pitStore = new JLabel(Integer.toString(numberOfStones));
+      pitStore.setFont(new Font("Serif", Font.PLAIN, 40));
       pitStore.setPreferredSize(new Dimension(getWidth(), getHeight() / 2));
       pitStore.setHorizontalAlignment(SwingConstants.CENTER);
       pitStore.setVerticalAlignment(SwingConstants.CENTER);
@@ -30,14 +31,17 @@ public class Pit extends GameBoardTile implements Drawable
       pitLabel.setOpaque(true);
       pitLabel.setBackground(Color.WHITE);
 
-      add(pitStore);
-      add(pitLabel);
-
-      //pitRepresentation = new JLabel(Integer.toString(numberOfStones));
-      //pitRepresentation.setBackground(c);
+      if (labelsTop)
+      {
+         add(pitLabel);
+         add(pitStore);
+      }
+      else
+      {
+         add(pitStore);
+         add(pitLabel);
+      }
    }
-
-   //public JLabel getPitRepresentation() { return pitRepresentation; }
 
    public void update(int numberOfStones)
    {

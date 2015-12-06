@@ -17,9 +17,9 @@ public class Mancala extends GameBoardTile
    {
       super(x, y, w, h, c);
       mancalaID = pid;
-      //mancalaRepresentation = new JLabel("0");
 
       mancalaStore = new JLabel("0");
+      mancalaStore.setFont(new Font("Serif", Font.PLAIN, 40));
       mancalaStore.setHorizontalAlignment(SwingConstants.CENTER);
       mancalaStore.setVerticalAlignment(SwingConstants.CENTER);
       mancalaStore.setPreferredSize(new Dimension(getWidth(), getHeight()));
@@ -31,28 +31,25 @@ public class Mancala extends GameBoardTile
 
    public int getMancalaID() { return mancalaID; }
 
-   //public JLabel getMancalaRepresentation() { return mancalaRepresentation; }
-
-
    @Override
    public void draw(Graphics g)
    {
       super.draw(g);
-      //mancalaRepresentation.setBackground(g.getColor());
    }
 
-   // Is this supposed to be extended from the Observer interface? The naming
-   // is the same.
-   public void update(int numberOfStones)
-   {
-      //mancalaRepresentation.setText(Integer.toString(numberOfStones));
-   }
-
+   /**
+    Updates the number of the stones in the mancala
+    @param numberOfStones the number of stones in the mancala
+    */
    public void setMancalaNumberOfStones(int numberOfStones)
    {
       mancalaStore.setText(Integer.toString(numberOfStones));
    }
 
+   /**
+    Sets the color of the mancala
+    @param c a new color for the mancala
+    */
    public void setMancalaColor(Color c)
    {
       mancalaStore.setBackground(c);

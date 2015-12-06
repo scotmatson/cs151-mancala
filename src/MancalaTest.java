@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 /**
 
@@ -18,6 +20,7 @@ public class MancalaTest extends JFrame
 {
    private final String FRAME_TITLE = "Mancala by Tertiary";
    private final int FRAME_WIDTH = 1000;
+   private GridBagConstraints constraints;
 
    /**
     Constructor method for the MancalaTest class.
@@ -50,9 +53,15 @@ public class MancalaTest extends JFrame
 
       // Add content to JFrame
       Container pane = getContentPane();
+      constraints = new GridBagConstraints();
+      pane.setLayout(new GridBagLayout());
+      constraints.gridx = 0;
+      constraints.gridy = 0;
       setJMenuBar(menuBar);
-      pane.add(statusPane, BorderLayout.PAGE_START);
-      pane.add(gamePane, BorderLayout.PAGE_END);
+      pane.add(statusPane, constraints);
+      constraints.gridx = 0;
+      constraints.gridy = 1;
+      pane.add(gamePane, constraints);
 
       // Display the window.
       pack();

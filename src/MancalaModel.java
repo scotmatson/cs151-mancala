@@ -19,8 +19,8 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     // Logic Variables
     private boolean playerOneTurn;
     private boolean playerTwoTurn;
-    private int playerOneWins = 0;
-    private int playerTwoWins = 0;
+    public int playerOneWins = 0;
+    public int playerTwoWins = 0;
     private int numberOfPits;
     private int numberOfStonesPerPit;
     /*

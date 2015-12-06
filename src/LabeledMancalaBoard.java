@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.GridBagLayout;
+import java.util.Observer;
+import java.util.Observable;
 
 /**
 
@@ -16,7 +18,7 @@ import java.awt.GridBagLayout;
  @version 1.01 2015/12/01
 
  */
-public class LabeledMancalaBoard extends JPanel
+public class LabeledMancalaBoard extends JPanel implements Observer
 {
     private JPanel pane;
     private GridBagConstraints constraints;
@@ -84,5 +86,13 @@ public class LabeledMancalaBoard extends JPanel
 
     public int getWidth() {
         return (int)pane.getPreferredSize().getWidth();
+    }
+
+    @Override
+    public void update(Observable o, Object arg)
+    {
+
+        revalidate();
+        repaint();
     }
 }

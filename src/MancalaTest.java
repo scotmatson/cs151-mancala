@@ -48,6 +48,7 @@ public class MancalaTest extends JFrame
       StatusPane statusPane = new StatusPane(labeledBoard.getWidth(), 150, model);
       model.addObserver(statusPane);
       model.addObserver(gamePane);
+      model.addObserver(labeledBoard);
 
 
       // Menu Controller

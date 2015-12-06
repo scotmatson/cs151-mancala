@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
 
@@ -14,7 +16,7 @@ import java.awt.*;
  @version 1.01 2015/11/14
 
  */
-public class MancalaBoard extends GameBoard
+public class MancalaBoard extends GameBoard implements Observer
 {
    private MancalaModel model;
 
@@ -154,5 +156,28 @@ public class MancalaBoard extends GameBoard
       new PitController(pita4, model);
       new PitController(pita5, model);
       new PitController(pita6, model);
+   }
+
+   @Override
+   public void update(Observable o, Object arg)
+   {
+      System.out.println("Update");
+      Color newPitColor = model.getPitColor();
+
+      pitb6.setPitStoreColor(newPitColor);
+      pitb5.setPitStoreColor(newPitColor);
+      pitb4.setPitStoreColor(newPitColor);
+      pitb3.setPitStoreColor(newPitColor);
+      pitb2.setPitStoreColor(newPitColor);
+      pitb1.setPitStoreColor(newPitColor);
+
+      pita1.setPitStoreColor(newPitColor);
+      pita2.setPitStoreColor(newPitColor);
+      pita3.setPitStoreColor(newPitColor);
+      pita4.setPitStoreColor(newPitColor);
+      pita5.setPitStoreColor(newPitColor);
+      pita6.setPitStoreColor(newPitColor);
+
+      repaint();
    }
 }

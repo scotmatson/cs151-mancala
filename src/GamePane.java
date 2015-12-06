@@ -1,7 +1,5 @@
 import javax.swing.*;
-import javax.swing.JPanel;
 import java.awt.*;
-import java.awt.Color;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -34,6 +32,7 @@ public class GamePane extends JPanel implements Observer
       PANEL_WIDTH = width;
       PANEL_HEIGHT = height;
       board = new MancalaBoard(0, 0, PANEL_WIDTH, PANEL_HEIGHT, model.getBoardColor(), model);
+      model.addObserver(board);
 
       // TODO: just wip
       this.add(board, BorderLayout.CENTER);
@@ -63,7 +62,7 @@ public class GamePane extends JPanel implements Observer
    public void update(Observable o, Object arg)
    {
       Color newColor = model.getBoardColor();
-       board.setColor(Color.black);
+       board.setColor(newColor);
 
       revalidate();
       repaint();

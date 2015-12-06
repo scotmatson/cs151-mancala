@@ -6,6 +6,8 @@ public class Pit extends GameBoardTile implements Drawable
 {
    private int pitID;
    //private JLabel pitRepresentation;
+   private JLabel pitStore;
+   private JLabel pitLabel;
    private String name;
 
    public Pit(int x, int y, int w, int h, Color c, int pitNumber, int numberOfStones, String name)
@@ -14,14 +16,14 @@ public class Pit extends GameBoardTile implements Drawable
       this.name = name;
       pitID = pitNumber;
 
-      JLabel pitStore = new JLabel(Integer.toString(numberOfStones));
+      pitStore = new JLabel(Integer.toString(numberOfStones));
       pitStore.setPreferredSize(new Dimension(getWidth(), getHeight() / 2));
       pitStore.setHorizontalAlignment(SwingConstants.CENTER);
       pitStore.setVerticalAlignment(SwingConstants.CENTER);
       pitStore.setOpaque(true);
       pitStore.setBackground(c);
 
-      JLabel pitLabel = new JLabel(name);
+      pitLabel = new JLabel(name);
       pitLabel.setPreferredSize(new Dimension(getWidth(), getHeight()/2));
       pitLabel.setHorizontalAlignment(SwingConstants.CENTER);
       pitLabel.setVerticalAlignment(SwingConstants.CENTER);
@@ -48,10 +50,21 @@ public class Pit extends GameBoardTile implements Drawable
    }
 
    @Override
+   public void setColor(Color c)
+   {
+      super.setColor(c);
+   }
+
+   @Override
    public void draw(Graphics g)
    {
       super.draw(g);
       //pitRepresentation.setBackground(g.getColor());
+   }
+
+   public void setPitStoreColor(Color c)
+   {
+      pitStore.setBackground(c);
    }
 
    @Override

@@ -41,41 +41,41 @@ public class LabeledMancalaBoard extends JPanel implements Observer
     }
 
     private void setMancalaA() {
-        JLabel mancalaA = new JLabel("Mancala A", JLabel.CENTER);
+        JLabel mancalaA = new JLabel("Mancala 1", JLabel.CENTER);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         mancalaA.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 1;
 
         pane.add(mancalaA, constraints);
     }
 
     private void setManacalB() {
-        JLabel mancalaB = new JLabel("Mancala B", JLabel.CENTER);
+        JLabel mancalaB = new JLabel("Mancala 2", JLabel.CENTER);
         mancalaB.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 0;
+        constraints.gridx = 2;
         constraints.gridy = 1;
 
         pane.add(mancalaB, constraints);
     }
 
     public void setPlayerAText() {
-        JLabel playerA = new JLabel("Player A -------->", JLabel.CENTER);
+        JLabel playerA = new JLabel("<-------- Player 1 ", JLabel.CENTER);
         playerA.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
-        constraints.gridy = 2;
+        constraints.gridy = 0;
 
         pane.add(playerA, constraints);
     }
 
     public void setPlayerBText() {
-        JLabel playerB = new JLabel("<-------- Player B", JLabel.CENTER);
+        JLabel playerB = new JLabel("Player 2 -------->", JLabel.CENTER);
         playerB.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.gridx = 1;
-        constraints.gridy = 0;
+        constraints.gridy = 2;
 
         pane.add(playerB, constraints);
     }

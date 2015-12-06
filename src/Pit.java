@@ -17,6 +17,7 @@ public class Pit extends GameBoardTile implements Drawable
       pitID = pitNumber;
 
       pitStore = new JLabel(Integer.toString(numberOfStones));
+      pitStore.setFont(new Font("Serif", Font.PLAIN, 40));
       pitStore.setPreferredSize(new Dimension(getWidth(), getHeight() / 2));
       pitStore.setHorizontalAlignment(SwingConstants.CENTER);
       pitStore.setVerticalAlignment(SwingConstants.CENTER);

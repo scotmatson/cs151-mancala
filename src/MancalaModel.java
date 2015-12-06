@@ -19,6 +19,8 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
     // Logic Variables
     private boolean playerOneTurn;
     private boolean playerTwoTurn;
+    private int playerOneWins = 0;
+    private int playerTwoWins = 0;
     private int numberOfPits;
     private int numberOfStonesPerPit;
     /*
@@ -174,6 +176,20 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
                 pits.set(currentPit + 6, 0);
             }
         }
+
+        int sum = 0;
+        for(int i = 0; i < pits.size(); i++) sum += pits.get(i);
+        if (sum == 0 && mancalas.get(0) > mancalas.get(1))
+        {
+           playerOneWins++;
+           resetGame();
+        }
+        else if (sum == 0 && mancalas.get(1) > mancalas.get(0))
+        {
+           playerTwoWins++;
+           resetGame();
+        }
+
         setChanged();
         notifyObservers();
         return true; // returns a value that stating successful completion

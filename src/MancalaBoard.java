@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
 
@@ -22,13 +21,14 @@ public class MancalaBoard extends GameBoard
    // TODO: Shouldn't these be private?
    Mancala mancala1;
    Mancala mancala2;
-   ArrayList<Pit> mancalaPits;
-   Pit pitb1;
-   Pit pitb2;
-   Pit pitb3;
-   Pit pitb4;
-   Pit pitb5;
+
    Pit pitb6;
+   Pit pitb5;
+   Pit pitb4;
+   Pit pitb3;
+   Pit pitb2;
+   Pit pitb1;
+
    Pit pita1;
    Pit pita2;
    Pit pita3;
@@ -76,7 +76,8 @@ public class MancalaBoard extends GameBoard
       pita5 = new Pit(pitWidth*4, height/2, pitWidth, height/2, m.getPitColor(), 10, model.getStonesInPit(10), "A5");
       pita6 = new Pit(pitWidth*5, height/2, pitWidth, height/2, m.getPitColor(), 11, model.getStonesInPit(11), "A6");
 
-      mancalaPits = new ArrayList<>();
+      addPitControllers();
+
       pitPanel.add(pitb6);
       pitPanel.add(pitb5);
       pitPanel.add(pitb4);
@@ -89,7 +90,6 @@ public class MancalaBoard extends GameBoard
       pitPanel.add(pita4);
       pitPanel.add(pita5);
       pitPanel.add(pita6);
-
 
       //for (int i = 0; i < model.getNumberOfPits(); i++)
       //{
@@ -134,5 +134,25 @@ public class MancalaBoard extends GameBoard
       //g2.fill(pit11);
       //g2.fill(pit12);
       //g2.dispose();
+   }
+
+   /**
+    Wires up the pits to a controller for event handling
+    */
+   public void addPitControllers()
+   {
+      new PitController(pitb6, model);
+      new PitController(pitb5, model);
+      new PitController(pitb4, model);
+      new PitController(pitb3, model);
+      new PitController(pitb2, model);
+      new PitController(pitb1, model);
+
+      new PitController(pita1, model);
+      new PitController(pita2, model);
+      new PitController(pita3, model);
+      new PitController(pita4, model);
+      new PitController(pita5, model);
+      new PitController(pita6, model);
    }
 }

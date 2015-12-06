@@ -158,41 +158,55 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
         if (currentPit == -1 && playerOneTurn == false) {
             playerOneTurn = true;
 
-        } else if (currentPit == -2 && playerTwoTurn == false) {
+        }
+        else if (currentPit == -2 && playerTwoTurn == false) {
             playerTwoTurn = true;
 
-        } else if (currentPit > -1 && pits.get(currentPit) == 1 && prevStones == 0)
-        {
-            if (currentPit > 5 && playerTwoTurn == false) { // TODO: fix the logic here
-                int temp = mancalas.get(1);
-                mancalas.set(1, temp + pits.get(currentPit - 6) + 1);
-                pits.set(currentPit, 0);
-                pits.set(currentPit - 6, 0);
-
-            } else if (currentPit < 6 && playerOneTurn == false) {
-                int temp = mancalas.get(0);
-                mancalas.set(0, temp + pits.get(currentPit + 6) + 1);
-                pits.set(currentPit, 0);
-                pits.set(currentPit + 6, 0);
-            }
         }
+        //else if (currentPit > -1 && pits.get(currentPit) == 1 && prevStones == 0)
+        //{
+        //    if (currentPit > 5 && playerTwoTurn == false) { // TODO: fix the logic here
+        //        int temp = mancalas.get(1);
+        //        mancalas.set(1, temp + pits.get(currentPit - 6) + 1);
+        //        pits.set(currentPit, 0);
+        //        pits.set(currentPit - 6, 0);
+
+        //    } else if (currentPit < 6 && playerOneTurn == false) {
+        //        int temp = mancalas.get(0);
+        //        mancalas.set(0, temp + pits.get(currentPit + 6) + 1);
+        //        pits.set(currentPit, 0);
+        //        pits.set(currentPit + 6, 0);
+        //    }
+        //}
 
         int sum = 0;
         for(int i = 0; i < pits.size(); i++) sum += pits.get(i);
         if (sum == 0 && mancalas.get(0) > mancalas.get(1))
         {
            playerOneWins++;
+           notifyObservers();
            resetGame();
         }
         else if (sum == 0 && mancalas.get(1) > mancalas.get(0))
         {
            playerTwoWins++;
+           notifyObservers();
            resetGame();
         }
 
         setChanged();
         notifyObservers();
         return true; // returns a value that stating successful completion
+    }
+
+    public int getPlayerOneWins()
+    {
+       return playerOneWins;
+    }
+
+    public int getPlayerTwoWins()
+    {
+       return playerTwoWins;
     }
 
     /**

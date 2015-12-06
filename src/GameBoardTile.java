@@ -5,13 +5,13 @@ import java.awt.*;
 
  COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
 
- TODO: Add Description
+ Abstract class to blueprint tiles for a game board
 
  Solves CS151 Project - Mancala Game
 
- @author Scot Matson
+ @author Kenneth Cross, Scot Matson, Alex Preston
 
- @version 1.01 2015/10/26
+ @version 1.01 2015/12/5
 
  */
 public abstract class GameBoardTile extends JPanel implements Drawable
@@ -24,6 +24,14 @@ public abstract class GameBoardTile extends JPanel implements Drawable
    private int height;
    private Color color;
 
+   /**
+    Constructor method for the GameBoardTile class
+    @param x an x-coordinate
+    @param y a y-coordinate
+    @param w a width
+    @param h a height
+    @param c a color
+    */
    public GameBoardTile(int x, int y, int w, int h, Color c)
    {
       xPos = x;
@@ -130,6 +138,10 @@ public abstract class GameBoardTile extends JPanel implements Drawable
       return color;
    }
 
+   /**
+    Draws a tile
+    @param g a Graphics object
+    */
    public void draw(Graphics g)
    {
       System.out.println("Inside GameBoardTile draw()");

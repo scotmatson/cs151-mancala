@@ -5,19 +5,23 @@ import java.awt.*;
 
  COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
 
- // TODO: Add description
+ Abstract class for extending functionality of a GameBoard object
 
  Solves CS151 Project - Mancala Game
 
- @author Scot Matson
+ @author Kenneth Cross, Scot Matson, Alex Preston
 
- @version 1.01 2015/12/01
+ @version 1.01 2015/12/05
 
  */
 public abstract class BoardDecorator extends JPanel implements Drawable
 {
    protected Drawable decoratedDrawable;
 
+   /**
+    Constructor method for the BoardDecorator class
+    @param decoratedDrawable
+    */
    public BoardDecorator(Drawable decoratedDrawable)
    {
       this.decoratedDrawable = decoratedDrawable;

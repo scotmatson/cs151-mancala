@@ -18,7 +18,7 @@ public class PitController
          public void mouseClicked(final MouseEvent e)
          {
 
-            
+
              model.pitSelector(view.getPitID());
              model.printCurrentState();
 

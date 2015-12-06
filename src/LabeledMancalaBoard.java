@@ -44,7 +44,7 @@ public class LabeledMancalaBoard extends JPanel implements Observer
         JLabel mancalaA = new JLabel("Mancala A", JLabel.CENTER);
         constraints.fill = GridBagConstraints.HORIZONTAL;
         mancalaA.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        constraints.gridx = 0;
+        constraints.gridx = 2;
         constraints.gridy = 1;
 
         pane.add(mancalaA, constraints);
@@ -54,7 +54,7 @@ public class LabeledMancalaBoard extends JPanel implements Observer
         JLabel mancalaB = new JLabel("Mancala B", JLabel.CENTER);
         mancalaB.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 10));
         constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridx = 2;
+        constraints.gridx = 0;
         constraints.gridy = 1;
 
         pane.add(mancalaB, constraints);

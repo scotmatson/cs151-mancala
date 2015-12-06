@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  @version 1.01 2015/11/14
 
  */
-public class MancalaBoard extends GameBoard
+public class MancalaBoard extends GameBoard implements Observer
 {
    private MancalaModel model;
    private ArrayList<Pit> pits = new ArrayList<>();
@@ -53,17 +55,13 @@ public class MancalaBoard extends GameBoard
       model = m;
       setLayout(new BorderLayout());
 
-      // TODO: change actual placement values of mancala
       int mancalaWidth = 150;
       mancala1 = new Mancala(0, 0, mancalaWidth, height, m.getPitColor(), 0);
-      //mancala1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); // TODO: TEST
       mancala2 = new Mancala((width - mancalaWidth), 0, mancalaWidth, height, m.getPitColor(), 1);
-      //mancala2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); // TODO: TEST
 
       JPanel pitPanel = new JPanel(new GridLayout(2, model.getNumberOfPits()/2));
 
       int pitWidth = 115;
-      int pitHeight = 100;
       pitb6 = new Pit(pitWidth*0, 0, pitWidth, height/2, m.getPitColor(), 0, model.getStonesInPit(0), "B6");
       pitb5 = new Pit(pitWidth*1, 0, pitWidth, height/2, m.getPitColor(), 1, model.getStonesInPit(1), "B5");
       pitb4 = new Pit(pitWidth*2, 0, pitWidth, height/2, m.getPitColor(), 2, model.getStonesInPit(2), "B4");
@@ -105,49 +103,16 @@ public class MancalaBoard extends GameBoard
       pits.add(pita4);
       pits.add(pita5);
       pits.add(pita6);
-      //for (int i = 0; i < model.getNumberOfPits(); i++)
-      //{
-         //pitPanel.setBorder(BorderFactory.createEmptyBorder(0, 100, 0, 0));
-         //pitPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3)); // TODO: TEST
-      //   Pit pit = new Pit(x, y, 100, height/2, m.getPitColor(), i, model.getStonesInPit(i), "Test");
-         //pit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
-
-      //   mancalaPits.add(pit);
-
-      //   //pitPanel.add(mancalaPits.get(i).getPitRepresentation());
-        // pitPanel.add(mancalaPits.get(i));
-      //}
-
 
       add(mancala1, BorderLayout.WEST);
       add(pitPanel, BorderLayout.CENTER);
       add(mancala2, BorderLayout.EAST);
-      //add(mancala1.getMancalaRepresentation(), BorderLayout.WEST);
-      //add(mancala2.getMancalaRepresentation(), BorderLayout.EAST);
    }
 
    @Override
    public void draw(Graphics g)
    {
       super.draw(g);
-      Graphics2D g2 = (Graphics2D) g;
-
-      //for (Pit p : mancalaPits)
-      //{
-      //   p.draw(g2);
-      //}
-      //g2.fill(pit2);
-      //g2.fill(pit3);
-      //g2.fill(pit4);
-      //g2.fill(pit5);
-      //g2.fill(pit6);
-      //g2.fill(pit7);
-      //g2.fill(pit8);
-      //g2.fill(pit9);
-      //g2.fill(pit10);
-      //g2.fill(pit11);
-      //g2.fill(pit12);
-      //g2.dispose();
    }
 
    /**
@@ -168,5 +133,47 @@ public class MancalaBoard extends GameBoard
       new PitController(pita4, model);
       new PitController(pita5, model);
       new PitController(pita6, model);
+   }
+
+   @Override
+   public void update(Observable o, Object arg)
+   {
+      System.out.println("Update");
+      Color newPitColor = model.getPitColor();
+
+      // Update color
+      mancala1.setMancalaColor(newPitColor);
+      mancala2.setMancalaColor(newPitColor);
+      pitb6.setPitStoreColor(newPitColor);
+      pitb5.setPitStoreColor(newPitColor);
+      pitb4.setPitStoreColor(newPitColor);
+      pitb3.setPitStoreColor(newPitColor);
+      pitb2.setPitStoreColor(newPitColor);
+      pitb1.setPitStoreColor(newPitColor);
+      pita1.setPitStoreColor(newPitColor);
+      pita2.setPitStoreColor(newPitColor);
+      pita3.setPitStoreColor(newPitColor);
+      pita4.setPitStoreColor(newPitColor);
+      pita5.setPitStoreColor(newPitColor);
+      pita6.setPitStoreColor(newPitColor);
+
+      // Update Stones
+      mancala1.setMancalaNumberOfStones(model.getStonesInMancala(0));
+      mancala2.setMancalaNumberOfStones(model.getStonesInMancala(1));
+      pitb6.setPitNumberOfStones(model.getStonesInPit(0));
+      pitb5.setPitNumberOfStones(model.getStonesInPit(1));
+      pitb4.setPitNumberOfStones(model.getStonesInPit(2));
+      pitb3.setPitNumberOfStones(model.getStonesInPit(3));
+      pitb2.setPitNumberOfStones(model.getStonesInPit(4));
+      pitb1.setPitNumberOfStones(model.getStonesInPit(5));
+      pita1.setPitNumberOfStones(model.getStonesInPit(6));
+      pita2.setPitNumberOfStones(model.getStonesInPit(7));
+      pita3.setPitNumberOfStones(model.getStonesInPit(8));
+      pita4.setPitNumberOfStones(model.getStonesInPit(9));
+      pita5.setPitNumberOfStones(model.getStonesInPit(10));
+      pita6.setPitNumberOfStones(model.getStonesInPit(11));
+
+      validate();
+      repaint();
    }
 }

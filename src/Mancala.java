@@ -8,6 +8,7 @@ public class Mancala extends GameBoardTile
 {
    private int mancalaID;
    //private JLabel mancalaRepresentation;
+   private JLabel mancalaStore;
 
    /**
     Constructor method for the Mancala class.
@@ -18,7 +19,7 @@ public class Mancala extends GameBoardTile
       mancalaID = pid;
       //mancalaRepresentation = new JLabel("0");
 
-      JLabel mancalaStore = new JLabel("0");
+      mancalaStore = new JLabel("0");
       mancalaStore.setHorizontalAlignment(SwingConstants.CENTER);
       mancalaStore.setVerticalAlignment(SwingConstants.CENTER);
       mancalaStore.setPreferredSize(new Dimension(getWidth(), getHeight()));
@@ -45,5 +46,15 @@ public class Mancala extends GameBoardTile
    public void update(int numberOfStones)
    {
       //mancalaRepresentation.setText(Integer.toString(numberOfStones));
+   }
+
+   public void setMancalaNumberOfStones(int numberOfStones)
+   {
+      mancalaStore.setText(Integer.toString(numberOfStones));
+   }
+
+   public void setMancalaColor(Color c)
+   {
+      mancalaStore.setBackground(c);
    }
 }

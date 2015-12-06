@@ -183,7 +183,6 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
      */
     public int getCurrentPlayer() {
         if (playerOneTurn == true) {
-            System.out.print("Dogs"); // TODO: Testing I guess? Why does this say dogs?
             return 1;
         } else {
             return 2;

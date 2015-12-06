@@ -18,7 +18,10 @@ public class PitController
          public void mouseClicked(final MouseEvent e)
          {
 
-            System.out.println(view.getName());
+
+             model.pitSelector(view.getPitID());
+             model.printCurrentState();
+
 
          }
       });

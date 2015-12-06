@@ -20,8 +20,6 @@ public class MancalaMenuBarController
          NewGameDialog dialog = new NewGameDialog(parentFrame, model);
          dialog.setSize(300, 150);
 
-
-
          model.notifyObservers();
       });
 

@@ -13,18 +13,27 @@ import java.util.Observer;
 public class WinnerDialog implements Observer {
     private JLabel winnerLable;
     private JFrame jFrame;
+    private MancalaModel mancalaModel;
 
     public WinnerDialog() {
         jFrame = new JFrame();
-        winnerLable = new JLabel("");
+        winnerLable = new JLabel();
+        mancalaModel = new MancalaModel();
 
         jFrame.setResizable(false);
         jFrame.setVisible(true);
 
     }
 
+    /**
+     * Sets the winner
+     */
+    public void setWinnerLable() {
+       // winnerLable.setText(java.lang.String.format("%s", "" + mancalaModel.));
+    }
+
     @Override
     public void update(Observable o, Object arg) {
-
+    setWinnerLable();
     }
 }

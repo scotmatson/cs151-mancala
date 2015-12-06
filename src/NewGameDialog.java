@@ -3,6 +3,7 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.Override;
 
 /**
 
@@ -36,10 +37,10 @@ public class NewGameDialog extends JDialog
       JLabel introLabel = new JLabel(NEWGAME_TEXT);
       introLabel.setHorizontalAlignment(JLabel.CENTER);
 
-      JRadioButton jRad3 = new JRadioButton("3 Stones");
+      final JRadioButton jRad3 = new JRadioButton("3 Stones");
       jRad3.setFocusPainted(false);
       jRad3.setSelected(true);
-      JRadioButton jRad4 = new JRadioButton("4 Stones");
+      final JRadioButton jRad4 = new JRadioButton("4 Stones");
       jRad4.setFocusPainted(false);
       ButtonGroup buttonGroup = new ButtonGroup();
       buttonGroup.add(jRad3);
@@ -63,7 +64,24 @@ public class NewGameDialog extends JDialog
       final String PLAY_BUTTON = "Play Mancala";
       JButton playButton = new JButton(PLAY_BUTTON);
       playButton.setFocusPainted(false);
-      playButton.addActionListener(new PlayButtonListener());
+
+
+          playButton.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                  if (jRad3.isSelected()) {
+                      mancalaModel.resetGame(12, 3);
+                      mancalaModel.notifyObservers();
+                  } else if(jRad4.isSelected()) {
+                      mancalaModel.resetGame(12,4);
+                      mancalaModel.notifyObservers();
+                  }
+                  setVisible(false);
+                  dispose();
+              }
+          });
+
+
 
       JPanel buttonPanel = new JPanel();
       buttonPanel.add(playButton, BorderLayout.CENTER);
@@ -83,7 +101,7 @@ public class NewGameDialog extends JDialog
       public void actionPerformed(ActionEvent e) {
 
          // TODO: Update the model with game settings.
-
+         mancalaModel.resetGame();
          setVisible(false);
          dispose();
       }

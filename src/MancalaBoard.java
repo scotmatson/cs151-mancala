@@ -62,19 +62,19 @@ public class MancalaBoard extends GameBoard implements Observer
       JPanel pitPanel = new JPanel(new GridLayout(2, model.getNumberOfPits()/2));
 
       int pitWidth = 115;
-      pitb6 = new Pit(pitWidth*0, 0, pitWidth, height/2, m.getPitColor(), 0, model.getStonesInPit(0), "B6");
-      pitb5 = new Pit(pitWidth*1, 0, pitWidth, height/2, m.getPitColor(), 1, model.getStonesInPit(1), "B5");
-      pitb4 = new Pit(pitWidth*2, 0, pitWidth, height/2, m.getPitColor(), 2, model.getStonesInPit(2), "B4");
-      pitb3 = new Pit(pitWidth*3, 0, pitWidth, height/2, m.getPitColor(), 3, model.getStonesInPit(3), "B3");
-      pitb2 = new Pit(pitWidth*4, 0, pitWidth, height/2, m.getPitColor(), 4, model.getStonesInPit(4), "B2");
-      pitb1 = new Pit(pitWidth*5, 0, pitWidth, height/2, m.getPitColor(), 5, model.getStonesInPit(5), "B1");
+      pitb6 = new Pit(pitWidth*0, 0, pitWidth, height/2, m.getPitColor(), 0, model.getStonesInPit(0), "B6", true);
+      pitb5 = new Pit(pitWidth*1, 0, pitWidth, height/2, m.getPitColor(), 1, model.getStonesInPit(1), "B5", true);
+      pitb4 = new Pit(pitWidth*2, 0, pitWidth, height/2, m.getPitColor(), 2, model.getStonesInPit(2), "B4", true);
+      pitb3 = new Pit(pitWidth*3, 0, pitWidth, height/2, m.getPitColor(), 3, model.getStonesInPit(3), "B3", true);
+      pitb2 = new Pit(pitWidth*4, 0, pitWidth, height/2, m.getPitColor(), 4, model.getStonesInPit(4), "B2", true);
+      pitb1 = new Pit(pitWidth*5, 0, pitWidth, height/2, m.getPitColor(), 5, model.getStonesInPit(5), "B1", true);
 
-      pita1 = new Pit(pitWidth*0, height/2, pitWidth, height/2, m.getPitColor(), 6, model.getStonesInPit(6), "A1");
-      pita2 = new Pit(pitWidth*1, height/2, pitWidth, height/2, m.getPitColor(), 7, model.getStonesInPit(7), "A2");
-      pita3 = new Pit(pitWidth*2, height/2, pitWidth, height/2, m.getPitColor(), 8, model.getStonesInPit(8), "A3");
-      pita4 = new Pit(pitWidth*3, height/2, pitWidth, height/2, m.getPitColor(), 9, model.getStonesInPit(9), "A4");
-      pita5 = new Pit(pitWidth*4, height/2, pitWidth, height/2, m.getPitColor(), 10, model.getStonesInPit(10), "A5");
-      pita6 = new Pit(pitWidth*5, height/2, pitWidth, height/2, m.getPitColor(), 11, model.getStonesInPit(11), "A6");
+      pita1 = new Pit(pitWidth*0, height/2, pitWidth, height/2, m.getPitColor(), 6, model.getStonesInPit(6), "A1", false);
+      pita2 = new Pit(pitWidth*1, height/2, pitWidth, height/2, m.getPitColor(), 7, model.getStonesInPit(7), "A2", false);
+      pita3 = new Pit(pitWidth*2, height/2, pitWidth, height/2, m.getPitColor(), 8, model.getStonesInPit(8), "A3", false);
+      pita4 = new Pit(pitWidth*3, height/2, pitWidth, height/2, m.getPitColor(), 9, model.getStonesInPit(9), "A4", false);
+      pita5 = new Pit(pitWidth*4, height/2, pitWidth, height/2, m.getPitColor(), 10, model.getStonesInPit(10), "A5", false);
+      pita6 = new Pit(pitWidth*5, height/2, pitWidth, height/2, m.getPitColor(), 11, model.getStonesInPit(11), "A6", false);
 
       addPitControllers();
 

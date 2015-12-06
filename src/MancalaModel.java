@@ -116,7 +116,7 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
      *
      * @return boolean value returns when finished
      */
-    private boolean distributeStones(int pitNumber) { // Should be private/ only pit selector should use it
+    private boolean distributeStones(int pitNumber) {
         int currentPit = pitNumber;
         int prevStones = 0;
 
@@ -239,6 +239,8 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
 
         pits = new ArrayList<>();
         for (int i = 0; i < numOfPits; i++) pits.add(numOfStones);
+        setChanged();
+        notifyObservers();
     }
 
    /**
@@ -249,6 +251,8 @@ public class MancalaModel extends Observable // Shouldn't this be an observer up
       mancalas.set(0, 0);
       mancalas.set(0, 0);
       for (int i = 0; i < pits.size(); i++) pits.add(numberOfStonesPerPit);
+      setChanged();
+      notifyObservers();
    }
     /**
      * Returns color of board

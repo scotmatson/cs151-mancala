@@ -8,9 +8,9 @@ import java.awt.*;
 
  Solves CS151 Project - Mancala Game
 
- @author Scot Matson
+ @author Kenneth Cross, Scot Matson, Alex Preston
 
- @version 1.01 2015/10/26
+ @version 1.01 2015/12/5
 
  */
 public interface Drawable

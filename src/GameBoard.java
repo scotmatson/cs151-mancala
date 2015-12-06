@@ -6,13 +6,13 @@ import java.awt.geom.RoundRectangle2D;
 
  COPYRIGHT (C) 2015 Team Tertiary. All Rights Reserved.
 
- A generic game board class.
+ A generic game board
 
  Solves CS151 Project - Mancala Game
 
- @author Scot Matson
+ @author Kenneth Cross, Scot Matson, Alex Preston
 
- @version 1.02 2015/12/01
+ @version 1.01 2015/10/26
 
  */
 public abstract class GameBoard extends JPanel implements Drawable
@@ -137,6 +137,10 @@ public abstract class GameBoard extends JPanel implements Drawable
       return color;
    }
 
+   /**
+    Draws a game board template
+    @param g a Graphics object
+    */
    public void draw(Graphics g)
    {
       Graphics2D g2 = (Graphics2D) g;
